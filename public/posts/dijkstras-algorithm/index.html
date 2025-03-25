@@ -1,0 +1,591 @@
+<!doctype html>
+<html
+  lang="en-us"
+  dir="ltr"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+<meta name="language" content="en" />
+<meta name="viewport" content="width=device-width" />
+<title>
+    Finding the Shortest Path from A to Anywhere | jeffyang.io
+</title>
+  <meta name="description" content="A deep dive into Dijkstra’s Algorithm" />
+<meta property="og:url" content="http://localhost:1313/posts/dijkstras-algorithm/">
+  <meta property="og:site_name" content="jeffyang.io">
+  <meta property="og:title" content="Finding the Shortest Path from A to Anywhere">
+  <meta property="og:description" content="A deep dive into Dijkstra’s Algorithm">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2019-12-15T00:00:00+00:00">
+    <meta property="article:modified_time" content="2019-12-15T00:00:00+00:00">
+    <meta property="article:tag" content="Algorithms">
+
+
+  <meta itemprop="name" content="Finding the Shortest Path from A to Anywhere">
+  <meta itemprop="description" content="A deep dive into Dijkstra’s Algorithm">
+  <meta itemprop="datePublished" content="2019-12-15T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2019-12-15T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1280">
+  <meta itemprop="keywords" content="Algorithms">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Finding the Shortest Path from A to Anywhere">
+  <meta name="twitter:description" content="A deep dive into Dijkstra’s Algorithm">
+
+<link rel="canonical" href="http://localhost:1313/posts/dijkstras-algorithm/" />
+
+    <link rel="stylesheet" href="/css/index.css" />
+
+
+      <script src="/js/main.js" defer></script>
+  
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@id": "http://localhost:1313/posts/dijkstras-algorithm/",
+  "@type": "BlogPosting",
+  "author": {
+    "@type": "Person",
+    "email": "johndoe@example.com",
+    "name": "John Doe",
+    "url": "http://localhost:1313/about/"
+  },
+  "copyrightNotice": "Jeff Yang",
+  "datePublished": "2019-12-15",
+  "description": "A deep dive into Dijkstra’s Algorithm",
+  "headline": "Finding the Shortest Path From a to Anywhere",
+  "isPartOf": {
+    "@id": "http://localhost:1313/posts/",
+    "@type": "Blog",
+    "name": "Posts"
+  },
+  "keywords": [
+    "Algorithms"
+  ],
+  "mainEntityOfPage": "http://localhost:1313/posts/dijkstras-algorithm/",
+  "name": "Finding the Shortest Path From a to Anywhere",
+  "timeRequired": "PT7M",
+  "url": "http://localhost:1313/posts/dijkstras-algorithm/",
+  "wordCount": 1280
+}
+</script>
+
+
+  </head>
+  <body>
+    <div class="container mx-auto flex max-w-prose flex-col space-y-10 p-4 md:p-6">
+      <header class="flex flex-row items-center justify-between">
+        <div>
+  <a id="skip-nav" class="sr-only" href="#maincontent">Skip to main content</a>
+  <a class="font-semibold" href="/">jeffyang.io</a>
+</div>
+
+  <nav>
+    <ul class="flex flex-row items-center justify-end space-x-4">
+    <li>
+      <a href="/about/">About</a
+      >
+    </li>
+    <li>
+      <a>Notes</a
+      >
+    </li>
+    <li>
+      <a aria-current="true" class="ancestor" href="/posts/">Posts</a
+      >
+    </li>
+    <li>
+      <a href="/graph/">Graph</a
+      >
+    </li>
+    </ul>
+  </nav>
+
+
+      </header>
+      <main class="prose prose-slate relative md:prose-lg prose-h1:text-[2em]" id="maincontent">
+        <article class="main">
+    <header>
+      <h1 class="!mb-1">Finding the Shortest Path From a to Anywhere</h1><div class="flex flex-row items-center space-x-4">
+          <time class="text-sm italic opacity-80" datetime="2019-12-15T00:00:00&#43;00:00"
+            >December 15, 2019</time
+          >
+        </div>
+    </header>
+
+    <p><img src="/static/images/dijkstras-algorithm/dijkstra_cover.png" alt="Blog Post Thumbnail"></p>
+<p>In this post, I would like to take a slightly different approach and write about an algorithm that I learned about in a classroom setting. While taking a computer science course in data structures and algorithms this quarter, I found the graph data structure and related algorithms to be particularly fascinating, as graphs can be applied in real-life to represent virtually anything from friendships to geographic maps. Although far from being an expert on this topic, I am going to make an attempt to dissect perhaps the most famous graph algorithm and its practical application. Take a bow, introducing Dijkstra&rsquo;s algorithm and the single source shortest path problem.</p>
+<h3 id="1-single-source-shortest-path" class="scroll-mt-8 group">
+  1. Single Source Shortest Path
+  
+    <a href="#1-single-source-shortest-path"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h3>
+<p>Before we talk about the algorithm itself, let&rsquo;s first get a sense of what Dijkstra&rsquo;s algorithm is all about; what significant questions can Dijkstra&rsquo;s famous algorithm answer? Often referred to as the &ldquo;Single source shortest path&rdquo; problem, Dijkstra&rsquo;s algorithm is suitable for finding the shortest distance from a single vertex to all other vertices. Using the results Dijkstra&rsquo;s algorithm produces, we can also find the shortest path from a single vertex to a specific destination, say, vertex <em>f</em>.</p>
+<p><img src="/static/images/dijkstras-algorithm/sssp.png" alt="A diagram of a graph denoting the start node and target node for finding the shortest path between two nodes"></p>
+<p>The graph illustrated above might have you think &ldquo;It doesn&rsquo;t seem that hard to manually find the shortest path from vertex <em>a</em> to <em>f</em> !&rdquo; If that&rsquo;s the case, imagine a graph with hundreds of vertices and edges; would you still be willing to manually find the shortest path from <em>a</em> to <em>f</em> ? It would be possible, but extremely time-consuming. This is where Dijkstra&rsquo;s algorithm comes into play. With some help from Dijkstra, we can find the shortest path from a single vertex to every other <em>reachable</em> vertex in the graph, with relative ease.</p>
+<h3 id="2-dijkstras-algorithm" class="scroll-mt-8 group">
+  2. Dijkstra&rsquo;s Algorithm
+  
+    <a href="#2-dijkstras-algorithm"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h3>
+<p>Finally, we can start our dissection of Dijkstra&rsquo;s algorithm. If we simply try to memorize the code for the algorithm line by line, it will be difficult (at least for people with non-photographic memory, like me). The better approach would be to try and understand what repeated steps the algorithm goes through until it finishes processing the graph and returns. The following are the steps that Dijkstra&rsquo;s algorithm follows, until it exhausts the entire vertex set of a graph:</p>
+<ol>
+<li>
+<p>When selecting the next node to visit, decision should be made based on the <strong>known distance</strong></p>
+</li>
+<li>
+<p>For each node we visit, we check the neighboring nodes (i.e. the nodes that are 1 edge away from the node we are currently visiting)</p>
+</li>
+<li>
+<p>When checking the neighboring nodes, calculate the distance traveled so far (distance from the starting node to the current node) + distance to the neighboring node from the current node</p>
+</li>
+<li>
+<p>If the calculation done above is <strong>less than</strong> the known distance to the neighboring node, update the distance information for that neighboring node</p>
+</li>
+</ol>
+<p>(Note: Steps 3 - 4 are known as the <em>relaxation</em> of vertices)</p>
+<p>In the implementation of the algorithm, I will be using Python&rsquo;s <code>heapq</code> module, which conveniently lets us use a priority queue to ensure that the nodes are relaxed in the correct order (minimum distance nodes first!). Also, note that I will be using an adjacency list representation of graphs, implemented with Python&rsquo;s dictionary. With the steps specified above in mind, let&rsquo;s take a look at the following implementaion of Dijkstra&rsquo;s algorithm:</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-01">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">python</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-01 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-01"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">python code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="c1">#python implementation of Dijkstra&#39;s algorithm using priority queue </span>
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">heapq</span> 
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">dist</span> <span class="o">=</span> <span class="p">{</span> <span class="n">vertex</span><span class="p">:</span> <span class="nb">float</span><span class="p">(</span><span class="s2">&#34;inf&#34;</span><span class="p">)</span> <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">graph</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pred</span> <span class="o">=</span> <span class="p">{</span> <span class="n">vertex</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span>  <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">graph</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    <span class="n">visited</span> <span class="o">=</span> <span class="p">{</span> <span class="n">vertex</span><span class="p">:</span> <span class="kc">False</span> <span class="k">for</span> <span class="n">vertex</span> <span class="ow">in</span> <span class="n">graph</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="n">dist</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">pred</span><span class="p">[</span><span class="n">source</span><span class="p">]</span> <span class="o">=</span> <span class="n">source</span>
+</span></span><span class="line"><span class="cl">    <span class="n">todo</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">0</span><span class="p">,</span> <span class="n">source</span><span class="p">)]</span>
+</span></span><span class="line"><span class="cl">    
+</span></span><span class="line"><span class="cl">    <span class="c1">#repeat the process until nodes are exhausted</span>
+</span></span><span class="line"><span class="cl">    <span class="k">while</span> <span class="nb">len</span><span class="p">(</span><span class="n">todo</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    	<span class="c1">#select the node with minimum known distance</span>
+</span></span><span class="line"><span class="cl">        <span class="n">curr_distance</span><span class="p">,</span> <span class="n">curr_vertex</span> <span class="o">=</span> <span class="n">heapq</span><span class="o">.</span><span class="n">heappop</span><span class="p">(</span><span class="n">todo</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">#if vertex has already been visited, skip it</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">visited</span><span class="p">[</span><span class="n">curr_vertex</span><span class="p">]:</span> <span class="k">continue</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="c1">#if vertex has not been visited do the follwing</span>
+</span></span><span class="line"><span class="cl">        <span class="n">visited</span><span class="p">[</span><span class="n">curr_vertex</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl">        
+</span></span><span class="line"><span class="cl">        <span class="c1">#check the neighbors of the current node</span>
+</span></span><span class="line"><span class="cl">        <span class="k">for</span> <span class="n">neighbor</span><span class="p">,</span> <span class="n">weight</span> <span class="ow">in</span> <span class="n">graph</span><span class="p">[</span><span class="n">curr_vertex</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">        	<span class="c1">#update if following condition is satisfied</span>
+</span></span><span class="line"><span class="cl">            <span class="k">if</span> <span class="n">curr_distance</span> <span class="o">+</span> <span class="n">weight</span> <span class="o">&lt;</span> <span class="n">dist</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]:</span>
+</span></span><span class="line"><span class="cl">                <span class="n">dist</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">curr_distance</span> <span class="o">+</span> <span class="n">weight</span>
+</span></span><span class="line"><span class="cl">                <span class="c1">#keep track of previous node : we need it to find shortest path</span>
+</span></span><span class="line"><span class="cl">                <span class="n">pred</span><span class="p">[</span><span class="n">neighbor</span><span class="p">]</span> <span class="o">=</span> <span class="n">curr_vertex</span>
+</span></span><span class="line"><span class="cl">                <span class="n">heapq</span><span class="o">.</span><span class="n">heappush</span><span class="p">(</span><span class="n">todo</span><span class="p">,</span> <span class="p">(</span><span class="n">curr_distance</span> <span class="o">+</span> <span class="n">weight</span><span class="p">,</span> <span class="n">neighbor</span><span class="p">))</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#result packages dist and pred in a tuple       </span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">pred</span><span class="p">,</span> <span class="n">dist</span><span class="p">)</span></span></span></code></pre></div>
+  <p class="sr-only">python code snippet end</p>
+
+  
+</figure>
+<p>Dijkstra&rsquo;s algorithm implemented as above does not directly give us the shortest path between two vertices. However, it does produce two valuable pieces of information, one of which can be carefully crafted to give us the <em>shortest path</em> between two vertices. Notice how the <code>dijkstra</code> function above returns a tuple containing <code>pred</code> and <code>dist</code>. The <code>pred</code> dictionary contains information on what node was visited before visiting each of the vertices while traversing the graph. The <code>dist</code> dictionary contains information on the distance from the starting point to each of the vertices in the graph. By working our way backwards in the <code>pred</code> dictionary, starting from the destination until we reach the starting point, it is possible to identify the <em>shortest path</em> from the source to destination. We will need the help of a stack to get the order correct.</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-02">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">python</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-02 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-02"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">python code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">shortest_path</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">,</span> <span class="n">destination</span><span class="p">):</span> 
+</span></span><span class="line"><span class="cl">	<span class="c1">#retrieve the pred dictionary from dijkstra</span>
+</span></span><span class="line"><span class="cl">	<span class="n">pred</span> <span class="o">=</span> <span class="n">dijkstra</span><span class="p">(</span><span class="n">graph</span><span class="p">,</span> <span class="n">source</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">#we need a stack to reverse the order </span>
+</span></span><span class="line"><span class="cl">	<span class="n">stack</span> <span class="o">=</span> <span class="p">[</span><span class="n">destination</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">	<span class="c1">#we will return the shortest path as a list</span>
+</span></span><span class="line"><span class="cl">	<span class="n">shortest_path</span> <span class="o">=</span> <span class="p">[]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">		<span class="n">curr</span> <span class="o">=</span> <span class="n">stack</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> 
+</span></span><span class="line"><span class="cl">		<span class="n">before</span> <span class="o">=</span> <span class="n">pred</span><span class="p">[</span><span class="n">curr</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="c1">#source and destination are disconnected</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="n">before</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl">			<span class="k">return</span> <span class="s2">&#34;there is no path!&#34;</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="c1">#we have reached the source node by traversing backwards</span>
+</span></span><span class="line"><span class="cl">		<span class="k">if</span> <span class="n">before</span> <span class="o">==</span> <span class="n">source</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl">			<span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">before</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">			<span class="k">break</span>
+</span></span><span class="line"><span class="cl">		
+</span></span><span class="line"><span class="cl">		<span class="n">stack</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">before</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="c1">#reverse the order: source --&gt; destination </span>
+</span></span><span class="line"><span class="cl">	<span class="k">while</span> <span class="n">stack</span><span class="p">:</span> 
+</span></span><span class="line"><span class="cl">		<span class="n">shortest_path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">stack</span><span class="o">.</span><span class="n">pop</span><span class="p">())</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">	<span class="k">return</span> <span class="n">shortest_path</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#example graph to test dijkstra&#39;s algorithm</span>
+</span></span><span class="line"><span class="cl"><span class="n">example_graph</span> <span class="o">=</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;b&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;d&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="mi">13</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;f&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="mi">7</span><span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="s1">&#39;g&#39;</span><span class="p">:</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  <p class="sr-only">python code snippet end</p>
+
+  
+</figure>
+<p>With the <code>shortest_path</code> function, we can now find the shortest path from a source node to a destination node. Note that Dijkstra&rsquo;s algorithm is not capable of finding the distance/shortest path between two nodes that are not connected.</p>
+<p><img src="/static/images/dijkstras-algorithm/sssp2.png" alt="A diagram that illustrates how the Dijkstra&rsquo;s algorithm would proceed to find the shortest path between two nodes."></p>
+<p>The following is the result of running <code>dijkstra</code> and <code>shortest_path</code> functions inside my Python shell with the example graph provided above. Note that the <code>example_graph</code> provided in the code is an adjacency list representation of the graph shown above, but is implemented with a Python dictionary.</p>
+<p><img src="/static/images/dijkstras-algorithm/dijkstra_demo.png" alt="A screenshot of my terminal showing the results of running Dijkstra&rsquo;s algorithm."></p>
+<h3 id="3-limitations-of-dijkstras-algorithm" class="scroll-mt-8 group">
+  3. Limitations of Dijkstra&rsquo;s Algorithm
+  
+    <a href="#3-limitations-of-dijkstras-algorithm"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h3>
+<p>The Dijkstra&rsquo;s algorithm is not bullet proof, however. The most remarkable limitation of Dijkstra&rsquo;s algorithm is that it will not work as expected if there are negative edges in a graph. In order to find the shortest distance from one starting vertex to all connected vertices, Dijkstra relies on the fact that if all edges are non-negative, it is always true that adding an edge will never make a path shorter. Only when such an assumption can safely be made can Dijkstra&rsquo;s &ldquo;greedy&rdquo; approach to the problem remain intact with solving global optimality. If negative edges are introduced and such an assumption is no longer valid, Dijkstra&rsquo;s method of selecting a node with minimum known distance at each iteration will no longer guarantee a correct outcome. To overcome such limitations of Dijkstra&rsquo;s algorithm, we can use other algorithms such as the Bellman-Ford&rsquo;s algorithm and the Floyd-Warshall&rsquo;s algorithm, as needed. These may be subject to discussion in future posts.</p>
+<h3 id="4-conclusion" class="scroll-mt-8 group">
+  4. Conclusion
+  
+    <a href="#4-conclusion"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h3>
+<p>Hopefully this blog post helped you gain a solid understanding of Dijkstra&rsquo;s algorithm and the single source shortest path problem. If there is anyone reading this post who is interested in learning the mathematical proof on the correctness of Dijkstra&rsquo;s famous algorithm, I found <a href="https://web.engr.oregonstate.edu/~glencora/wiki/uploads/dijkstra-proof.pdf">this</a> helpful.</p>
+
+  </article>
+    <aside class="not-prose flex flex-col space-y-8 border-t pt-6">
+    <section class="flex flex-col space-y-4">
+      <h2 class="flex flex-row items-center space-x-2 text-lg font-semibold">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-tags h-4 w-4"
+  viewBox="0 0 24 24"
+  aria-hidden="true"
+>
+  <path d="m15 5 6.3 6.3a2.4 2.4 0 0 1 0 3.4L17 19" />
+  <path
+    d="M9.586 5.586A2 2 0 0 0 8.172 5H3a1 1 0 0 0-1 1v5.172a2 2 0 0 0 .586 1.414L8.29 18.29a2.426 2.426 0 0 0 3.42 0l3.58-3.58a2.426 2.426 0 0 0 0-3.42z"
+  />
+  <circle cx="6.5" cy="9.5" r=".5" fill="currentColor" />
+</svg>
+
+        <span>Tags</span>
+      </h2>
+
+      <ul class="not-prose ml-6 flex flex-row flex-wrap items-center space-x-2">
+          <li>
+            <a href="/tags/algorithms/" class="taxonomy tag">Algorithms</a>
+          </li>
+      </ul>
+    </section>
+    <section class="flex flex-col space-y-4" aria-hidden="true">
+      <h2 class="flex flex-row items-center space-x-2 text-lg font-semibold">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-chart-network h-4 w-4"
+  viewBox="0 0 24 24"
+  aria-hidden="true"
+>
+  <path
+    d="m13.11 7.664 1.78 2.672M14.162 12.788l-3.324 1.424M20 4l-6.06 1.515M3 3v16a2 2 0 0 0 2 2h16"
+  />
+  <circle cx="12" cy="6" r="2" />
+  <circle cx="16" cy="12" r="2" />
+  <circle cx="9" cy="15" r="2" />
+</svg>
+
+        <span>Graph</span>
+      </h2>
+
+      <content-network-graph
+  class="h-64 ml-6"
+  data-endpoint="/graph/index.json"
+  page="/posts/dijkstras-algorithm/"
+></content-network-graph>
+
+    </section>
+</aside>
+
+
+      </main>
+      <footer class="mt-20 border-t border-neutral-100 pt-2 text-xs">
+        <section class="items-top flex flex-row justify-between opacity-70">
+  <div class="flex flex-col space-y-2">
+      <p>Copyright &copy; 2025, Jeff Yang.</p>
+      <div
+        xmlns:cc="https://creativecommons.org/ns#"
+        xmlns:dct="http://purl.org/dc/terms/"
+        about="https://creativecommons.org"
+      >
+        Content is available under
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license" class="inline-block" title="Creative Commons Attribution-ShareAlike 4.0 International"
+          >CC BY-SA 4.0</a
+        >
+        unless otherwise noted.
+      </div>
+        <div
+          class="mt-2 flex items-center space-x-2 fill-slate-400 hover:fill-slate-600 motion-safe:transition-colors"
+        >
+          <div class="flex-none cursor-help"><svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="5.5 -3.5 64 64"
+  xml:space="preserve"
+  class="w-5 h-5 block"
+  aria-hidden="true"
+>
+  <title>Creative Commons</title>
+  <circle fill="transparent" cx="37.785" cy="28.501" r="28.836" />
+  <path
+    d="M37.441-3.5c8.951 0 16.572 3.125 22.857 9.372 3.008 3.009 5.295 6.448 6.857 10.314 1.561 3.867 2.344 7.971 2.344 12.314 0 4.381-.773 8.486-2.314 12.313-1.543 3.828-3.82 7.21-6.828 10.143-3.123 3.085-6.666 5.448-10.629 7.086-3.961 1.638-8.057 2.457-12.285 2.457s-8.276-.808-12.143-2.429c-3.866-1.618-7.333-3.961-10.4-7.027-3.067-3.066-5.4-6.524-7-10.372S5.5 32.767 5.5 28.5c0-4.229.809-8.295 2.428-12.2 1.619-3.905 3.972-7.4 7.057-10.486C21.08-.394 28.565-3.5 37.441-3.5zm.116 5.772c-7.314 0-13.467 2.553-18.458 7.657-2.515 2.553-4.448 5.419-5.8 8.6a25.204 25.204 0 0 0-2.029 9.972c0 3.429.675 6.734 2.029 9.913 1.353 3.183 3.285 6.021 5.8 8.516 2.514 2.496 5.351 4.399 8.515 5.715a25.652 25.652 0 0 0 9.943 1.971c3.428 0 6.75-.665 9.973-1.999 3.219-1.335 6.121-3.257 8.713-5.771 4.99-4.876 7.484-10.99 7.484-18.344 0-3.543-.648-6.895-1.943-10.057-1.293-3.162-3.18-5.98-5.654-8.458-5.146-5.143-11.335-7.715-18.573-7.715zm-.401 20.915-4.287 2.229c-.458-.951-1.019-1.619-1.685-2-.667-.38-1.286-.571-1.858-.571-2.856 0-4.286 1.885-4.286 5.657 0 1.714.362 3.084 1.085 4.113.724 1.029 1.791 1.544 3.201 1.544 1.867 0 3.181-.915 3.944-2.743l3.942 2c-.838 1.563-2 2.791-3.486 3.686-1.484.896-3.123 1.343-4.914 1.343-2.857 0-5.163-.875-6.915-2.629-1.752-1.752-2.628-4.19-2.628-7.313 0-3.048.886-5.466 2.657-7.257 1.771-1.79 4.009-2.686 6.715-2.686 3.963-.002 6.8 1.541 8.515 4.627zm18.457 0-4.229 2.229c-.457-.951-1.02-1.619-1.686-2-.668-.38-1.307-.571-1.914-.571-2.857 0-4.287 1.885-4.287 5.657 0 1.714.363 3.084 1.086 4.113.723 1.029 1.789 1.544 3.201 1.544 1.865 0 3.18-.915 3.941-2.743l4 2c-.875 1.563-2.057 2.791-3.541 3.686a9.233 9.233 0 0 1-4.857 1.343c-2.896 0-5.209-.875-6.941-2.629-1.736-1.752-2.602-4.19-2.602-7.313 0-3.048.885-5.466 2.658-7.257 1.77-1.79 4.008-2.686 6.713-2.686 3.962-.002 6.783 1.541 8.458 4.627z"
+  />
+</svg>
+</div><div class="flex-none cursor-help"><svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="5.5 -3.5 64 64"
+  xml:space="preserve"
+  class="w-5 h-5 block"
+>
+  <title>Credit must be given to the creator</title>
+  <circle fill="transparent" cx="37.637" cy="28.806" r="28.276" />
+  <path
+    d="M37.443-3.5c8.988 0 16.57 3.085 22.742 9.257C66.393 11.967 69.5 19.548 69.5 28.5c0 8.991-3.049 16.476-9.145 22.456-6.476 6.363-14.113 9.544-22.912 9.544-8.649 0-16.153-3.144-22.514-9.43C8.644 44.784 5.5 37.262 5.5 28.5c0-8.761 3.144-16.342 9.429-22.742C21.101-.415 28.604-3.5 37.443-3.5zm.114 5.772c-7.276 0-13.428 2.553-18.457 7.657-5.22 5.334-7.829 11.525-7.829 18.572 0 7.086 2.59 13.22 7.77 18.398 5.181 5.182 11.352 7.771 18.514 7.771 7.123 0 13.334-2.607 18.629-7.828 5.029-4.838 7.543-10.952 7.543-18.343 0-7.276-2.553-13.465-7.656-18.571-5.104-5.104-11.276-7.656-18.514-7.656zm8.572 18.285v13.085h-3.656v15.542h-9.944V33.643h-3.656V20.557c0-.572.2-1.057.599-1.457.401-.399.887-.6 1.457-.6h13.144c.533 0 1.01.2 1.428.6.417.4.628.886.628 1.457zm-13.087-8.228c0-3.008 1.485-4.514 4.458-4.514s4.457 1.504 4.457 4.514c0 2.971-1.486 4.457-4.457 4.457s-4.458-1.486-4.458-4.457z"
+  />
+</svg>
+</div><div class="flex-none cursor-help"><svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="5.5 -3.5 64 64"
+  xml:space="preserve"
+  class="w-5 h-5 block"
+>
+  <title>Adaptations must be shared under the same terms</title>
+  <circle fill="transparent" cx="36.944" cy="28.631" r="29.105" />
+  <path
+    d="M37.443-3.5c8.951 0 16.531 3.105 22.742 9.315C66.393 11.987 69.5 19.548 69.5 28.5c0 8.954-3.049 16.457-9.145 22.514-6.437 6.324-14.076 9.486-22.912 9.486-8.649 0-16.153-3.143-22.514-9.429C8.644 44.786 5.5 37.264 5.5 28.501c0-8.723 3.144-16.285 9.429-22.685C21.138-.395 28.643-3.5 37.443-3.5zm.114 5.772c-7.276 0-13.428 2.572-18.457 7.715-5.22 5.296-7.829 11.467-7.829 18.513 0 7.125 2.59 13.257 7.77 18.4 5.181 5.182 11.352 7.771 18.514 7.771 7.123 0 13.334-2.609 18.629-7.828 5.029-4.876 7.543-10.99 7.543-18.343 0-7.313-2.553-13.485-7.656-18.513-5.067-5.145-11.239-7.715-18.514-7.715zM23.271 23.985c.609-3.924 2.189-6.962 4.742-9.114 2.552-2.152 5.656-3.228 9.314-3.228 5.027 0 9.029 1.62 12 4.856 2.971 3.238 4.457 7.391 4.457 12.457 0 4.915-1.543 9-4.627 12.256-3.088 3.256-7.086 4.886-12.002 4.886-3.619 0-6.743-1.085-9.371-3.257-2.629-2.172-4.209-5.257-4.743-9.257H31.1c.19 3.886 2.533 5.829 7.029 5.829 2.246 0 4.057-.972 5.428-2.914 1.373-1.942 2.059-4.534 2.059-7.771 0-3.391-.629-5.971-1.885-7.743-1.258-1.771-3.066-2.657-5.43-2.657-4.268 0-6.667 1.885-7.2 5.656h2.343l-6.342 6.343-6.343-6.343 2.512.001z"
+  />
+</svg>
+</div>
+        </div>
+
+  </div>
+    <div>
+      <a
+        href="https://github.com/michenriksen/hugo-theme-til"
+        title="Today I Learned &#8212; A Hugo theme by Michael Henriksen"
+        data-theme-version="0.6.0"
+        >theme: til</a
+      >
+    </div>
+</section>
+
+      </footer>
+    </div>
+    
+  </body>
+</html>

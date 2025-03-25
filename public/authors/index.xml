@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors on jeffyang.io</title>
+    <link>/authors/</link>
+    <description>jeffyang.io (Authors)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+      
+        <managingEditor>jho.yang96@gmail.com
+          
+            (jeffjaehoyang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    
+    <atom:link href="/authors/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>

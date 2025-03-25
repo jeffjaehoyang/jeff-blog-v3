@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Web Development on jeffyang.io</title>
+    <link>http://localhost:1313/tags/web-development/</link>
+    <description>Recent content in Web Development on jeffyang.io</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>johndoe@example.com (John Doe)</managingEditor>
+    <webMaster>johndoe@example.com (John Doe)</webMaster>
+    <copyright>Jeff Yang</copyright>
+    <lastBuildDate>Sat, 18 Dec 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A Practical Application of Redis Cache</title>
+      <link>http://localhost:1313/posts/practical-application-of-redis-cache/</link>
+      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <guid>http://localhost:1313/posts/practical-application-of-redis-cache/</guid>
+      <description>How a Redis cache can help solve problems when fetching data</description>
+    </item>
+    <item>
+      <title>Resize Images Stored in AWS S3 with AWS Lambda (feat. Docker)</title>
+      <link>http://localhost:1313/posts/aws-s3-and-lambda/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <guid>http://localhost:1313/posts/aws-s3-and-lambda/</guid>
+      <description>A blog post on how to resize images stored in AWS S3 with AWS Lambda</description>
+    </item>
+    <item>
+      <title>Django Channels 2.0, Postgres, Daphne, and Heroku</title>
+      <link>http://localhost:1313/posts/deploy-django-on-heroku/</link>
+      <pubDate>Mon, 20 Apr 2020 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <guid>http://localhost:1313/posts/deploy-django-on-heroku/</guid>
+      <description>A blog post on how to deploy a Django-ASGI application on heroku</description>
+    </item>
+    <item>
+      <title>Tweet Bot with Tweepy and Flask</title>
+      <link>http://localhost:1313/posts/tweet-bot/</link>
+      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <guid>http://localhost:1313/posts/tweet-bot/</guid>
+      <description>How to build a Twitter bot with Python</description>
+    </item>
+    <item>
+      <title>Go Live With Your Flask Application on Heroku</title>
+      <link>http://localhost:1313/posts/deploy-flask-application-on-heroku/</link>
+      <pubDate>Fri, 01 Nov 2019 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <guid>http://localhost:1313/posts/deploy-flask-application-on-heroku/</guid>
+      <description>How to deploy a Flask web application on Heroku</description>
+    </item>
+    <item>
+      <title>Build Your Own Website with Flask</title>
+      <link>http://localhost:1313/posts/build-a-flask-website/</link>
+      <pubDate>Sat, 26 Oct 2019 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <guid>http://localhost:1313/posts/build-a-flask-website/</guid>
+      <description>How to build your own website with Flask</description>
+    </item>
+  </channel>
+</rss>

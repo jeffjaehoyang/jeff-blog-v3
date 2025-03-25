@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Data Structures &amp; Algorithms on jeffyang.io</title>
+    <link>/tags/data-structures--algorithms/</link>
+    <description>jeffyang.io (Data Structures &amp; Algorithms)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+      
+        <managingEditor>jho.yang96@gmail.com
+          
+            (jeffjaehoyang)
+          
+        </managingEditor>
+      
+
+      
+    
+
+    
+    <lastBuildDate>Sun, 15 Dec 2019 00:00:00 +0000</lastBuildDate>
+    
+    <atom:link href="/tags/data-structures--algorithms/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Finding the Shortest Path from A to Anywhere</title>
+      <link>/posts/dijkstras-algorithm/</link>
+      <pubDate>Sun, 15 Dec 2019 00:00:00 +0000</pubDate>
+      <author>jho.yang96@gmail.com (jeffjaehoyang)</author>
+      <guid>/posts/dijkstras-algorithm/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;//localhost:1313/static/images/dijkstras-algorithm/dijkstra_cover.png&#34; alt=&#34;Blog Post Thumbnail&#34;&gt;&lt;/p&gt;
+&lt;p&gt;In this post, I would like to take a slightly different approach and write about an algorithm that I learned about in a classroom setting. While taking a computer science course in data structures and algorithms this quarter, I found the graph data structure and related algorithms to be particularly fascinating, as graphs can be applied in real-life to represent virtually anything from friendships to geographic maps. Although far from being an expert on this topic, I am going to make an attempt to dissect perhaps the most famous graph algorithm and its practical application. Take a bow, introducing Dijkstra&amp;rsquo;s algorithm and the single source shortest path problem.&lt;/p&gt;
+&lt;h2 id=&#34;1-single-source-shortest-path&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#1-single-source-shortest-path&#34;&gt;
+        #
+    &lt;/a&gt;
+    1. Single Source Shortest Path
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Before we talk about the algorithm itself, let&amp;rsquo;s first get a sense of what Dijkstra&amp;rsquo;s algorithm is all about; what significant questions can Dijkstra&amp;rsquo;s famous algorithm answer? Often referred to as the &amp;ldquo;Single source shortest path&amp;rdquo; problem, Dijkstra&amp;rsquo;s algorithm is suitable for finding the shortest distance from a single vertex to all other vertices. Using the results Dijkstra&amp;rsquo;s algorithm produces, we can also find the shortest path from a single vertex to a specific destination, say, vertex &lt;em&gt;f&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/static/images/dijkstras-algorithm/sssp.png&#34; alt=&#34;A diagram of a graph denoting the start node and target node for finding the shortest path between two nodes&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The graph illustrated above might have you think &amp;ldquo;It doesn&amp;rsquo;t seem that hard to manually find the shortest path from vertex &lt;em&gt;a&lt;/em&gt; to &lt;em&gt;f&lt;/em&gt; !&amp;rdquo; If that&amp;rsquo;s the case, imagine a graph with hundreds of vertices and edges; would you still be willing to manually find the shortest path from &lt;em&gt;a&lt;/em&gt; to &lt;em&gt;f&lt;/em&gt; ? It would be possible, but extremely time-consuming. This is where Dijkstra&amp;rsquo;s algorithm comes into play. With some help from Dijkstra, we can find the shortest path from a single vertex to every other &lt;em&gt;reachable&lt;/em&gt; vertex in the graph, with relative ease.&lt;/p&gt;
+&lt;h2 id=&#34;2-dijkstras-algorithm&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#2-dijkstras-algorithm&#34;&gt;
+        #
+    &lt;/a&gt;
+    2. Dijkstra&amp;rsquo;s Algorithm
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Finally, we can start our dissection of Dijkstra&amp;rsquo;s algorithm. If we simply try to memorize the code for the algorithm line by line, it will be difficult (at least for people with non-photographic memory, like me). The better approach would be to try and understand what repeated steps the algorithm goes through until it finishes processing the graph and returns. The following are the steps that Dijkstra&amp;rsquo;s algorithm follows, until it exhausts the entire vertex set of a graph:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;When selecting the next node to visit, decision should be made based on the &lt;strong&gt;known distance&lt;/strong&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;For each node we visit, we check the neighboring nodes (i.e. the nodes that are 1 edge away from the node we are currently visiting)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;When checking the neighboring nodes, calculate the distance traveled so far (distance from the starting node to the current node) + distance to the neighboring node from the current node&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;If the calculation done above is &lt;strong&gt;less than&lt;/strong&gt; the known distance to the neighboring node, update the distance information for that neighboring node&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;(Note: Steps 3 - 4 are known as the &lt;em&gt;relaxation&lt;/em&gt; of vertices)&lt;/p&gt;
+&lt;p&gt;In the implementation of the algorithm, I will be using Python&amp;rsquo;s &lt;code&gt;heapq&lt;/code&gt; module, which conveniently lets us use a priority queue to ensure that the nodes are relaxed in the correct order (minimum distance nodes first!). Also, note that I will be using an adjacency list representation of graphs, implemented with Python&amp;rsquo;s dictionary. With the steps specified above in mind, let&amp;rsquo;s take a look at the following implementaion of Dijkstra&amp;rsquo;s algorithm:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;#python implementation of Dijkstra&amp;#39;s algorithm using priority queue &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;import&lt;/span&gt; heapq 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;dijkstra&lt;/span&gt;(graph, source):
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    dist &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; { vertex: &lt;span style=&#34;color:#ff5c57&#34;&gt;float&lt;/span&gt;(&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;inf&amp;#34;&lt;/span&gt;) &lt;span style=&#34;color:#ff6ac1&#34;&gt;for&lt;/span&gt; vertex &lt;span style=&#34;color:#ff6ac1&#34;&gt;in&lt;/span&gt; graph }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pred &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; { vertex: &lt;span style=&#34;color:#ff6ac1&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ff9f43&#34;&gt;1&lt;/span&gt;  &lt;span style=&#34;color:#ff6ac1&#34;&gt;for&lt;/span&gt; vertex &lt;span style=&#34;color:#ff6ac1&#34;&gt;in&lt;/span&gt; graph }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    visited &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; { vertex: &lt;span style=&#34;color:#ff6ac1&#34;&gt;False&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;for&lt;/span&gt; vertex &lt;span style=&#34;color:#ff6ac1&#34;&gt;in&lt;/span&gt; graph }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    dist[source] &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff9f43&#34;&gt;0&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    pred[source] &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; source
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    todo &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; [(&lt;span style=&#34;color:#ff9f43&#34;&gt;0&lt;/span&gt;, source)]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#78787e&#34;&gt;#repeat the process until nodes are exhausted&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#ff5c57&#34;&gt;len&lt;/span&gt;(todo) &lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ff9f43&#34;&gt;0&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    	&lt;span style=&#34;color:#78787e&#34;&gt;#select the node with minimum known distance&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        curr_distance, curr_vertex &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; heapq&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;heappop(todo)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#78787e&#34;&gt;#if vertex has already been visited, skip it&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;if&lt;/span&gt; visited[curr_vertex]: &lt;span style=&#34;color:#ff6ac1&#34;&gt;continue&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#78787e&#34;&gt;#if vertex has not been visited do the follwing&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        visited[curr_vertex] &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;True&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#78787e&#34;&gt;#check the neighbors of the current node&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#ff6ac1&#34;&gt;for&lt;/span&gt; neighbor, weight &lt;span style=&#34;color:#ff6ac1&#34;&gt;in&lt;/span&gt; graph[curr_vertex]&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;items():
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        	&lt;span style=&#34;color:#78787e&#34;&gt;#update if following condition is satisfied&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;            &lt;span style=&#34;color:#ff6ac1&#34;&gt;if&lt;/span&gt; curr_distance &lt;span style=&#34;color:#ff6ac1&#34;&gt;+&lt;/span&gt; weight &lt;span style=&#34;color:#ff6ac1&#34;&gt;&amp;lt;&lt;/span&gt; dist[neighbor]:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                dist[neighbor] &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; curr_distance &lt;span style=&#34;color:#ff6ac1&#34;&gt;+&lt;/span&gt; weight
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                &lt;span style=&#34;color:#78787e&#34;&gt;#keep track of previous node : we need it to find shortest path&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                pred[neighbor] &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; curr_vertex
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                heapq&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;heappush(todo, (curr_distance &lt;span style=&#34;color:#ff6ac1&#34;&gt;+&lt;/span&gt; weight, neighbor))
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#78787e&#34;&gt;#result packages dist and pred in a tuple       &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#ff6ac1&#34;&gt;return&lt;/span&gt; (pred, dist)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Dijkstra&amp;rsquo;s algorithm implemented as above does not directly give us the shortest path between two vertices. However, it does produce two valuable pieces of information, one of which can be carefully crafted to give us the &lt;em&gt;shortest path&lt;/em&gt; between two vertices. Notice how the &lt;code&gt;dijkstra&lt;/code&gt; function above returns a tuple containing &lt;code&gt;pred&lt;/code&gt; and &lt;code&gt;dist&lt;/code&gt;. The &lt;code&gt;pred&lt;/code&gt; dictionary contains information on what node was visited before visiting each of the vertices while traversing the graph. The &lt;code&gt;dist&lt;/code&gt; dictionary contains information on the distance from the starting point to each of the vertices in the graph. By working our way backwards in the &lt;code&gt;pred&lt;/code&gt; dictionary, starting from the destination until we reach the starting point, it is possible to identify the &lt;em&gt;shortest path&lt;/em&gt; from the source to destination. We will need the help of a stack to get the order correct.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#e2e4e5;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-python&#34; data-lang=&#34;python&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#ff6ac1&#34;&gt;def&lt;/span&gt; &lt;span style=&#34;color:#57c7ff&#34;&gt;shortest_path&lt;/span&gt;(graph, source, destination): 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#78787e&#34;&gt;#retrieve the pred dictionary from dijkstra&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	pred &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; dijkstra(graph, source)[&lt;span style=&#34;color:#ff9f43&#34;&gt;0&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#78787e&#34;&gt;#we need a stack to reverse the order &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	stack &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; [destination]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#78787e&#34;&gt;#we will return the shortest path as a list&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	shortest_path &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; []
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#ff6ac1&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;True&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		curr &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; stack[&lt;span style=&#34;color:#ff6ac1&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ff9f43&#34;&gt;1&lt;/span&gt;] 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		before &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; pred[curr]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#78787e&#34;&gt;#source and destination are disconnected&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#ff6ac1&#34;&gt;if&lt;/span&gt; before &lt;span style=&#34;color:#ff6ac1&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ff6ac1&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ff9f43&#34;&gt;1&lt;/span&gt;: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			&lt;span style=&#34;color:#ff6ac1&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#34;there is no path!&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#78787e&#34;&gt;#we have reached the source node by traversing backwards&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		&lt;span style=&#34;color:#ff6ac1&#34;&gt;if&lt;/span&gt; before &lt;span style=&#34;color:#ff6ac1&#34;&gt;==&lt;/span&gt; source: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			stack&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;append(before)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;			&lt;span style=&#34;color:#ff6ac1&#34;&gt;break&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		stack&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;append(before)
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#78787e&#34;&gt;#reverse the order: source --&amp;gt; destination &lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#ff6ac1&#34;&gt;while&lt;/span&gt; stack: 
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;		shortest_path&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;append(stack&lt;span style=&#34;color:#ff6ac1&#34;&gt;.&lt;/span&gt;pop())
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;	&lt;span style=&#34;color:#ff6ac1&#34;&gt;return&lt;/span&gt; shortest_path
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&lt;span style=&#34;color:#78787e&#34;&gt;#example graph to test dijkstra&amp;#39;s algorithm&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;example_graph &lt;span style=&#34;color:#ff6ac1&#34;&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;a&amp;#39;&lt;/span&gt;: {&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ff9f43&#34;&gt;6&lt;/span&gt;, &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ff9f43&#34;&gt;1&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;b&amp;#39;&lt;/span&gt;: {&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ff9f43&#34;&gt;3&lt;/span&gt;, &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;e&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ff9f43&#34;&gt;9&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;c&amp;#39;&lt;/span&gt;: {&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;d&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ff9f43&#34;&gt;10&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;d&amp;#39;&lt;/span&gt;: {&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;e&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ff9f43&#34;&gt;2&lt;/span&gt;, &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ff9f43&#34;&gt;4&lt;/span&gt;, &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;g&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ff9f43&#34;&gt;13&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;e&amp;#39;&lt;/span&gt;: {&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ff9f43&#34;&gt;2&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;f&amp;#39;&lt;/span&gt;: {&lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;g&amp;#39;&lt;/span&gt;: &lt;span style=&#34;color:#ff9f43&#34;&gt;7&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    &lt;span style=&#34;color:#5af78e&#34;&gt;&amp;#39;g&amp;#39;&lt;/span&gt;: {}
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With the &lt;code&gt;shortest_path&lt;/code&gt; function, we can now find the shortest path from a source node to a destination node. Note that Dijkstra&amp;rsquo;s algorithm is not capable of finding the distance/shortest path between two nodes that are not connected.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/static/images/dijkstras-algorithm/sssp2.png&#34; alt=&#34;A diagram that illustrates how the Dijkstra’s algorithm would proceed to find the shortest path between two nodes.&#34;&gt;&lt;/p&gt;
+&lt;p&gt;The following is the result of running &lt;code&gt;dijkstra&lt;/code&gt; and &lt;code&gt;shortest_path&lt;/code&gt; functions inside my Python shell with the example graph provided above. Note that the &lt;code&gt;example_graph&lt;/code&gt; provided in the code is an adjacency list representation of the graph shown above, but is implemented with a Python dictionary.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;//localhost:1313/static/images/dijkstras-algorithm/dijkstra_demo.png&#34; alt=&#34;A screenshot of my terminal showing the results of running Dijkstra’s algorithm.&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;3-limitations-of-dijkstras-algorithm&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#3-limitations-of-dijkstras-algorithm&#34;&gt;
+        #
+    &lt;/a&gt;
+    3. Limitations of Dijkstra&amp;rsquo;s Algorithm
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;The Dijkstra&amp;rsquo;s algorithm is not bullet proof, however. The most remarkable limitation of Dijkstra&amp;rsquo;s algorithm is that it will not work as expected if there are negative edges in a graph. In order to find the shortest distance from one starting vertex to all connected vertices, Dijkstra relies on the fact that if all edges are non-negative, it is always true that adding an edge will never make a path shorter. Only when such an assumption can safely be made can Dijkstra&amp;rsquo;s &amp;ldquo;greedy&amp;rdquo; approach to the problem remain intact with solving global optimality. If negative edges are introduced and such an assumption is no longer valid, Dijkstra&amp;rsquo;s method of selecting a node with minimum known distance at each iteration will no longer guarantee a correct outcome. To overcome such limitations of Dijkstra&amp;rsquo;s algorithm, we can use other algorithms such as the Bellman-Ford&amp;rsquo;s algorithm and the Floyd-Warshall&amp;rsquo;s algorithm, as needed. These may be subject to discussion in future posts.&lt;/p&gt;
+&lt;h2 id=&#34;4-conclusion&#34; &gt;
+&lt;div&gt;
+    &lt;a href=&#34;#4-conclusion&#34;&gt;
+        #
+    &lt;/a&gt;
+    4. Conclusion
+&lt;/div&gt;
+&lt;/h2&gt;
+&lt;p&gt;Hopefully this blog post helped you gain a solid understanding of Dijkstra&amp;rsquo;s algorithm and the single source shortest path problem. If there is anyone reading this post who is interested in learning the mathematical proof on the correctness of Dijkstra&amp;rsquo;s famous algorithm, I found &lt;a href=&#34;https://web.engr.oregonstate.edu/~glencora/wiki/uploads/dijkstra-proof.pdf&#34;&gt;this&lt;/a&gt; helpful.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

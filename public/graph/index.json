@@ -1,0 +1,159 @@
+{
+  "graph": {
+    "/posts/aws-s3-and-lambda/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/build-a-flask-website/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/configuring-portable-dotfiles/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/deploy-django-on-heroku/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/deploy-flask-application-on-heroku/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/dijkstras-algorithm/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/eslint-prettier-vscode/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/first-three-months-at-meta/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/fumi-internship-1/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/fumi-internship-2/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/github-ssh-authentication/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/knowru-internship-reflection/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/my-facebook-internship/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/navigating-a-computer-science-degree/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/practical-application-of-redis-cache/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/tweet-bot/": {
+      "in": [],
+      "out": []
+    },
+    "/posts/what-is-a-graph/": {
+      "in": [],
+      "out": []
+    }
+  },
+  "pages": {
+    "/posts/aws-s3-and-lambda/": {
+      "permalink": "/posts/aws-s3-and-lambda/",
+      "section": "posts",
+      "title": "Resize Images Stored in AWS S3 With AWS Lambda (Feat. Docker)"
+    },
+    "/posts/build-a-flask-website/": {
+      "permalink": "/posts/build-a-flask-website/",
+      "section": "posts",
+      "title": "Build Your Own Website With Flask"
+    },
+    "/posts/configuring-portable-dotfiles/": {
+      "permalink": "/posts/configuring-portable-dotfiles/",
+      "section": "posts",
+      "title": "Configuring Portable Dotfiles"
+    },
+    "/posts/deploy-django-on-heroku/": {
+      "permalink": "/posts/deploy-django-on-heroku/",
+      "section": "posts",
+      "title": "Django Channels 2.0, Postgres, Daphne, and Heroku"
+    },
+    "/posts/deploy-flask-application-on-heroku/": {
+      "permalink": "/posts/deploy-flask-application-on-heroku/",
+      "section": "posts",
+      "title": "Go Live With Your Flask Application on Heroku"
+    },
+    "/posts/dijkstras-algorithm/": {
+      "permalink": "/posts/dijkstras-algorithm/",
+      "section": "posts",
+      "title": "Finding the Shortest Path From a to Anywhere"
+    },
+    "/posts/eslint-prettier-vscode/": {
+      "permalink": "/posts/eslint-prettier-vscode/",
+      "section": "posts",
+      "title": "Setting Up ESLint and Prettier With vs Code"
+    },
+    "/posts/first-three-months-at-meta/": {
+      "permalink": "/posts/first-three-months-at-meta/",
+      "section": "posts",
+      "title": "First 3 Months at Meta"
+    },
+    "/posts/fumi-internship-1/": {
+      "permalink": "/posts/fumi-internship-1/",
+      "section": "posts",
+      "title": "Working at an Early Stage Startup (Pt. 1)"
+    },
+    "/posts/fumi-internship-2/": {
+      "permalink": "/posts/fumi-internship-2/",
+      "section": "posts",
+      "title": "Working at an Early Stage Startup (Pt. 2)"
+    },
+    "/posts/github-ssh-authentication/": {
+      "permalink": "/posts/github-ssh-authentication/",
+      "section": "posts",
+      "title": "Github Authentication With SSH"
+    },
+    "/posts/knowru-internship-reflection/": {
+      "permalink": "/posts/knowru-internship-reflection/",
+      "section": "posts",
+      "title": "Shipping Code for a Business – Is Your Application Scalable?"
+    },
+    "/posts/my-facebook-internship/": {
+      "permalink": "/posts/my-facebook-internship/",
+      "section": "posts",
+      "title": "My Facebook Internship"
+    },
+    "/posts/navigating-a-computer-science-degree/": {
+      "permalink": "/posts/navigating-a-computer-science-degree/",
+      "section": "posts",
+      "title": "Navigating a Computer Science Degree"
+    },
+    "/posts/practical-application-of-redis-cache/": {
+      "permalink": "/posts/practical-application-of-redis-cache/",
+      "section": "posts",
+      "title": "A Practical Application of Redis Cache"
+    },
+    "/posts/tweet-bot/": {
+      "permalink": "/posts/tweet-bot/",
+      "section": "posts",
+      "title": "Tweet Bot With Tweepy and Flask"
+    },
+    "/posts/what-is-a-graph/": {
+      "permalink": "/posts/what-is-a-graph/",
+      "section": "posts",
+      "title": "What Is a Graph?"
+    }
+  }
+}
