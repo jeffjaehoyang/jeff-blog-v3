@@ -19,17 +19,13 @@ enableRobotsTXT = true # IMPORTANT: set to true if you want to use the theme's g
     pageRef = '/about'
     weight = 20
   [[menus.main]]
-    name = 'Notes'
-    pageRef = '/notes'
-    weight = 30
-  [[menus.main]]
     name = 'Posts'
     pageRef = '/posts'
-    weight = 40
+    weight = 30
   [[menus.main]]
     name = 'Graph'
     pageRef = '/graph'
-    weight = 50
+    weight = 40
 
 [markup]
   [markup.highlight]
@@ -53,8 +49,8 @@ enableRobotsTXT = true # IMPORTANT: set to true if you want to use the theme's g
 
   # Author details for the JSON-LD structured data.
   [params.author]
-    name = 'John Doe'
-    email = 'johndoe@example.com'
+    name = 'Jeff Yang'
+    email = 'jho.yang96@gmail.com'
 
   # Homepage setup
   [params.home]
@@ -68,7 +64,7 @@ enableRobotsTXT = true # IMPORTANT: set to true if you want to use the theme's g
 
     # Display recent notes on the homepage.
     # Default: true
-    showRecentNotes = true
+    showRecentNotes = false
 
     # Set how many recent notes to show.
     # Default: 5
