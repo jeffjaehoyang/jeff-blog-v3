@@ -6,22 +6,22 @@
     <description>Recent content in Algorithms on jeffyang.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <managingEditor>johndoe@example.com (John Doe)</managingEditor>
-    <webMaster>johndoe@example.com (John Doe)</webMaster>
+    <managingEditor>jho.yang96@gmail.com (Jeff Yang)</managingEditor>
+    <webMaster>jho.yang96@gmail.com (Jeff Yang)</webMaster>
     <copyright>Jeff Yang</copyright>
     <lastBuildDate>Sat, 28 Dec 2019 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What is a Graph?</title>
       <link>http://localhost:1313/posts/what-is-a-graph/</link>
-      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
       <guid>http://localhost:1313/posts/what-is-a-graph/</guid>
       <description>A blog post on the graph data structure in computer science</description>
     </item>
     <item>
       <title>Finding the Shortest Path from A to Anywhere</title>
       <link>http://localhost:1313/posts/dijkstras-algorithm/</link>
-      <pubDate>Sun, 15 Dec 2019 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <pubDate>Sun, 15 Dec 2019 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
       <guid>http://localhost:1313/posts/dijkstras-algorithm/</guid>
       <description>A deep dive into Dijkstra&amp;rsquo;s Algorithm</description>
     </item>

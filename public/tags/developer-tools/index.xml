@@ -6,29 +6,29 @@
     <description>Recent content in Developer Tools on jeffyang.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <managingEditor>johndoe@example.com (John Doe)</managingEditor>
-    <webMaster>johndoe@example.com (John Doe)</webMaster>
+    <managingEditor>jho.yang96@gmail.com (Jeff Yang)</managingEditor>
+    <webMaster>jho.yang96@gmail.com (Jeff Yang)</webMaster>
     <copyright>Jeff Yang</copyright>
     <lastBuildDate>Sat, 30 Jul 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/developer-tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configuring Portable Dotfiles</title>
       <link>http://localhost:1313/posts/configuring-portable-dotfiles/</link>
-      <pubDate>Sat, 30 Jul 2022 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <pubDate>Sat, 30 Jul 2022 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
       <guid>http://localhost:1313/posts/configuring-portable-dotfiles/</guid>
       <description>A blog post on how to manage dotfiles with GNU Stow</description>
     </item>
     <item>
       <title>Github Authentication with SSH</title>
       <link>http://localhost:1313/posts/github-ssh-authentication/</link>
-      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
       <guid>http://localhost:1313/posts/github-ssh-authentication/</guid>
       <description>How to setup local machine to properly authenticate Github with SSH</description>
     </item>
     <item>
       <title>Setting up ESLint and Prettier with VS Code</title>
       <link>http://localhost:1313/posts/eslint-prettier-vscode/</link>
-      <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
       <guid>http://localhost:1313/posts/eslint-prettier-vscode/</guid>
       <description>Setting up ESLint and Prettier with VS Code</description>
     </item>

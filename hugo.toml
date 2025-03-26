@@ -60,7 +60,7 @@ enableRobotsTXT = true # IMPORTANT: set to true if you want to use the theme's g
 
     # Set how many recent blog posts to show.
     # Default: 3
-    recentPostsLimit = 3
+    recentPostsLimit = 5
 
     # Display recent notes on the homepage.
     # Default: true

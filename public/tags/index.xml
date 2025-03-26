@@ -6,36 +6,36 @@
     <description>Recent content in Tags on jeffyang.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <managingEditor>johndoe@example.com (John Doe)</managingEditor>
-    <webMaster>johndoe@example.com (John Doe)</webMaster>
+    <managingEditor>jho.yang96@gmail.com (Jeff Yang)</managingEditor>
+    <webMaster>jho.yang96@gmail.com (Jeff Yang)</webMaster>
     <copyright>Jeff Yang</copyright>
     <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Personal Reflection</title>
       <link>http://localhost:1313/tags/personal-reflection/</link>
-      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
       <guid>http://localhost:1313/tags/personal-reflection/</guid>
       <description></description>
     </item>
     <item>
       <title>Developer Tools</title>
       <link>http://localhost:1313/tags/developer-tools/</link>
-      <pubDate>Sat, 30 Jul 2022 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <pubDate>Sat, 30 Jul 2022 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
       <guid>http://localhost:1313/tags/developer-tools/</guid>
       <description></description>
     </item>
     <item>
       <title>Web Development</title>
       <link>http://localhost:1313/tags/web-development/</link>
-      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <pubDate>Sat, 18 Dec 2021 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
       <guid>http://localhost:1313/tags/web-development/</guid>
       <description></description>
     </item>
     <item>
       <title>Algorithms</title>
       <link>http://localhost:1313/tags/algorithms/</link>
-      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate><author>johndoe@example.com (John Doe)</author>
+      <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
       <guid>http://localhost:1313/tags/algorithms/</guid>
       <description></description>
     </item>
