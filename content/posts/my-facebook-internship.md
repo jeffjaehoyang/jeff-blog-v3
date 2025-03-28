@@ -6,7 +6,7 @@ draft: false
 summary: 'Working at Facebook as a remote software engineering intern'
 ---
 
-![Blog Post Thumbnail](/static/images/facebook-internship/facebook-logo.jpeg)
+{{< figure src="https://www.dropbox.com/scl/fi/lmrdumjc9d5swvlxx3vwr/facebook-logo.jpeg?rlkey=myya3wlewdgbhwz71tvwe9y14&st=eu6ehtn5&dl=1" >}}
 
 I started my journey in computer science as a freshman in college. Little did I know, this journey would take me to the heart of Silicon Valley.
 
@@ -21,7 +21,7 @@ However, my journey with Facebook started out a bit differently — I got lucky.
 
 Exactly a year later, in Fall 2020, I gathered the courage to contact the same recruiter and was lucky to be granted a chance to interview again. This time, I cracked both rounds of technical interviews. A couple days after the second round, I received a call from the recruiter with a formal offer to join Facebook for Summer 2021 as a software engineer intern. It felt surreal.
 
-![Facebook Recruiter Message on Piazza Careers](/static/images/facebook-internship/facebook-piazza.png)
+{{< figure src="https://www.dropbox.com/scl/fi/ux6twvyc4vsodhqrgpf2t/facebook-piazza.png?rlkey=owzkcaol6bq3r7zzgeefcbrdd&st=uuq9m287&dl=1" caption="Recruiter message on Piazza Careers.">}}
 
 ### Team Selection
 The team selection process for interns at Facebook is done in a manner so that both parties — the interns and company — benefit from the program. Few months prior to the internship, interns are given a survey through which they can express interest in certain pillars within Facebook.
@@ -35,19 +35,19 @@ I was matched with the Business Messaging Lead Gen Ads team, a business-facing a
 ### A Remote Internship
 Due to the pandemic, the 2021 Summer Internship Program was fully remote. Although my team was based in Menlo Park, I chose to work from Los Angeles. It made the most sense as LA shares the same time zone, has more affordable rent, and offers a lot as a city, including outdoor hikes, beautiful beaches, and great restaurants — especially Korean ones. My roommate was also working remotely as a software engineer intern at a different tech company, so we decided to rent an Airbnb together.
 
-![LA scenery](/static/images/facebook-internship/la-scenery.jpeg)
+{{< figure src="https://www.dropbox.com/scl/fi/vd1hug455tw5heu7i8rfa/la-scenery.jpeg?rlkey=qveng1nsihcsi2rccccdijzk8&st=0sxiimoi&dl=1" caption="Beautiful scenery of LA." >}}
 
 Working remotely meant that Facebook shipped its tech equipment to all interns.
 
-![Facebook tech equipments](/static/images/facebook-internship/facebook-equipments.jpeg)
+{{< figure src="https://www.dropbox.com/scl/fi/0k6foitb85cseo0plzk70/facebook-equipments.jpeg?rlkey=cybxnbfizhft8s0an5opgis1z&st=2ortcglj&dl=1" caption="Facebook tech equipments." >}}
 
 Facebook also sent out intern swag a few weeks before the internship!
 
-![Facebook swag](/static/images/facebook-internship/facebook-swag.jpeg)
+{{< figure src="https://www.dropbox.com/scl/fi/9vv4eonm3xshw17dc4bfx/facebook-swag.jpeg?rlkey=0kf1jsdndcnh1unzph2h6bly1&st=b9knuews&dl=1" caption="Facebook swag." >}}
 
 I set up a nice home office for myself — having that ultrawide monitor was extremely helpful. 😇
 
-![Home office setup](/static/images/facebook-internship/desk-setup.jpeg)
+{{< figure src="https://www.dropbox.com/scl/fi/plcy7ea4nw7dckfufdo13/desk-setup.jpeg?rlkey=5wi0qlgbgq9w8rhw88s681vnt&st=vxi2xbc2&dl=1" caption="Home office setup due to COVID-19." >}}
 
 ### Imposter Syndrome
 Imposter syndrome is defined as doubting your abilities and feeling like a fraud. I heard and read about it on countless online forums, but had never experienced it myself until my internship with Facebook. As excited as I was to work at Facebook, the thought of working at one of the world’s leading tech firms was incredibly daunting. I always had the idea that engineers working at companies like Facebook and Google were geniuses — I never thought I would belong to one of them. 

@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personal Reflection on jeffyang.io</title>
-    <link>http://localhost:51561/tags/personal-reflection/</link>
+    <link>http://localhost:51803/tags/personal-reflection/</link>
     <description>Recent content in Personal Reflection on jeffyang.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,47 +10,47 @@
     <webMaster>jho.yang96@gmail.com (Jeff Yang)</webMaster>
     <copyright>Jeff Yang</copyright>
     <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:51561/tags/personal-reflection/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:51803/tags/personal-reflection/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>First 3 Months at Meta</title>
-      <link>http://localhost:51561/posts/first-three-months-at-meta/</link>
+      <link>http://localhost:51803/posts/first-three-months-at-meta/</link>
       <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>http://localhost:51561/posts/first-three-months-at-meta/</guid>
+      <guid>http://localhost:51803/posts/first-three-months-at-meta/</guid>
       <description>Reflecting back at my first 3 months at Meta</description>
     </item>
     <item>
       <title>Navigating a Computer Science Degree</title>
-      <link>http://localhost:51561/posts/navigating-a-computer-science-degree/</link>
+      <link>http://localhost:51803/posts/navigating-a-computer-science-degree/</link>
       <pubDate>Sat, 19 Mar 2022 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>http://localhost:51561/posts/navigating-a-computer-science-degree/</guid>
+      <guid>http://localhost:51803/posts/navigating-a-computer-science-degree/</guid>
       <description>Relection on my life as an undergraduate CS student and takeaways</description>
     </item>
     <item>
       <title>My Facebook Internship</title>
-      <link>http://localhost:51561/posts/my-facebook-internship/</link>
+      <link>http://localhost:51803/posts/my-facebook-internship/</link>
       <pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>http://localhost:51561/posts/my-facebook-internship/</guid>
+      <guid>http://localhost:51803/posts/my-facebook-internship/</guid>
       <description>Working at Facebook as a remote software engineering intern</description>
     </item>
     <item>
       <title>Working at an Early Stage Startup (Pt. 2)</title>
-      <link>http://localhost:51561/posts/fumi-internship-2/</link>
+      <link>http://localhost:51803/posts/fumi-internship-2/</link>
       <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>http://localhost:51561/posts/fumi-internship-2/</guid>
+      <guid>http://localhost:51803/posts/fumi-internship-2/</guid>
       <description>What I learned working at an early stage startup - the engineering side</description>
     </item>
     <item>
       <title>Working at an Early Stage Startup (Pt. 1)</title>
-      <link>http://localhost:51561/posts/fumi-internship-1/</link>
+      <link>http://localhost:51803/posts/fumi-internship-1/</link>
       <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>http://localhost:51561/posts/fumi-internship-1/</guid>
+      <guid>http://localhost:51803/posts/fumi-internship-1/</guid>
       <description>What I learned working at an early stage startup - the business side</description>
     </item>
     <item>
       <title>Shipping Code for a Business – Is Your Application Scalable?</title>
-      <link>http://localhost:51561/posts/knowru-internship-reflection/</link>
+      <link>http://localhost:51803/posts/knowru-internship-reflection/</link>
       <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>http://localhost:51561/posts/knowru-internship-reflection/</guid>
+      <guid>http://localhost:51803/posts/knowru-internship-reflection/</guid>
       <description>Reflecting on the 2019 summer internship at Knowru</description>
     </item>
   </channel>

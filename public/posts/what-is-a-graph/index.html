@@ -3,7 +3,7 @@
   lang="en-us"
   dir="ltr"
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51561&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51803&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
 <meta name="language" content="en" />
 <meta name="viewport" content="width=device-width" />
@@ -11,7 +11,7 @@
     What is a Graph? | jeffyang.io
 </title>
   <meta name="description" content="A blog post on the graph data structure in computer science" />
-<meta property="og:url" content="http://localhost:51561/posts/what-is-a-graph/">
+<meta property="og:url" content="http://localhost:51803/posts/what-is-a-graph/">
   <meta property="og:site_name" content="jeffyang.io">
   <meta property="og:title" content="What is a Graph?">
   <meta property="og:description" content="A blog post on the graph data structure in computer science">
@@ -27,14 +27,14 @@
   <meta itemprop="description" content="A blog post on the graph data structure in computer science">
   <meta itemprop="datePublished" content="2019-12-28T00:00:00+00:00">
   <meta itemprop="dateModified" content="2019-12-28T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1502">
+  <meta itemprop="wordCount" content="1529">
   <meta itemprop="keywords" content="Algorithms">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="What is a Graph?">
   <meta name="twitter:description" content="A blog post on the graph data structure in computer science">
 
-<link rel="canonical" href="http://localhost:51561/posts/what-is-a-graph/" />
+<link rel="canonical" href="http://localhost:51803/posts/what-is-a-graph/" />
 
     <link rel="stylesheet" href="/css/index.css" />
 
@@ -45,31 +45,31 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@id": "http://localhost:51561/posts/what-is-a-graph/",
+  "@id": "http://localhost:51803/posts/what-is-a-graph/",
   "@type": "BlogPosting",
   "author": {
     "@type": "Person",
     "email": "jho.yang96@gmail.com",
     "name": "Jeff Yang",
-    "url": "http://localhost:51561/about/"
+    "url": "http://localhost:51803/about/"
   },
   "copyrightNotice": "Jeff Yang",
   "datePublished": "2019-12-28",
   "description": "A blog post on the graph data structure in computer science",
   "headline": "What Is a Graph?",
   "isPartOf": {
-    "@id": "http://localhost:51561/posts/",
+    "@id": "http://localhost:51803/posts/",
     "@type": "Blog",
     "name": "Posts"
   },
   "keywords": [
     "Algorithms"
   ],
-  "mainEntityOfPage": "http://localhost:51561/posts/what-is-a-graph/",
+  "mainEntityOfPage": "http://localhost:51803/posts/what-is-a-graph/",
   "name": "What Is a Graph?",
   "timeRequired": "PT8M",
-  "url": "http://localhost:51561/posts/what-is-a-graph/",
-  "wordCount": 1502
+  "url": "http://localhost:51803/posts/what-is-a-graph/",
+  "wordCount": 1529
 }
 </script>
 
@@ -112,8 +112,7 @@
         </div>
     </header>
 
-    <p><img src="/static/images/what-is-a-graph/sample_graph.png" alt="Blog Post Thumbnail"></p>
-<p>In this blog post, I will be going over the basics of the graph data structure, including its representation, implementation, and basic graph traversal algorithms. Graph is an important data structure, especially because of its practical applications that can range from representing friendships to maps of locational intelligence, computer networks and much more. Does that sound interesting? Let&rsquo;s dive into learning the basics of graphs.</p>
+    <p>In this blog post, I will be going over the basics of the graph data structure, including its representation, implementation, and basic graph traversal algorithms. Graph is an important data structure, especially because of its practical applications that can range from representing friendships to maps of locational intelligence, computer networks and much more. Does that sound interesting? Let&rsquo;s dive into learning the basics of graphs.</p>
 <h3 id="1-introduction-to-graphs" class="scroll-mt-8 group">
   1. Introduction to Graphs
   
@@ -140,7 +139,9 @@
   
 </h3>
 <p>Even if you are unfamiliar with graphs, you most likely have already seen one. If you have seen or worked with <em>trees</em> before, you have already encountered a <em>graph</em> before. Let me try to explain graphs in relation to trees, a data structure that you are more likely to be familiar with, or at least more so than graphs. <strong>All trees are graphs, but not all graphs are trees</strong>. Like trees, graphs also have <strong>nodes (or vertices)</strong> and <strong>edges</strong> that connect the nodes, but are not bound to the restrictions that trees have. A tree is an <em>acyclic</em> and <em>connected</em> graph. A graph, however, is not limited to such restrictions; a graph can have <em>cycles</em> and can be <em>disconnected</em> to form a forest consisting of multiple components that are disconnected with another. Take a look at the following to get a rough idea of what a <em>directed</em>, <em>acyclic</em> graph looks like.</p>
-<p><img src="/static/images/what-is-a-graph/sample_graph.png" alt="A diagram representing a directed, acyclic graph"></p>
+<figure><img src="https://www.dropbox.com/scl/fi/qhwl2hr0nzutwa02h00n6/sample_graph.png?rlkey=wd46qwxhvabhewppl8pvxopxz&amp;st=sn6t77zy&amp;dl=1">
+</figure>
+
 <p>A more mathematically oriented definition of a graph would be the following: a <strong>graph</strong> is a data structure that represents a <strong>finite set of nodes (or vertices) and set of edges which connect a pair of vertices</strong>. Confused about the technical terms (<em>connected</em>, <em>directed</em>, <em>acyclic</em>, <em>cyclic</em>, and more&hellip;) that were just thrown at you? Don&rsquo;t worry, that&rsquo;s what we&rsquo;ll explore in the next section.</p>
 <h3 id="2-categorization-of-graphs" class="scroll-mt-8 group">
   2. Categorization of Graphs
@@ -168,7 +169,12 @@
   
 </h3>
 <p>For some of you, terms such as <em>acyclic</em>, <em>cyclic</em>, <em>directed</em>, <em>undirected</em>, <em>connected</em>, <em>disconnected</em> may sound unfamiliar. Such categorization of graphs, however, are essential in deepening your understanding of graphs, and are not too difficult to get a grasp of either. To help your understanding, take a look at the following:</p>
-<p><img src="/static/images/what-is-a-graph/graph_ds.png" alt="A diagram representing different kinds of graphs"></p>
+<figure><img src="https://www.dropbox.com/scl/fi/vuytyftaan2n3nnj0otw6/graph_ds.png?rlkey=s5q4uc61xe2fnjvo5eyk28piv&amp;st=ybjf8bv5&amp;dl=1"
+    alt="A diagram representing different kinds of graphs."><figcaption>
+      <p>A diagram representing different kinds of graphs.</p>
+    </figcaption>
+</figure>
+
 <p>As clearly depicted (on purpose) above, there are many different ways to categorize a graph. Here are some of the most important categorizations of a graph to be aware of:</p>
 <ul>
 <li>
@@ -212,10 +218,20 @@
 </h3>
 <p>To dive deeper into the discussion of graphs, we need to understand how graphs are represented without having to visually draw a graph out. There are largely two different ways to represent any graph: as an <em>adjacency list</em> or as an <em>adjacency matrix</em>.</p>
 <p>Let us first take a look at the <strong>adjacency list representation</strong> of a graph. A common way of representing a graph as an adjacency list is to directly map vertices to indices of an array, and at each index of an array, represent the neighboring vertices and weights in the form of linked lists. Take a look at the following example to help your understanding:</p>
-<p><img src="/static/images/what-is-a-graph/adj_list.png" alt="A diagram that explains representing graphs through an adjacency list"></p>
+<figure><img src="https://www.dropbox.com/scl/fi/2tzpdey5zp2olhesccwql/adj_list.png?rlkey=7h3wu2nmtxyjk4w5a170smu2m&amp;st=xkgl5ks2&amp;dl=1"
+    alt="A diagram that explains representing graphs through an adjacency list."><figcaption>
+      <p>A diagram that explains representing graphs through an adjacency list.</p>
+    </figcaption>
+</figure>
+
 <p>The diagram above shows how an undirected, weighted graph can be represented as an adjacency list. Note that using a linked list is not the only possible way to implement an adjacency list (we could use hash tables instead, and use vertices as keys and associated weights as values).</p>
 <p>Now let us examine the <strong>adjacency matrix representation</strong> of a graph. An adjacency matrix representation differs from an adjacency list in that an adjacency matrix requires a |V| × |V| matrix (where |V| denotes the number of vertices) to store information on the existence of an edge between two vertices (if the graph is unweighted) or the weight between two vertices (if the graph is weighted). A non-existant edge is usually represented by a 0 for an unweighted graph, and by &ldquo;inf&rdquo; (infinity) for a weighted graph. To visualize the explanation, take a look at the following adjacent matrix representation of an undirected, weighted graph:</p>
-<p><img src="/static/images/what-is-a-graph/adj_mat.png" alt="A diagram that explains representing graphs through an adjacency matrix"></p>
+<figure><img src="https://www.dropbox.com/scl/fi/p21o8tkp5dq3toflnrjnp/adj_mat.png?rlkey=8mm63g60lv4xh2ncootgi5z77&amp;st=9410t0rg&amp;dl=1"
+    alt="A diagram that explains representing graphs through an adjacency matrix."><figcaption>
+      <p>A diagram that explains representing graphs through an adjacency matrix.</p>
+    </figcaption>
+</figure>
+
 <p>The diagram above should give a clear idea of how to represent a graph with an adjacency matrix. If we were to represent an unweighted graph, the &ldquo;inf&quot;s would be replaced with 0s, and all the weights (represented in red numbers) would be replaced with 1s. Now, one might ask &ldquo;Which representation is better?&rdquo; Well, it <em>depends</em>. If optimizing for speed, an adjacency matrix representation will guarantee an O(1) lookup time when searching for an edge between two vertices. On the other hand, an adjacency list implemented with a linked list would give O(n) time, since in the worst case, we would have to search through the entire adjacency list of vertex <em>a</em> to find that there exists an edge between, say, <em>a</em> and <em>f</em>. If we were to optimize for space, however, an adjacency list would yield a significant advantage especially when representing a <em>sparse</em> graph. An adjacency list will only store information in a linked list if there <em>exists</em> an edge between two vertices. However, as explained above, an adjacency matrix always requires a |V| × |V| matrix. Hence, if a graph is sparse (i.e. there are very few edges between vertices), the adjacency matrix will be full of default values that indicate that there is no edge between two vertices, which is quite space-inefficient.</p>
 <h3 id="4-traversing-a-graph" class="scroll-mt-8 group">
   4. Traversing a Graph

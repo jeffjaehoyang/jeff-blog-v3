@@ -3,7 +3,7 @@
   lang="en-us"
   dir="ltr"
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51561&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51803&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
 <meta name="language" content="en" />
 <meta name="viewport" content="width=device-width" />
@@ -11,7 +11,7 @@
     Configuring Portable Dotfiles | jeffyang.io
 </title>
   <meta name="description" content="A blog post on how to manage dotfiles with GNU Stow" />
-<meta property="og:url" content="http://localhost:51561/posts/configuring-portable-dotfiles/">
+<meta property="og:url" content="http://localhost:51803/posts/configuring-portable-dotfiles/">
   <meta property="og:site_name" content="jeffyang.io">
   <meta property="og:title" content="Configuring Portable Dotfiles">
   <meta property="og:description" content="A blog post on how to manage dotfiles with GNU Stow">
@@ -34,7 +34,7 @@
   <meta name="twitter:title" content="Configuring Portable Dotfiles">
   <meta name="twitter:description" content="A blog post on how to manage dotfiles with GNU Stow">
 
-<link rel="canonical" href="http://localhost:51561/posts/configuring-portable-dotfiles/" />
+<link rel="canonical" href="http://localhost:51803/posts/configuring-portable-dotfiles/" />
 
     <link rel="stylesheet" href="/css/index.css" />
 
@@ -45,30 +45,30 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@id": "http://localhost:51561/posts/configuring-portable-dotfiles/",
+  "@id": "http://localhost:51803/posts/configuring-portable-dotfiles/",
   "@type": "BlogPosting",
   "author": {
     "@type": "Person",
     "email": "jho.yang96@gmail.com",
     "name": "Jeff Yang",
-    "url": "http://localhost:51561/about/"
+    "url": "http://localhost:51803/about/"
   },
   "copyrightNotice": "Jeff Yang",
   "datePublished": "2022-07-30",
   "description": "A blog post on how to manage dotfiles with GNU Stow",
   "headline": "Configuring Portable Dotfiles",
   "isPartOf": {
-    "@id": "http://localhost:51561/posts/",
+    "@id": "http://localhost:51803/posts/",
     "@type": "Blog",
     "name": "Posts"
   },
   "keywords": [
     "Developer Tools"
   ],
-  "mainEntityOfPage": "http://localhost:51561/posts/configuring-portable-dotfiles/",
+  "mainEntityOfPage": "http://localhost:51803/posts/configuring-portable-dotfiles/",
   "name": "Configuring Portable Dotfiles",
   "timeRequired": "PT5M",
-  "url": "http://localhost:51561/posts/configuring-portable-dotfiles/",
+  "url": "http://localhost:51803/posts/configuring-portable-dotfiles/",
   "wordCount": 890
 }
 </script>
@@ -112,7 +112,9 @@
         </div>
     </header>
 
-    <p><img src="/static/images/portable-dotfiles/thumbnail.png" alt="Blog Post Thumbnail"></p>
+    <figure><img src="https://www.dropbox.com/scl/fi/9qpxekwcgf43abyrvkfx5/thumbnail.png?rlkey=zgwnrsdtm0l183zu8rd4wq2hs&amp;st=lhnoksyp&amp;dl=1">
+</figure>
+
 <p>I recently stumbled across a problem that I never really had to solve before. As I started my first full-time job, I received a new laptop for work-related use. I also set up my development server, which is a remote computer sitting somewhere in a data center that I can SSH into for development purposes. As my preferred choice of text editor is Neovim, I have a lot of configuration files that go along with it. I also have some custom tmux configurations. What about ZSH configurations? The list goes on. One way of doing it would be to manually copy-and-paste all the configuration files. But there had to be a better way - one that doesn&rsquo;t require so much error-prone manual reptition. If I start a new job at a different company, or if I get a new personal computer for myself, I don&rsquo;t want to have to continue to copy-and-paste all these &ldquo;dotfiles&rdquo;. So I searched for a way to make my dotfiles &ldquo;portable&rdquo;. The solution that I decided to go with was <a href="https://www.gnu.org/software/stow/">GNU Stow</a> - in this post I&rsquo;ll explain a little bit about how Stow works.</p>
 <h3 id="what-is-gnu-stow-" class="scroll-mt-8 group">
   What is GNU Stow ?

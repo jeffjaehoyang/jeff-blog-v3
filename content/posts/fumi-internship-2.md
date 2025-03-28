@@ -6,7 +6,7 @@ draft: false
 summary: 'What I learned working at an early stage startup - the engineering side'
 ---
 
-![Blog Post Thumbnail](/static/images/fumi-internship-part-two/fumi_startup_two.png)
+{{< figure src="https://www.dropbox.com/scl/fi/55vitanff83c9qn689idz/fumi_startup_two.png?rlkey=n1lcy7wqrw3z8l6lx3pjttyho&st=l8xkpi8d&dl=1" >}}
 
 ***Disclaimer***  *This post does not in any way represent the views of Fumi as a company, but is solely my individual opinion and reflection on my experience as a software engineer at an early-stage startup*
 

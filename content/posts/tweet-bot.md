@@ -6,7 +6,7 @@ draft: false
 summary: 'How to build a Twitter bot with Python'
 ---
 
-![Blog Post Thumbnail](/static/images/tweet-bot/tweetbot.png)
+{{< figure src="https://www.dropbox.com/scl/fi/povejfo6ngw42evk2x736/tweetbot.png?rlkey=lgs3b2wkaq97qza0pkebqaohp&st=tsjeb7gf&dl=1" >}}
 
 According to recent research conducted by USC and Indiana University affiliates, the _conservative_
 estimate for the number of Twitter bots is somewhere around 15% of all active accounts, suggesting
@@ -191,8 +191,7 @@ and emulate a more human-like sentence, the sentences generated will not always 
 However, for the purposes of this project, it does the minimum job of sounding like a "Three Word
 Philosopher." Here is a sample of three-word sentences that our bot is capable of producing:
 
-![A screenshot of the terminal showing the kinds of sentences our bot is capable of producing.](/static/images/tweet-bot/sentence_sample.png)
-
+{{< figure src="https://www.dropbox.com/scl/fi/sn9d4cs0253t4u0slm7ch/sentence_sample.png?rlkey=idle146usp4e58kpw8fudhx44&st=kojqvl9o&dl=1" caption="A screenshot of the terminal showing the kinds of sentences our bot is capable of producing." >}}
 ## 5. Connecting our Bot to Twitter
 
 We now have a bot that can generate three-word sentences (well, something close it) by selecting
@@ -387,6 +386,6 @@ bot!
 
 _By the way_, I wasn't kidding when I said there are bots lurking around in Twitter...
 
-![A real screenshot of another tweet bot retweeting a tweet that our bot just tweeted.](/static/images/tweet-bot/jesus_retweet.png)
+{{< figure src="https://www.dropbox.com/scl/fi/6aqpotjosim4k6iqaupo4/jesus_retweet.png?rlkey=n46c4udf0i6yq5l1x6f39kin5&st=g7ue39pr&dl=1" caption="A real screenshot of another tweet bot retweeting a tweet that our bot just tweeted." >}}
 
 Github repository [link](https://github.com/jeffjaehoyang/twitter_bot).

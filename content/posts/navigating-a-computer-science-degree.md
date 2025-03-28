@@ -6,7 +6,7 @@ draft: false
 summary: 'Relection on my life as an undergraduate CS student and takeaways'
 ---
 
-![Blog Post Thumbnail](/static/images/navigating-a-computer-science-degree/northwestern.png)
+{{< figure src="https://www.dropbox.com/scl/fi/o6to4kwq64biqwxgg5vso/northwestern.png?rlkey=vz1tzxhkznnh3cg37k3wuuvbm&st=b4xvzjvp&dl=1" >}}
 
 I just completed my degree in computer science at
 [Northwestern University](https://www.northwestern.edu). Coming into college, I hadn't written a
@@ -315,7 +315,7 @@ like-minded people who were passionate about using technology to make the world 
 Participating in a Hackathon can be a great way to pad your resume with an amazing project. Go and
 have fun hacking over a weekend!
 
-![TreeHacks](/static/images/navigating-a-computer-science-degree/treehacks.jpeg)
+{{< figure src="https://www.dropbox.com/scl/fi/jqf43j5wqh2hm8garitxf/treehacks.jpeg?rlkey=tovwkia98ksz79qtptwcsradi&st=3zhttbht&dl=1" >}}
 
 #### Tip 6: Take Advantage of Networking Events on Campus
 

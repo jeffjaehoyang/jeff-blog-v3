@@ -6,21 +6,19 @@ draft: false
 summary: 'A blog post on the graph data structure in computer science'
 ---
 
-![Blog Post Thumbnail](/static/images/what-is-a-graph/sample_graph.png)
-
 In this blog post, I will be going over the basics of the graph data structure, including its representation, implementation, and basic graph traversal algorithms. Graph is an important data structure, especially because of its practical applications that can range from representing friendships to maps of locational intelligence, computer networks and much more. Does that sound interesting? Let's dive into learning the basics of graphs.  
 
 ## 1. Introduction to Graphs
 Even if you are unfamiliar with graphs, you most likely have already seen one. If you have seen or worked with *trees* before, you have already encountered a *graph* before. Let me try to explain graphs in relation to trees, a data structure that you are more likely to be familiar with, or at least more so than graphs. **All trees are graphs, but not all graphs are trees**. Like trees, graphs also have **nodes (or vertices)** and **edges** that connect the nodes, but are not bound to the restrictions that trees have. A tree is an *acyclic* and *connected* graph. A graph, however, is not limited to such restrictions; a graph can have *cycles* and can be *disconnected* to form a forest consisting of multiple components that are disconnected with another. Take a look at the following to get a rough idea of what a *directed*, *acyclic* graph looks like. 
 
-![A diagram representing a directed, acyclic graph](/static/images/what-is-a-graph/sample_graph.png)
+{{< figure src="https://www.dropbox.com/scl/fi/qhwl2hr0nzutwa02h00n6/sample_graph.png?rlkey=wd46qwxhvabhewppl8pvxopxz&st=sn6t77zy&dl=1" >}}
 
 A more mathematically oriented definition of a graph would be the following: a **graph** is a data structure that represents a **finite set of nodes (or vertices) and set of edges which connect a pair of vertices**. Confused about the technical terms (*connected*, *directed*, *acyclic*, *cyclic*, and more...) that were just thrown at you? Don't worry, that's what we'll explore in the next section.  
 
 ## 2. Categorization of Graphs
 For some of you, terms such as *acyclic*, *cyclic*, *directed*, *undirected*, *connected*, *disconnected* may sound unfamiliar. Such categorization of graphs, however, are essential in deepening your understanding of graphs, and are not too difficult to get a grasp of either. To help your understanding, take a look at the following:  
 
-![A diagram representing different kinds of graphs](/static/images/what-is-a-graph/graph_ds.png)
+{{< figure src="https://www.dropbox.com/scl/fi/vuytyftaan2n3nnj0otw6/graph_ds.png?rlkey=s5q4uc61xe2fnjvo5eyk28piv&st=ybjf8bv5&dl=1" caption="A diagram representing different kinds of graphs." >}}
 
 As clearly depicted (on purpose) above, there are many different ways to categorize a graph. Here are some of the most important categorizations of a graph to be aware of:  
 
@@ -38,13 +36,13 @@ To dive deeper into the discussion of graphs, we need to understand how graphs a
 
 Let us first take a look at the **adjacency list representation** of a graph. A common way of representing a graph as an adjacency list is to directly map vertices to indices of an array, and at each index of an array, represent the neighboring vertices and weights in the form of linked lists. Take a look at the following example to help your understanding: 
 
-![A diagram that explains representing graphs through an adjacency list](/static/images/what-is-a-graph/adj_list.png)
+{{< figure src="https://www.dropbox.com/scl/fi/2tzpdey5zp2olhesccwql/adj_list.png?rlkey=7h3wu2nmtxyjk4w5a170smu2m&st=xkgl5ks2&dl=1" caption="A diagram that explains representing graphs through an adjacency list." >}}
 
 The diagram above shows how an undirected, weighted graph can be represented as an adjacency list. Note that using a linked list is not the only possible way to implement an adjacency list (we could use hash tables instead, and use vertices as keys and associated weights as values). 
 
 Now let us examine the **adjacency matrix representation** of a graph. An adjacency matrix representation differs from an adjacency list in that an adjacency matrix requires a |V| × |V| matrix (where |V| denotes the number of vertices) to store information on the existence of an edge between two vertices (if the graph is unweighted) or the weight between two vertices (if the graph is weighted). A non-existant edge is usually represented by a 0 for an unweighted graph, and by "inf" (infinity) for a weighted graph. To visualize the explanation, take a look at the following adjacent matrix representation of an undirected, weighted graph: 
 
-![A diagram that explains representing graphs through an adjacency matrix](/static/images/what-is-a-graph/adj_mat.png)
+{{< figure src="https://www.dropbox.com/scl/fi/p21o8tkp5dq3toflnrjnp/adj_mat.png?rlkey=8mm63g60lv4xh2ncootgi5z77&st=9410t0rg&dl=1" caption="A diagram that explains representing graphs through an adjacency matrix." >}}
 
 The diagram above should give a clear idea of how to represent a graph with an adjacency matrix. If we were to represent an unweighted graph, the "inf"s would be replaced with 0s, and all the weights (represented in red numbers) would be replaced with 1s. Now, one might ask "Which representation is better?" Well, it *depends*. If optimizing for speed, an adjacency matrix representation will guarantee an O(1) lookup time when searching for an edge between two vertices. On the other hand, an adjacency list implemented with a linked list would give O(n) time, since in the worst case, we would have to search through the entire adjacency list of vertex *a* to find that there exists an edge between, say, *a* and *f*. If we were to optimize for space, however, an adjacency list would yield a significant advantage especially when representing a *sparse* graph. An adjacency list will only store information in a linked list if there *exists* an edge between two vertices. However, as explained above, an adjacency matrix always requires a |V| × |V| matrix. Hence, if a graph is sparse (i.e. there are very few edges between vertices), the adjacency matrix will be full of default values that indicate that there is no edge between two vertices, which is quite space-inefficient.  
 

@@ -3,7 +3,7 @@
   lang="en-us"
   dir="ltr"
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51561&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51803&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
 <meta name="language" content="en" />
 <meta name="viewport" content="width=device-width" />
@@ -11,7 +11,7 @@
     Django Channels 2.0, Postgres, Daphne, and Heroku | jeffyang.io
 </title>
   <meta name="description" content="A blog post on how to deploy a Django-ASGI application on heroku" />
-<meta property="og:url" content="http://localhost:51561/posts/deploy-django-on-heroku/">
+<meta property="og:url" content="http://localhost:51803/posts/deploy-django-on-heroku/">
   <meta property="og:site_name" content="jeffyang.io">
   <meta property="og:title" content="Django Channels 2.0, Postgres, Daphne, and Heroku">
   <meta property="og:description" content="A blog post on how to deploy a Django-ASGI application on heroku">
@@ -34,7 +34,7 @@
   <meta name="twitter:title" content="Django Channels 2.0, Postgres, Daphne, and Heroku">
   <meta name="twitter:description" content="A blog post on how to deploy a Django-ASGI application on heroku">
 
-<link rel="canonical" href="http://localhost:51561/posts/deploy-django-on-heroku/" />
+<link rel="canonical" href="http://localhost:51803/posts/deploy-django-on-heroku/" />
 
     <link rel="stylesheet" href="/css/index.css" />
 
@@ -45,30 +45,30 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@id": "http://localhost:51561/posts/deploy-django-on-heroku/",
+  "@id": "http://localhost:51803/posts/deploy-django-on-heroku/",
   "@type": "BlogPosting",
   "author": {
     "@type": "Person",
     "email": "jho.yang96@gmail.com",
     "name": "Jeff Yang",
-    "url": "http://localhost:51561/about/"
+    "url": "http://localhost:51803/about/"
   },
   "copyrightNotice": "Jeff Yang",
   "datePublished": "2020-04-20",
   "description": "A blog post on how to deploy a Django-ASGI application on heroku",
   "headline": "Django Channels 2.0, Postgres, Daphne, and Heroku",
   "isPartOf": {
-    "@id": "http://localhost:51561/posts/",
+    "@id": "http://localhost:51803/posts/",
     "@type": "Blog",
     "name": "Posts"
   },
   "keywords": [
     "Web Development"
   ],
-  "mainEntityOfPage": "http://localhost:51561/posts/deploy-django-on-heroku/",
+  "mainEntityOfPage": "http://localhost:51803/posts/deploy-django-on-heroku/",
   "name": "Django Channels 2.0, Postgres, Daphne, and Heroku",
   "timeRequired": "PT10M",
-  "url": "http://localhost:51561/posts/deploy-django-on-heroku/",
+  "url": "http://localhost:51803/posts/deploy-django-on-heroku/",
   "wordCount": 2075
 }
 </script>
@@ -112,7 +112,9 @@
         </div>
     </header>
 
-    <p><img src="/static/images/deploy-django-on-heroku/heroku_django.png" alt="Blog Post Thumbnail"></p>
+    <figure><img src="https://www.dropbox.com/scl/fi/gw50hu2ix7raiydd5618e/heroku_django.png?rlkey=gg4gupvuzqu81ar9p6uc400lw&amp;st=azmvi3ra&amp;dl=1">
+</figure>
+
 <p><strong>Disclaimer: This blog post is largely a quarantine coding production.</strong></p>
 <p>I already have a blog post on how to deploy a very simple Flask application on Heroku. In this blog post, I will explore more details of Heroku deployment, but this time with Django. I have been working on a Django &amp; Channels side project, a web platform to enhance off-campus room searching experience for Northwestern students. As the application development was almost over and user testing seemed like the logical next step to take, I turned my eyes to Heroku (largely for their known simplicity compared to other services such as AWS or Linode). It turned out that there were a few curveballs thrown at me, largely due to Channels using an ASGI server rather than a traditional Python WSGI server. I hope this blog post serves as a future reference for myself, and for a few other friends out there that may be facing similar problems that I did.</p>
 <h3 id="1-what-is-heroku" class="scroll-mt-8 group">

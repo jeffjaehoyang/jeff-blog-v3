@@ -3,7 +3,7 @@
   lang="en-us"
   dir="ltr"
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51561&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51803&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
 <meta name="language" content="en" />
 <meta name="viewport" content="width=device-width" />
@@ -11,7 +11,7 @@
     Finding the Shortest Path from A to Anywhere | jeffyang.io
 </title>
   <meta name="description" content="A deep dive into Dijkstra’s Algorithm" />
-<meta property="og:url" content="http://localhost:51561/posts/dijkstras-algorithm/">
+<meta property="og:url" content="http://localhost:51803/posts/dijkstras-algorithm/">
   <meta property="og:site_name" content="jeffyang.io">
   <meta property="og:title" content="Finding the Shortest Path from A to Anywhere">
   <meta property="og:description" content="A deep dive into Dijkstra’s Algorithm">
@@ -27,14 +27,14 @@
   <meta itemprop="description" content="A deep dive into Dijkstra’s Algorithm">
   <meta itemprop="datePublished" content="2019-12-15T00:00:00+00:00">
   <meta itemprop="dateModified" content="2019-12-15T00:00:00+00:00">
-  <meta itemprop="wordCount" content="1280">
+  <meta itemprop="wordCount" content="1335">
   <meta itemprop="keywords" content="Algorithms">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Finding the Shortest Path from A to Anywhere">
   <meta name="twitter:description" content="A deep dive into Dijkstra’s Algorithm">
 
-<link rel="canonical" href="http://localhost:51561/posts/dijkstras-algorithm/" />
+<link rel="canonical" href="http://localhost:51803/posts/dijkstras-algorithm/" />
 
     <link rel="stylesheet" href="/css/index.css" />
 
@@ -45,31 +45,31 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@id": "http://localhost:51561/posts/dijkstras-algorithm/",
+  "@id": "http://localhost:51803/posts/dijkstras-algorithm/",
   "@type": "BlogPosting",
   "author": {
     "@type": "Person",
     "email": "jho.yang96@gmail.com",
     "name": "Jeff Yang",
-    "url": "http://localhost:51561/about/"
+    "url": "http://localhost:51803/about/"
   },
   "copyrightNotice": "Jeff Yang",
   "datePublished": "2019-12-15",
   "description": "A deep dive into Dijkstra’s Algorithm",
   "headline": "Finding the Shortest Path From a to Anywhere",
   "isPartOf": {
-    "@id": "http://localhost:51561/posts/",
+    "@id": "http://localhost:51803/posts/",
     "@type": "Blog",
     "name": "Posts"
   },
   "keywords": [
     "Algorithms"
   ],
-  "mainEntityOfPage": "http://localhost:51561/posts/dijkstras-algorithm/",
+  "mainEntityOfPage": "http://localhost:51803/posts/dijkstras-algorithm/",
   "name": "Finding the Shortest Path From a to Anywhere",
   "timeRequired": "PT7M",
-  "url": "http://localhost:51561/posts/dijkstras-algorithm/",
-  "wordCount": 1280
+  "url": "http://localhost:51803/posts/dijkstras-algorithm/",
+  "wordCount": 1335
 }
 </script>
 
@@ -112,7 +112,9 @@
         </div>
     </header>
 
-    <p><img src="/static/images/dijkstras-algorithm/dijkstra_cover.png" alt="Blog Post Thumbnail"></p>
+    <figure><img src="https://www.dropbox.com/scl/fi/mxjzniffmagvv009b904z/dijkstra_cover.png?rlkey=iay4xctdwqmr5hejsun4traqz&amp;st=mq5xxdvj&amp;dl=1">
+</figure>
+
 <p>In this post, I would like to take a slightly different approach and write about an algorithm that I learned about in a classroom setting. While taking a computer science course in data structures and algorithms this quarter, I found the graph data structure and related algorithms to be particularly fascinating, as graphs can be applied in real-life to represent virtually anything from friendships to geographic maps. Although far from being an expert on this topic, I am going to make an attempt to dissect perhaps the most famous graph algorithm and its practical application. Take a bow, introducing Dijkstra&rsquo;s algorithm and the single source shortest path problem.</p>
 <h3 id="1-single-source-shortest-path" class="scroll-mt-8 group">
   1. Single Source Shortest Path
@@ -140,7 +142,12 @@
   
 </h3>
 <p>Before we talk about the algorithm itself, let&rsquo;s first get a sense of what Dijkstra&rsquo;s algorithm is all about; what significant questions can Dijkstra&rsquo;s famous algorithm answer? Often referred to as the &ldquo;Single source shortest path&rdquo; problem, Dijkstra&rsquo;s algorithm is suitable for finding the shortest distance from a single vertex to all other vertices. Using the results Dijkstra&rsquo;s algorithm produces, we can also find the shortest path from a single vertex to a specific destination, say, vertex <em>f</em>.</p>
-<p><img src="/static/images/dijkstras-algorithm/sssp.png" alt="A diagram of a graph denoting the start node and target node for finding the shortest path between two nodes"></p>
+<figure><img src="https://www.dropbox.com/scl/fi/lc7f9c8xqxrp2ghybfyhg/sssp.png?rlkey=0hq42nku5p0ckqp4gwquk75wt&amp;st=0b0y5hq2&amp;dl=1"
+    alt="A diagram of a graph denoting the start node and target node for finding the shortest path between two nodes."><figcaption>
+      <p>A diagram of a graph denoting the start node and target node for finding the shortest path between two nodes.</p>
+    </figcaption>
+</figure>
+
 <p>The graph illustrated above might have you think &ldquo;It doesn&rsquo;t seem that hard to manually find the shortest path from vertex <em>a</em> to <em>f</em> !&rdquo; If that&rsquo;s the case, imagine a graph with hundreds of vertices and edges; would you still be willing to manually find the shortest path from <em>a</em> to <em>f</em> ? It would be possible, but extremely time-consuming. This is where Dijkstra&rsquo;s algorithm comes into play. With some help from Dijkstra, we can find the shortest path from a single vertex to every other <em>reachable</em> vertex in the graph, with relative ease.</p>
 <h3 id="2-dijkstras-algorithm" class="scroll-mt-8 group">
   2. Dijkstra&rsquo;s Algorithm
@@ -386,9 +393,14 @@
   
 </figure>
 <p>With the <code>shortest_path</code> function, we can now find the shortest path from a source node to a destination node. Note that Dijkstra&rsquo;s algorithm is not capable of finding the distance/shortest path between two nodes that are not connected.</p>
-<p><img src="/static/images/dijkstras-algorithm/sssp2.png" alt="A diagram that illustrates how the Dijkstra&rsquo;s algorithm would proceed to find the shortest path between two nodes."></p>
+<figure><img src="https://www.dropbox.com/scl/fi/so2h5n0tmnebcf186t3ib/sssp2.png?rlkey=73d79wgdzlr28gk3zk8hil0r8&amp;st=05vu036l&amp;dl=1"
+    alt="A diagram that illustrates how the Dijkstra&rsquo;s algorithm would proceed to find the shortest path between two nodes."><figcaption>
+      <p>A diagram that illustrates how the Dijkstra&rsquo;s algorithm would proceed to find the shortest path between two nodes.</p>
+    </figcaption>
+</figure>
+
 <p>The following is the result of running <code>dijkstra</code> and <code>shortest_path</code> functions inside my Python shell with the example graph provided above. Note that the <code>example_graph</code> provided in the code is an adjacency list representation of the graph shown above, but is implemented with a Python dictionary.</p>
-<p><img src="/static/images/dijkstras-algorithm/dijkstra_demo.png" alt="A screenshot of my terminal showing the results of running Dijkstra&rsquo;s algorithm."></p>
+<p>{{ &lt; figure src=&ldquo;<a href="https://www.dropbox.com/scl/fi/wx6oerkr4asxx6f92eje0/dijkstra_demo.png?rlkey=mzrtx3vgul4slzvhut9y6wip3&amp;st=2tnr3b3t&amp;dl=1%22">https://www.dropbox.com/scl/fi/wx6oerkr4asxx6f92eje0/dijkstra_demo.png?rlkey=mzrtx3vgul4slzvhut9y6wip3&amp;st=2tnr3b3t&amp;dl=1&quot;</a> caption=&ldquo;A screenshot of my terminal showing the results of running Dijkstra&rsquo;s algorithm.&rdquo; &gt;}}</p>
 <h3 id="3-limitations-of-dijkstras-algorithm" class="scroll-mt-8 group">
   3. Limitations of Dijkstra&rsquo;s Algorithm
   
