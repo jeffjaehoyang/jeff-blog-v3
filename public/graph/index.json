@@ -73,12 +73,12 @@
     "/posts/aws-s3-and-lambda/": {
       "permalink": "/posts/aws-s3-and-lambda/",
       "section": "posts",
-      "title": "Resize Images Stored in AWS S3 With AWS Lambda (Feat. Docker)"
+      "title": "Resize Images Stored in AWS S3 with AWS Lambda (feat. Docker)"
     },
     "/posts/build-a-flask-website/": {
       "permalink": "/posts/build-a-flask-website/",
       "section": "posts",
-      "title": "Build Your Own Website With Flask"
+      "title": "Build Your Own Website with Flask"
     },
     "/posts/configuring-portable-dotfiles/": {
       "permalink": "/posts/configuring-portable-dotfiles/",
@@ -98,12 +98,12 @@
     "/posts/dijkstras-algorithm/": {
       "permalink": "/posts/dijkstras-algorithm/",
       "section": "posts",
-      "title": "Finding the Shortest Path From a to Anywhere"
+      "title": "Finding the Shortest Path from A to Anywhere"
     },
     "/posts/eslint-prettier-vscode/": {
       "permalink": "/posts/eslint-prettier-vscode/",
       "section": "posts",
-      "title": "Setting Up ESLint and Prettier With vs Code"
+      "title": "Setting up ESLint and Prettier with VS Code"
     },
     "/posts/first-three-months-at-meta/": {
       "permalink": "/posts/first-three-months-at-meta/",
@@ -123,7 +123,7 @@
     "/posts/github-ssh-authentication/": {
       "permalink": "/posts/github-ssh-authentication/",
       "section": "posts",
-      "title": "Github Authentication With SSH"
+      "title": "Github Authentication with SSH"
     },
     "/posts/knowru-internship-reflection/": {
       "permalink": "/posts/knowru-internship-reflection/",
@@ -148,12 +148,12 @@
     "/posts/tweet-bot/": {
       "permalink": "/posts/tweet-bot/",
       "section": "posts",
-      "title": "Tweet Bot With Tweepy and Flask"
+      "title": "Tweet Bot with Tweepy and Flask"
     },
     "/posts/what-is-a-graph/": {
       "permalink": "/posts/what-is-a-graph/",
       "section": "posts",
-      "title": "What Is a Graph?"
+      "title": "What is a Graph?"
     }
   }
 }

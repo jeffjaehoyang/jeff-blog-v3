@@ -4,6 +4,8 @@ date: 2021-09-08
 tags: ['Personal Reflection']
 draft: false
 summary: 'Working at Facebook as a remote software engineering intern'
+aliases:
+  - /blog/my-facebook-internship/
 ---
 
 {{< figure src="https://www.dropbox.com/scl/fi/lmrdumjc9d5swvlxx3vwr/facebook-logo.jpeg?rlkey=myya3wlewdgbhwz71tvwe9y14&st=eu6ehtn5&dl=1" >}}

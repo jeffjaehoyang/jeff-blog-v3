@@ -3,6 +3,7 @@ languageCode = 'en-us'
 title = "jeffyang.io"
 copyright = 'Jeff Yang' # Used in the footer copyright mention.
 enableRobotsTXT = true # IMPORTANT: set to true if you want to use the theme's genAI/LLM web crawler blocking feature.
+titleCaseStyle = "firstupper"
 
 [module]
   [[module.imports]]
@@ -30,7 +31,7 @@ enableRobotsTXT = true # IMPORTANT: set to true if you want to use the theme's g
 [markup]
   [markup.highlight]
     noClasses = false
-    style = 'tokyonight-night'
+    style = 'pygments'
 
   [markup.goldmark]
     [markup.goldmark.parser]
