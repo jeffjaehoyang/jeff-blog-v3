@@ -1,0 +1,443 @@
+<!doctype html>
+<html
+  lang="en-us"
+  dir="ltr"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=65128&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+<meta name="language" content="en" />
+<meta name="viewport" content="width=device-width" />
+<title>
+    Working at an Early Stage Startup (Pt. 2) | jeffyang.io
+</title>
+  <meta name="description" content="What I learned working at an early stage startup - the engineering side" />
+<meta property="og:url" content="http://localhost:65128/blog/fumi-internship-2/">
+  <meta property="og:site_name" content="jeffyang.io">
+  <meta property="og:title" content="Working at an Early Stage Startup (Pt. 2)">
+  <meta property="og:description" content="What I learned working at an early stage startup - the engineering side">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2021-03-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2021-03-13T00:00:00+00:00">
+    <meta property="article:tag" content="Personal Reflection">
+
+
+  <meta itemprop="name" content="Working at an Early Stage Startup (Pt. 2)">
+  <meta itemprop="description" content="What I learned working at an early stage startup - the engineering side">
+  <meta itemprop="datePublished" content="2021-03-13T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2021-03-13T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1604">
+  <meta itemprop="keywords" content="Personal Reflection">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Working at an Early Stage Startup (Pt. 2)">
+  <meta name="twitter:description" content="What I learned working at an early stage startup - the engineering side">
+
+<link rel="canonical" href="http://localhost:65128/blog/fumi-internship-2/" />
+
+    <link rel="stylesheet" href="/css/index.css" />
+
+
+      <script src="/js/main.js" defer></script>
+  
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "author": {
+    "@type": "Person",
+    "email": "jho.yang96@gmail.com",
+    "name": "Jeff Yang",
+    "url": "http://localhost:65128/about/"
+  },
+  "copyrightNotice": "Jeff Yang",
+  "description": "What I learned working at an early stage startup - the engineering side",
+  "headline": "Working at an Early Stage Startup (Pt. 2)"
+}
+</script>
+
+
+  </head>
+  <body>
+    <div class="container mx-auto flex max-w-prose flex-col space-y-10 p-4 md:p-6">
+      <header class="flex flex-row items-center justify-between">
+        <div>
+  <a id="skip-nav" class="sr-only" href="#maincontent">Skip to main content</a>
+  <a class="font-semibold" href="/">jeffyang.io</a>
+</div>
+
+  <nav>
+    <ul class="flex flex-row items-center justify-end space-x-4">
+    <li>
+      <a href="/about/">About</a
+      >
+    </li>
+    <li>
+      <a>Posts</a
+      >
+    </li>
+    <li>
+      <a href="/graph/">Graph</a
+      >
+    </li>
+    </ul>
+  </nav>
+
+
+      </header>
+      <main class="prose prose-slate relative md:prose-lg prose-h1:text-[2em]" id="maincontent">
+        <article class="main">
+    <header>
+      <h1 class="!mb-1">Working at an Early Stage Startup (Pt. 2)</h1><div class="flex flex-row items-center space-x-4">
+          <time class="text-sm italic opacity-80" datetime="2021-03-13T00:00:00&#43;00:00"
+            >March 13, 2021</time
+          >
+        </div>
+    </header>
+
+    <p><img src="/static/images/fumi-internship-part-two/fumi_startup_two.png" alt="Blog Post Thumbnail"></p>
+<p><em><strong>Disclaimer</strong></em>  <em>This post does not in any way represent the views of Fumi as a company, but is solely my individual opinion and reflection on my experience as a software engineer at an early-stage startup</em></p>
+<p>I was a software engineering intern, after all - so let&rsquo;s talk about things from an engineer&rsquo;s perspective. To give you context, I was part of a small engineering team of 3, and did not have a direct report (i.e. no &ldquo;manager&rdquo;). Although my title was a &ldquo;software engineering intern&rdquo; I was more like a full-time contractor. I was (for the most part) expected to do things on my own, as the other 2 engineers did not have enough time to be taking care of an intern.</p>
+<h5 id="what-did-i-work-on" class="scroll-mt-8 group">
+  What did I work on?
+  
+    <a href="#what-did-i-work-on"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h5>
+<p>I was a full-stack engineer - I worked both on the frontend and the backend of Fumi&rsquo;s main product and Fumi&rsquo;s back office application (inventory tracking, delivery tracking, etc). The Fumi mobile app used Ionic, Capacitor, Angular 9 on the frontend and used express, GraphQL and MySQL on the backend. The back office application used Angular 9 and KendoUI on the frontend, and used the identical set of backend technologies as the Fumi app.</p>
+<h5 id="struggle-1--development-speed-vs-quality-of-code" class="scroll-mt-8 group">
+  Struggle 1 : Development Speed vs Quality of Code
+  
+    <a href="#struggle-1--development-speed-vs-quality-of-code"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h5>
+<ul>
+<li>
+<p>The greatest struggle that I had while working at Fumi as an engineer was trying to figure out the right balance between the speed of development vs the quality of development. Every sprint, the COO pushed for a rather tight (?) schedule that was often unrealistic. Of course, it was up to us as developers to agree/disagree with the COO in setting the deadlines, but it was sometimes almost as if the company leadership really didn&rsquo;t care about the quality of the <em>software</em> we were building. They did care about the <em>product</em> that the end-users will see, but not so much the internal <em>software.</em> It was a real struggle because as an engineer, I wanted to write and produce code that I would be happy to revisit in 3 months, but with the timeframe we were working with (runway of about 1.5 yrs), asking for more time to refactor and write maintainable, clean code was often difficult. Even writing proper test cases to increase confidence in code (especially during code release) was a luxury we could not afford. At the same time, I also understood that quick iterations (depending on user feedback) were <em>absolutely necessary</em> to survive as a startup. After all, what&rsquo;s the point of writing 100% coverage test suites and meticulously refactoring code if the newly developed feature is going to be tossed out the window in a few weeks upon being labeled a &ldquo;failure&rdquo;?</p>
+</li>
+<li>
+<p>The conclusion I walked away with was that it&rsquo;s important to carefully evaluate whether or not certain parts of the code base are worth investing time into refactoring and perfecting. Is this piece of code an integral part of the user experience, and is the code likely to be used elsewhere in the future? If so, go ahead and ask for more time, and perfect the code to your heart&rsquo;s content. Is not, feel comfortable moving on without looking back. An early-stage startup need not hold their engineering standards on the same level as Google&rsquo;s or NASA&rsquo;s - different kinds of engineering is required for different occasions.</p>
+</li>
+</ul>
+<h5 id="struggle-2--lack-of-mentorship" class="scroll-mt-8 group">
+  Struggle 2 : Lack of Mentorship
+  
+    <a href="#struggle-2--lack-of-mentorship"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h5>
+<ul>
+<li>As I mentioned above, I was more of a full-time contractor than an intern while working at Fumi. There was no structured program to help a junior engineer succeed and get guidance. This is very unlike interning at a larger company with a well-structured internship, where there is a designated intern manager and a whole team of engineers that is always willing to help out. Being able to figure things out on yourself (of course, with the help of Stackoverflow) is considered an important quality to have as a software engineer, but mentorship and guidance from experienced engineers is always invaluable. This is NOT to say that I didn&rsquo;t learn from working at Fumi - I learned a lot. However, most of the learning came from teaching myself new technologies and having to do things myself, not from dedicated mentors.</li>
+</ul>
+<h5 id="struggle-3--getting-used-to-bad-engineering-practices" class="scroll-mt-8 group">
+  Struggle 3 : Getting Used to Bad Engineering Practices
+  
+    <a href="#struggle-3--getting-used-to-bad-engineering-practices"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h5>
+<ul>
+<li>I am a firm believer that different kinds of companies require different kinds of engineering. For example, an engineering team at an early stage startup that is constantly fighting for survival cannot have the same level of attention to detail as an engineering team at Google can afford to have. <em>However,</em> if your goal is to learn the &ldquo;best engineering practices&rdquo; such as having thorough code reviews and 100% test coverage, an early stage startup may not be what you are looking for. Always chasing deadlines after deadlines, engineers at early stage startups are often forced to produce duplicate code, spaghetti code (that would be an absolute nightmare to refactor in 3 months), and hacky code - <em>that just works.</em> Most early stage startups don&rsquo;t have the luxury to think months in advance and what to do when the company scales - shipping this feature on that date is what matters.</li>
+</ul>
+<h5 id="struggle-4--communication" class="scroll-mt-8 group">
+  Struggle 4 : Communication
+  
+    <a href="#struggle-4--communication"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h5>
+<ul>
+<li>I want to stress the importance of communication. Communication with a product manager, a product designer, or company leadership is extremely important to keep everyone on the same page. For example, I found it very helpful to create slack channels or project proposal documents. It was also very important to learn to clearly communicate what I thought was an appropriate timeline for a given project. What I struggled with especially towards the beginning of my internship was to accept all the deadlines given. If you think a deadline is unreasonable, speak out and let yourself be heard! I realized that it&rsquo;s <em>very</em> important to get everyone on the same page so that it&rsquo;s easier to anticipate when certain features will <em>actually</em> be shipped to production.</li>
+</ul>
+<h5 id="positive-1--shaping-engineering-culture" class="scroll-mt-8 group">
+  Positive 1 : Shaping Engineering Culture
+  
+    <a href="#positive-1--shaping-engineering-culture"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h5>
+<ul>
+<li>What was great about working at an early stage startup was that I could directly contribute to the engineering culture. I was able to persuade my team to set up certain code style guides, start a Notion documentation page on critical frontend and backend services, and also write a detailed onboarding documentation for new hires. Yes, my team was in its <em>very early</em> stages, so I was able to start these initiatives and actually have a say on <em>how</em> our engineering team should function. I&rsquo;m pretty sure that this would not have been possible at a more established company, so it was a pretty cool feeling to be able to have this kind of influence, to say the least.</li>
+</ul>
+<h5 id="positive-2--experience-working-across-the-stack" class="scroll-mt-8 group">
+  Positive 2 : Experience Working Across the Stack
+  
+    <a href="#positive-2--experience-working-across-the-stack"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h5>
+<ul>
+<li>Angular, GraphQL API Endpoints, MySQL DB Modeling, Jenkins build - these are some of the things I worked on over the last 4 months. It almost sounds like an entire engineering team&rsquo;s job, right? Frontend, backend, and even a sprinkle of devOps. The reality at a very early stage startup with 3 engineers is that they cannot afford to hire specialists for every stack - all the engineers are <em>generalists</em> and are expected to fill in wherever they can. Hence, even as an intern, I had the opportunity to work across the entire stack, which in my opinion was a beneficial experience for me. Instead of being stuck with a small part of the frontend or the backend, I was able to draw out the frontend UI directly from Figma files that the designer gave me, implement the frontend logic, create necessary API endpoints, create a new MySQL database table if needed for a new feature, and then watch the Jenkins build succeed (or sometimes fail). I was able to see the bigger picture of how products are built and deployed, and I&rsquo;m pretty sure it would not have been the case had I worked for a large company.</li>
+</ul>
+<h5 id="positive-3--feel-like-a-core-part-of-the-team" class="scroll-mt-8 group">
+  Positive 3 : Feel Like a Core Part of the Team
+  
+    <a href="#positive-3--feel-like-a-core-part-of-the-team"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h5>
+<ul>
+<li>Last but not the least, I would highly recommend people to try working for a startup because it&rsquo;s such a great feeling to feel like a core part of the team. At a large company, people come and go, and <em>most</em> people don&rsquo;t feel like they are an absolutely integral part of the company. At an early stage startup with very few engineers, every single person on the team is an invaluable asset. Your opinion can have a direct impact on the product, and  the all the other teams count on the engineering team to make things happen - and you get to be a part of it. I found that to be an amazing feeling.</li>
+</ul>
+<h5 id="whats-next-for-me" class="scroll-mt-8 group">
+  What&rsquo;s next for me?
+  
+    <a href="#whats-next-for-me"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h5>
+<p>Working at Fumi was definitely a great experience for me, and I certainly learned a <em>lot.</em> Not only did I grow as an engineer, but I also learned a lot about how startups operate. What&rsquo;s next for me? I am extremely lucky to be able to say that I will be working as an intern at Facebook HQ this coming summer. Here are some things I am looking forward to learning more about (very generic because I don&rsquo;t know which team I&rsquo;ll be working with yet):</p>
+<ul>
+<li>How are code reviews done at a large tech company?</li>
+<li>How do senior engineers at a company like Facebook write code differently?</li>
+<li>What kinds of internal tools do Facebook engineers use, and are they useful?</li>
+<li>Am I good enough to be held against the highest standards in the industry?</li>
+</ul>
+<p>I&rsquo;ll definitely write about my Facebook internship experience at the end of this summer, so stay tuned!</p>
+
+  </article>
+
+      </main>
+      <footer class="mt-20 border-t border-neutral-100 pt-2 text-xs">
+        <section class="items-top flex flex-row justify-between opacity-70">
+  <div class="flex flex-col space-y-2">
+      <p>Copyright &copy; 2025, Jeff Yang.</p>
+      <div
+        xmlns:cc="https://creativecommons.org/ns#"
+        xmlns:dct="http://purl.org/dc/terms/"
+        about="https://creativecommons.org"
+      >
+        Content is available under
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license" class="inline-block" title="Creative Commons Attribution-ShareAlike 4.0 International"
+          >CC BY-SA 4.0</a
+        >
+        unless otherwise noted.
+      </div>
+        <div
+          class="mt-2 flex items-center space-x-2 fill-slate-400 hover:fill-slate-600 motion-safe:transition-colors"
+        >
+          <div class="flex-none cursor-help"><svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="5.5 -3.5 64 64"
+  xml:space="preserve"
+  class="w-5 h-5 block"
+  aria-hidden="true"
+>
+  <title>Creative Commons</title>
+  <circle fill="transparent" cx="37.785" cy="28.501" r="28.836" />
+  <path
+    d="M37.441-3.5c8.951 0 16.572 3.125 22.857 9.372 3.008 3.009 5.295 6.448 6.857 10.314 1.561 3.867 2.344 7.971 2.344 12.314 0 4.381-.773 8.486-2.314 12.313-1.543 3.828-3.82 7.21-6.828 10.143-3.123 3.085-6.666 5.448-10.629 7.086-3.961 1.638-8.057 2.457-12.285 2.457s-8.276-.808-12.143-2.429c-3.866-1.618-7.333-3.961-10.4-7.027-3.067-3.066-5.4-6.524-7-10.372S5.5 32.767 5.5 28.5c0-4.229.809-8.295 2.428-12.2 1.619-3.905 3.972-7.4 7.057-10.486C21.08-.394 28.565-3.5 37.441-3.5zm.116 5.772c-7.314 0-13.467 2.553-18.458 7.657-2.515 2.553-4.448 5.419-5.8 8.6a25.204 25.204 0 0 0-2.029 9.972c0 3.429.675 6.734 2.029 9.913 1.353 3.183 3.285 6.021 5.8 8.516 2.514 2.496 5.351 4.399 8.515 5.715a25.652 25.652 0 0 0 9.943 1.971c3.428 0 6.75-.665 9.973-1.999 3.219-1.335 6.121-3.257 8.713-5.771 4.99-4.876 7.484-10.99 7.484-18.344 0-3.543-.648-6.895-1.943-10.057-1.293-3.162-3.18-5.98-5.654-8.458-5.146-5.143-11.335-7.715-18.573-7.715zm-.401 20.915-4.287 2.229c-.458-.951-1.019-1.619-1.685-2-.667-.38-1.286-.571-1.858-.571-2.856 0-4.286 1.885-4.286 5.657 0 1.714.362 3.084 1.085 4.113.724 1.029 1.791 1.544 3.201 1.544 1.867 0 3.181-.915 3.944-2.743l3.942 2c-.838 1.563-2 2.791-3.486 3.686-1.484.896-3.123 1.343-4.914 1.343-2.857 0-5.163-.875-6.915-2.629-1.752-1.752-2.628-4.19-2.628-7.313 0-3.048.886-5.466 2.657-7.257 1.771-1.79 4.009-2.686 6.715-2.686 3.963-.002 6.8 1.541 8.515 4.627zm18.457 0-4.229 2.229c-.457-.951-1.02-1.619-1.686-2-.668-.38-1.307-.571-1.914-.571-2.857 0-4.287 1.885-4.287 5.657 0 1.714.363 3.084 1.086 4.113.723 1.029 1.789 1.544 3.201 1.544 1.865 0 3.18-.915 3.941-2.743l4 2c-.875 1.563-2.057 2.791-3.541 3.686a9.233 9.233 0 0 1-4.857 1.343c-2.896 0-5.209-.875-6.941-2.629-1.736-1.752-2.602-4.19-2.602-7.313 0-3.048.885-5.466 2.658-7.257 1.77-1.79 4.008-2.686 6.713-2.686 3.962-.002 6.783 1.541 8.458 4.627z"
+  />
+</svg>
+</div><div class="flex-none cursor-help"><svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="5.5 -3.5 64 64"
+  xml:space="preserve"
+  class="w-5 h-5 block"
+>
+  <title>Credit must be given to the creator</title>
+  <circle fill="transparent" cx="37.637" cy="28.806" r="28.276" />
+  <path
+    d="M37.443-3.5c8.988 0 16.57 3.085 22.742 9.257C66.393 11.967 69.5 19.548 69.5 28.5c0 8.991-3.049 16.476-9.145 22.456-6.476 6.363-14.113 9.544-22.912 9.544-8.649 0-16.153-3.144-22.514-9.43C8.644 44.784 5.5 37.262 5.5 28.5c0-8.761 3.144-16.342 9.429-22.742C21.101-.415 28.604-3.5 37.443-3.5zm.114 5.772c-7.276 0-13.428 2.553-18.457 7.657-5.22 5.334-7.829 11.525-7.829 18.572 0 7.086 2.59 13.22 7.77 18.398 5.181 5.182 11.352 7.771 18.514 7.771 7.123 0 13.334-2.607 18.629-7.828 5.029-4.838 7.543-10.952 7.543-18.343 0-7.276-2.553-13.465-7.656-18.571-5.104-5.104-11.276-7.656-18.514-7.656zm8.572 18.285v13.085h-3.656v15.542h-9.944V33.643h-3.656V20.557c0-.572.2-1.057.599-1.457.401-.399.887-.6 1.457-.6h13.144c.533 0 1.01.2 1.428.6.417.4.628.886.628 1.457zm-13.087-8.228c0-3.008 1.485-4.514 4.458-4.514s4.457 1.504 4.457 4.514c0 2.971-1.486 4.457-4.457 4.457s-4.458-1.486-4.458-4.457z"
+  />
+</svg>
+</div><div class="flex-none cursor-help"><svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="5.5 -3.5 64 64"
+  xml:space="preserve"
+  class="w-5 h-5 block"
+>
+  <title>Adaptations must be shared under the same terms</title>
+  <circle fill="transparent" cx="36.944" cy="28.631" r="29.105" />
+  <path
+    d="M37.443-3.5c8.951 0 16.531 3.105 22.742 9.315C66.393 11.987 69.5 19.548 69.5 28.5c0 8.954-3.049 16.457-9.145 22.514-6.437 6.324-14.076 9.486-22.912 9.486-8.649 0-16.153-3.143-22.514-9.429C8.644 44.786 5.5 37.264 5.5 28.501c0-8.723 3.144-16.285 9.429-22.685C21.138-.395 28.643-3.5 37.443-3.5zm.114 5.772c-7.276 0-13.428 2.572-18.457 7.715-5.22 5.296-7.829 11.467-7.829 18.513 0 7.125 2.59 13.257 7.77 18.4 5.181 5.182 11.352 7.771 18.514 7.771 7.123 0 13.334-2.609 18.629-7.828 5.029-4.876 7.543-10.99 7.543-18.343 0-7.313-2.553-13.485-7.656-18.513-5.067-5.145-11.239-7.715-18.514-7.715zM23.271 23.985c.609-3.924 2.189-6.962 4.742-9.114 2.552-2.152 5.656-3.228 9.314-3.228 5.027 0 9.029 1.62 12 4.856 2.971 3.238 4.457 7.391 4.457 12.457 0 4.915-1.543 9-4.627 12.256-3.088 3.256-7.086 4.886-12.002 4.886-3.619 0-6.743-1.085-9.371-3.257-2.629-2.172-4.209-5.257-4.743-9.257H31.1c.19 3.886 2.533 5.829 7.029 5.829 2.246 0 4.057-.972 5.428-2.914 1.373-1.942 2.059-4.534 2.059-7.771 0-3.391-.629-5.971-1.885-7.743-1.258-1.771-3.066-2.657-5.43-2.657-4.268 0-6.667 1.885-7.2 5.656h2.343l-6.342 6.343-6.343-6.343 2.512.001z"
+  />
+</svg>
+</div>
+        </div>
+
+  </div>
+    <div>
+      <a
+        href="https://github.com/michenriksen/hugo-theme-til"
+        title="Today I Learned &#8212; A Hugo theme by Michael Henriksen"
+        data-theme-version="0.6.0"
+        >theme: til</a
+      >
+    </div>
+</section>
+
+      </footer>
+    </div>
+    
+  </body>
+</html>

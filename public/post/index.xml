@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on jeffyang.io</title>
+    <link>http://localhost:65128/post/</link>
+    <description>Recent content in Posts on jeffyang.io</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <managingEditor>jho.yang96@gmail.com (Jeff Yang)</managingEditor>
+    <webMaster>jho.yang96@gmail.com (Jeff Yang)</webMaster>
+    <copyright>Jeff Yang</copyright>
+    <lastBuildDate>Mon, 27 Apr 2020 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:65128/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Resize Images Stored in AWS S3 with AWS Lambda (feat. Docker)</title>
+      <link>http://localhost:65128/post/aws-s3-and-lambda/</link>
+      <pubDate>Mon, 27 Apr 2020 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
+      <guid>http://localhost:65128/post/aws-s3-and-lambda/</guid>
+      <description>A blog post on how to resize images stored in AWS S3 with AWS Lambda</description>
+    </item>
+  </channel>
+</rss>

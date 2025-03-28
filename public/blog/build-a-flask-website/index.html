@@ -1,0 +1,1539 @@
+<!doctype html>
+<html
+  lang="en-us"
+  dir="ltr"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=65128&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+<meta name="language" content="en" />
+<meta name="viewport" content="width=device-width" />
+<title>
+    Build Your Own Website with Flask | jeffyang.io
+</title>
+  <meta name="description" content="How to build your own website with Flask" />
+<meta property="og:url" content="http://localhost:65128/blog/build-a-flask-website/">
+  <meta property="og:site_name" content="jeffyang.io">
+  <meta property="og:title" content="Build Your Own Website with Flask">
+  <meta property="og:description" content="How to build your own website with Flask">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2019-10-26T00:00:00+00:00">
+    <meta property="article:modified_time" content="2019-10-26T00:00:00+00:00">
+    <meta property="article:tag" content="Web Development">
+
+
+  <meta itemprop="name" content="Build Your Own Website with Flask">
+  <meta itemprop="description" content="How to build your own website with Flask">
+  <meta itemprop="datePublished" content="2019-10-26T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2019-10-26T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1981">
+  <meta itemprop="keywords" content="Web Development">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Build Your Own Website with Flask">
+  <meta name="twitter:description" content="How to build your own website with Flask">
+
+<link rel="canonical" href="http://localhost:65128/blog/build-a-flask-website/" />
+
+    <link rel="stylesheet" href="/css/index.css" />
+
+
+      <script src="/js/main.js" defer></script>
+  
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "author": {
+    "@type": "Person",
+    "email": "jho.yang96@gmail.com",
+    "name": "Jeff Yang",
+    "url": "http://localhost:65128/about/"
+  },
+  "copyrightNotice": "Jeff Yang",
+  "description": "How to build your own website with Flask",
+  "headline": "Build Your Own Website With Flask"
+}
+</script>
+
+
+  </head>
+  <body>
+    <div class="container mx-auto flex max-w-prose flex-col space-y-10 p-4 md:p-6">
+      <header class="flex flex-row items-center justify-between">
+        <div>
+  <a id="skip-nav" class="sr-only" href="#maincontent">Skip to main content</a>
+  <a class="font-semibold" href="/">jeffyang.io</a>
+</div>
+
+  <nav>
+    <ul class="flex flex-row items-center justify-end space-x-4">
+    <li>
+      <a href="/about/">About</a
+      >
+    </li>
+    <li>
+      <a>Posts</a
+      >
+    </li>
+    <li>
+      <a href="/graph/">Graph</a
+      >
+    </li>
+    </ul>
+  </nav>
+
+
+      </header>
+      <main class="prose prose-slate relative md:prose-lg prose-h1:text-[2em]" id="maincontent">
+        <article class="main">
+    <header>
+      <h1 class="!mb-1">Build Your Own Website With Flask</h1><div class="flex flex-row items-center space-x-4">
+          <time class="text-sm italic opacity-80" datetime="2019-10-26T00:00:00&#43;00:00"
+            >October 26, 2019</time
+          >
+        </div>
+    </header>
+
+    <p><img src="/static/images/build-a-flask-website/flask_md.png" alt="Blog Post Thumbnail"></p>
+<p><strong>Disclaimer</strong>: <em>I have migrated my personal website since I wrote this post back in 2019, and moved away from the blog written with Flask. This website that you are on currently is built with Gatsby, and is hosted on Netlify. Regardless, for those of you interested in creating a simple personal website with Flask, read on!</em></p>
+<p>Hello World! This is a post that was on my mind for a while now, and I&rsquo;m so glad to finally write this post on this personal portfolio site I created! I previously had a Wordpress site that got me a good-looking fancy website up and running in no time. With all the beautiful Wordpress blog templates out there for a bargain, a sleek looking website was just a few clicks away. Nevertheless, something kept telling me to build a website myself - let me tell you why. Most importantly, the Wordpress site was beautiful on the outside, but rather bulky inside. I wanted to build a faster and a more light-weight website. Wordpress offered thousands of useful plugins (which is great), but having to update them constantly (for security purposes) was another downside of owning a Wordpress site. Last but certainly not the least, I thought &ldquo;why not take this chance to brush up my web development skills?&rdquo; This portfolio site is by no means greatly complex, but it still has all the basic structures of a full-fledged web application. So this simple site came to be, and for its creation, I mainly utilized Python&rsquo;s microframework, Flask (and some BootStrap4 to make things look decent effortlessly).</p>
+<h3 id="1-what-is-flask" class="scroll-mt-8 group">
+  1. What is Flask?
+  
+    <a href="#1-what-is-flask"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h3>
+<p>Flask is a lightweight microframework written in Python that is both intuitive and beginner friendly. I have a bit of prior experience in Flask development (mostly with APIs), but this was my first time building a Flask app completely from scratch, and I found the basics to be fairly easy to grasp. What I found was particularly convenient about Flask was Jinja2, a templating engine that comes with Flask (upon installation, literally). Jinja2 made it easy to create nested pages, by using a common layout page that all the nested pages could be built into. I decided to serve static Markdown files for my blog posts, instead of updating and editing directly from the website through a form. To achieve this, I used Flask&rsquo;s FlatPages module, which essentially serves static Markdown files from a designated directory (all you need to do is upload a Markdown file to the directory, and it will be up on your website!)</p>
+<h3 id="2-lets-get-started" class="scroll-mt-8 group">
+  2. Let&rsquo;s Get Started!
+  
+    <a href="#2-lets-get-started"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h3>
+<h4 id="setting-up-your-virtual-environment" class="scroll-mt-8 group">
+  Setting Up Your Virtual Environment
+  
+    <a href="#setting-up-your-virtual-environment"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h4>
+<p>All developers who have any level of experience with Python will probably agree that no matter what type of project you are working on, installing packages systemwide is not a good idea. If you are new to Python, and don&rsquo;t have a clue about what a virtual environment is, here&rsquo;s an overly simplified explanation: Essentially, virtual environments help keep your dependencies (i.e. libraries/packages) separate for each project, so that each project knows exactly what versions of which extensions it needs to run properly. For more detailed information on Python&rsquo;s virtual environment and best practices, I found <a href="https://realpython.com/python-virtual-environments-a-primer/">this</a> article particularly resourceful.</p>
+<p>Create a virtual environment inside your project directory (assuming you are using Python 3):</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-01">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-01 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-01"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mkdir my_flask_app
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> my_flask_app
+</span></span><span class="line"><span class="cl">$ touch run.py
+</span></span><span class="line"><span class="cl">$ python3 -m venv venv
+</span></span><span class="line"><span class="cl">$ <span class="nb">source</span> venv/bin/activate</span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<h4 id="a-quickstart-to-your-basic-flask-application" class="scroll-mt-8 group">
+  A Quickstart to Your Basic Flask Application
+  
+    <a href="#a-quickstart-to-your-basic-flask-application"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h4>
+<p>Install the following dependencies using pip (assuming you have pip installed):</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-02">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-02 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-02"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ pip install Flask Flask-FlatPages Pygments</span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<p>Now we have the bare minimum to start building a website like the one you are looking at right now!
+Inside <code>run.py</code>, write some code along the lines of the following:</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-03">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">python</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-03 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-03"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">python code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">home</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;Yes! Just Cooked Some Flask!&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#If running directly with Python, just set debug mode to TRUE</span>
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span></span></code></pre></div>
+  <p class="sr-only">python code snippet end</p>
+
+  
+</figure>
+<p>Now we have the most basic application ready to go, so let&rsquo;s run it:</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-04">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-04 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-04"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ python run.py
+</span></span><span class="line"><span class="cl"> * Debug mode: on
+</span></span><span class="line"><span class="cl"> * Running on http://127.0.0.1:5000/ <span class="o">(</span>Press CTRL+C to quit<span class="o">)</span></span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<p>For official documentation and more details on Flask, take a look <a href="http://flask.palletsprojects.com/en/1.1.x/quickstart/#a-minimal-application">here</a>.<br>
+For those of you who need extra guidance, I highly recommend <a href="https://www.youtube.com/watch?v=MwZwr5Tvyxo&amp;list=PL-osiE80TeTs4UjLw5MM6OjgkjFeUxCYH">this</a> Flask tutorial series. (It&rsquo;s free!)</p>
+<h3 id="3-serve-the-app-but-how" class="scroll-mt-8 group">
+  3. Serve the App, but How?
+  
+    <a href="#3-serve-the-app-but-how"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h3>
+<p>We have a very basic Flask application running, with the few lines of code we wrote above. If we are going to develop this baby Flask application into anything meaningful, we need to render pages on it (by pages, I mean blog posts, and not other pages; they can be written in pure HTML). There are a couple of ways to handle this task at hand. Something that would be a sensible thing to do for a dynamic website that needs to handle updates and deletes real-time would be to utilize Flask-SQLAlchemy, and use a relational database (such as SQLite). However, I was looking to do something a little bit different here. Since this website was meant to serve as a private online space, I figured that a relational database wasn&rsquo;t necessary. Then I came across Flask-FlatPages, which made possible to serve static Markdown files to push onto the website. Setting up Flask-FlatPages shouldn&rsquo;t be too difficult, let&rsquo;s take a look.</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-05">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">python</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-05 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-05"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">python code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">url_for</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask_flatpages</span> <span class="kn">import</span> <span class="n">FlatPages</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#Initialize flatpages</span>
+</span></span><span class="line"><span class="cl"><span class="n">flatpages</span> <span class="o">=</span> <span class="n">FlatPages</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Configure FLATPAGES settings</span>
+</span></span><span class="line"><span class="cl"><span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl"><span class="n">FLATPAGES_AUTO_RELOAD</span> <span class="o">=</span> <span class="n">DEBUG</span>
+</span></span><span class="line"><span class="cl"><span class="n">FLATPAGES_EXTENSION</span> <span class="o">=</span> <span class="s1">&#39;.md&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">FLATPAGES_ROOT</span> <span class="o">=</span> <span class="s1">&#39;content&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">POST_DIR</span> <span class="o">=</span> <span class="s1">&#39;posts&#39;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">home</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;Yes! Just Cooked Some Flask!&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Configure URL routing for each blog post by the name of Markdown file</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/post/&lt;name&gt;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">POST_DIR</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">post</span> <span class="o">=</span> <span class="n">flatpages</span><span class="o">.</span><span class="n">get_or_404</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#Note that we don&#39;t have blog_post.html ready yet, so this won&#39;t work yet!</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;blog_post.html&#39;</span><span class="p">,</span> <span class="n">post</span><span class="o">=</span><span class="n">post</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&#34;__main__&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="n">app</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">debug</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></span></span></code></pre></div>
+  <p class="sr-only">python code snippet end</p>
+
+  
+</figure>
+<p>The code above should get your application ready to serve your Markdown files. All you need to do is put your Markdown files inside <code>./content/posts</code>:</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-06">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-06 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-06"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ <span class="nb">cd</span> content
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> posts
+</span></span><span class="line"><span class="cl">$ touch my_first_post.md
+</span></span><span class="line"><span class="cl">$ vim my_first_post.md</span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<p>Inside <code>my_first_post.md</code>:</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-07">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">md</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-07 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-07"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">md code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-md" data-lang="md"><span class="line"><span class="cl">author: Jeff Yang
+</span></span><span class="line"><span class="cl">title: My First Blog Post
+</span></span><span class="line"><span class="cl">published: 2019-10-26
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gu">### This is a Heading
+</span></span></span><span class="line"><span class="cl"><span class="gu"></span>This is my <span class="gs">**first**</span> blog post.
+</span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">Let&#39;s Celebrate in a Blockquote!
+</span></span></span><span class="line"><span class="cl"><span class="ge"></span><span class="sb">`def this_is_python_code():
+</span></span></span><span class="line"><span class="cl"><span class="sb">    print(&#34;you can even write code!&#34;)`</span></span></span></code></pre></div>
+  <p class="sr-only">md code snippet end</p>
+
+  
+</figure>
+<p>For further information on Markdown and its syntax, please check <a href="https://www.markdownguide.org/cheat-sheet/">documentation</a>.</p>
+<p>Now we just need a HTML template to render this Markdown file into. As I mentioned above, Flask&rsquo;s default templating engine Jinja2 is equipped with a simple but powerful &ldquo;template inheritance&rdquo; feature that makes life easy for us.</p>
+<p>One level under <code>my_flask_app</code> directory, let&rsquo;s create a directory called <code>template</code> and create <code>layout.html</code> and <code>blog_post.html</code> inside it:</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-08">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-08 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-08"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mkdir templates
+</span></span><span class="line"><span class="cl">$ touch layout.html
+</span></span><span class="line"><span class="cl">$ touch blog_post.html</span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<h4 id="layouthtml" class="scroll-mt-8 group">
+  layout.html
+  
+    <a href="#layouthtml"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h4>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-09">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">html</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-09 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-09"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">html code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Flask App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ url_for(&#39;home&#39;) }}&#34;</span><span class="p">&gt;</span>Home<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">        {% block content %}{% endblock content %}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span></span></span></code></pre></div>
+  <p class="sr-only">html code snippet end</p>
+
+  
+</figure>
+<h4 id="blog_posthtml" class="scroll-mt-8 group">
+  blog_post.html
+  
+    <a href="#blog_posthtml"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h4>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-10">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">html</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-10 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-10"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">html code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl">{% extends &#34;layouts.html&#34; %}
+</span></span><span class="line"><span class="cl">{% block content %}
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">h3</span><span class="p">&gt;&lt;</span><span class="nt">strong</span><span class="p">&gt;</span>{{ post.title }}<span class="p">&lt;/</span><span class="nt">strong</span><span class="p">&gt;&lt;/</span><span class="nt">h3</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    Published: {{ post.published }}
+</span></span><span class="line"><span class="cl">    {{ post.html|safe }}
+</span></span><span class="line"><span class="cl">{% endblock %} </span></span></code></pre></div>
+  <p class="sr-only">html code snippet end</p>
+
+  
+</figure>
+<p>The code for the HTML files above look a lot like pure HTML, but there are some oddities. Let&rsquo;s take a look at some of the key features that the Jinja2 templating engine comes with.</p>
+<ul>
+<li><code>{% extends &quot;layouts.html&quot; %}</code>: <code>blog_post.html</code> is nested into <code>layouts.html</code></li>
+<li><code>{% block content %}{% endblock content %}</code>: specifies the location of where your nested html file should be added to</li>
+<li><code>{{ post.published }}</code>: renders metadata from your Markdown file</li>
+<li><code>{{ post.html|safe }}</code>: renders the content of your Markdown file</li>
+</ul>
+<p>Now your Markdown file content should be on your website, through the endpoint you configured before:</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-11">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">python</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-11 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-11"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">python code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="o">...</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#Configure URL routing for each blog post by the name of Markdown file</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/post/&lt;name&gt;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">POST_DIR</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">post</span> <span class="o">=</span> <span class="n">flatpages</span><span class="o">.</span><span class="n">get_or_404</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">#Now that we have blog_post.html ready to go, it should work!</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;blog_post.html&#39;</span><span class="p">,</span> <span class="n">post</span><span class="o">=</span><span class="n">post</span><span class="p">)</span></span></span></code></pre></div>
+  <p class="sr-only">python code snippet end</p>
+
+  
+</figure>
+<p>For more detailed explanation on templating, please check the <a href="https://jinja.palletsprojects.com/en/2.10.x/">documentation</a> for Jinja2.</p>
+<h3 id="4-want-to-insert-code-snippets-for-blog-posts" class="scroll-mt-8 group">
+  4. Want to Insert Code Snippets for Blog Posts?
+  
+    <a href="#4-want-to-insert-code-snippets-for-blog-posts"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h3>
+<p>I knew from the moment I started building this website that I would need a way to insert code snippets inside a code block, with syntax highlighting. Using Wordpress, it was easy. I just had to install a plugin. Trying to add this feature to my own website, however, was a slightly different story. It&rsquo;s extremely easy to find code snippets on the internet, they are on essentially every tech blog, we can see them on Stack Overflow, but it wasn&rsquo;t as easy as I thought it would be to find exactly what I needed for this site. To save you from some trouble in case you are looking to add code snippets to your Flask application, here&rsquo;s how to do it.</p>
+<p>We already have most of the tools needed to insert beautiful and customized code blocks into the blog posts. Flask-FlatPages comes with Markdown, which comes with an extension called <em>codehilite</em> that supports syntax highlighting. However, we need to add some simple configurations to get it to work. We first need to install <em>Pygments</em> (but we already installed it in the very first pip install execution we did in the beginning of this article). If you didn&rsquo;t install <em>Pygments</em>, go ahead and install it. Once <em>Pygments</em> is installed, we need to do the following:</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-12">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">python</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-12 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-12"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">python code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span><span class="p">,</span> <span class="n">url_for</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">flask_flatpages</span> <span class="kn">import</span> <span class="n">FlatPages</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">app</span><span class="o">.</span><span class="n">config</span><span class="o">.</span><span class="n">from_object</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="n">flatpages</span> <span class="o">=</span> <span class="n">FlatPages</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="n">DEBUG</span> <span class="o">=</span> <span class="kc">True</span>
+</span></span><span class="line"><span class="cl"><span class="n">FLATPAGES_AUTO_RELOAD</span> <span class="o">=</span> <span class="n">DEBUG</span>
+</span></span><span class="line"><span class="cl"><span class="n">FLATPAGES_EXTENSION</span> <span class="o">=</span> <span class="s1">&#39;.md&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="n">FLATPAGES_ROOT</span> <span class="o">=</span> <span class="s1">&#39;content&#39;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#You need the extensions below for your code snippet to be properly displayed</span>
+</span></span><span class="line"><span class="cl"><span class="n">FLATPAGES_MARKDOWN_EXTENSIONS</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fenced_code&#39;</span><span class="p">,</span> <span class="s1">&#39;codehilite&#39;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">home</span><span class="p">():</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="s2">&#34;Yes! Just Cooked Some Flask!&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#Configure URL routing for each blog post by the name of Markdown file</span>
+</span></span><span class="line"><span class="cl"><span class="nd">@app.route</span><span class="p">(</span><span class="s1">&#39;/post/&lt;name&gt;&#39;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">post</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+</span></span><span class="line"><span class="cl">    <span class="n">path</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">/</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">POST_DIR</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="n">post</span> <span class="o">=</span> <span class="n">flatpages</span><span class="o">.</span><span class="n">get_or_404</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">render_template</span><span class="p">(</span><span class="s1">&#39;blog_post.html&#39;</span><span class="p">,</span> <span class="n">post</span><span class="o">=</span><span class="n">post</span><span class="p">)</span></span></span></code></pre></div>
+  <p class="sr-only">python code snippet end</p>
+
+  
+</figure>
+<p>To customize how your code block looks, do something like this:</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-13">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-13 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-13"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ pygmentize -L</span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<p>The above code will print a list of built in themes available for your code blocks. To check out what the different themes look like (or customize the css based on your personal needs), run the following command inside <code>my_flask_app</code> directory:</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-14">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-14 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-14"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">$ mkdir static
+</span></span><span class="line"><span class="cl">$ <span class="nb">cd</span> static
+</span></span><span class="line"><span class="cl">$ pygmentize -S THEMENAMEOFYOURCHOICE -f html -a .codehilite &gt; pygs.css</span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<p>You should be able to see that a new pygs.css file is created inside the <code>static</code> directory. It should surely be working now! Ah, wait a minute, we forgot to link this CSS file to our HTML templates.</p>
+<h4 id="layoutshtml" class="scroll-mt-8 group">
+  layouts.html
+  
+    <a href="#layoutshtml"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h4>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-15">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">html</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-15 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-15"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">html code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-html" data-lang="html"><span class="line"><span class="cl"><span class="cp">&lt;!doctype html&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>My Flask App<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&#34;utf-8&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">name</span><span class="o">=</span><span class="s">&#34;viewport&#34;</span> <span class="na">content</span><span class="o">=</span><span class="s">&#34;width=device-width, initial-scale=1, shrink-to-fit=no&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&#34;stylesheet&#34;</span> <span class="na">type</span><span class="o">=</span><span class="s">&#34;text/css&#34;</span> <span class="na">href</span><span class="o">=</span><span class="s">&#34;{{ url_for(&#39;static&#39;, filename=&#39;pygs.css&#39;) }}&#34;</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+</span></span><span class="line"><span class="cl">...</span></span></code></pre></div>
+  <p class="sr-only">html code snippet end</p>
+
+  
+</figure>
+<p>That should do it. We finally have the backbones of a functional personal blog built with Flask! Let&rsquo;s do a short recap of what we went through.</p>
+<ul>
+<li>Created a virtual environment before we started to install anything needed to build this blog</li>
+<li>Initialized a very basic Flask application</li>
+<li>Created simple HTML templates powered by Jinja2</li>
+<li>Went through how to serve static Markdown files through the HTML templates using Flask-Flatpages</li>
+<li>How to insert prettified code blocks into our blog posts through some simple configurations of FlatPages-Markdown-Codehilite-Pygments</li>
+</ul>
+<p>Congratulations! Now we are cookin&rsquo; with Flask!</p>
+
+  </article>
+
+      </main>
+      <footer class="mt-20 border-t border-neutral-100 pt-2 text-xs">
+        <section class="items-top flex flex-row justify-between opacity-70">
+  <div class="flex flex-col space-y-2">
+      <p>Copyright &copy; 2025, Jeff Yang.</p>
+      <div
+        xmlns:cc="https://creativecommons.org/ns#"
+        xmlns:dct="http://purl.org/dc/terms/"
+        about="https://creativecommons.org"
+      >
+        Content is available under
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license" class="inline-block" title="Creative Commons Attribution-ShareAlike 4.0 International"
+          >CC BY-SA 4.0</a
+        >
+        unless otherwise noted.
+      </div>
+        <div
+          class="mt-2 flex items-center space-x-2 fill-slate-400 hover:fill-slate-600 motion-safe:transition-colors"
+        >
+          <div class="flex-none cursor-help"><svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="5.5 -3.5 64 64"
+  xml:space="preserve"
+  class="w-5 h-5 block"
+  aria-hidden="true"
+>
+  <title>Creative Commons</title>
+  <circle fill="transparent" cx="37.785" cy="28.501" r="28.836" />
+  <path
+    d="M37.441-3.5c8.951 0 16.572 3.125 22.857 9.372 3.008 3.009 5.295 6.448 6.857 10.314 1.561 3.867 2.344 7.971 2.344 12.314 0 4.381-.773 8.486-2.314 12.313-1.543 3.828-3.82 7.21-6.828 10.143-3.123 3.085-6.666 5.448-10.629 7.086-3.961 1.638-8.057 2.457-12.285 2.457s-8.276-.808-12.143-2.429c-3.866-1.618-7.333-3.961-10.4-7.027-3.067-3.066-5.4-6.524-7-10.372S5.5 32.767 5.5 28.5c0-4.229.809-8.295 2.428-12.2 1.619-3.905 3.972-7.4 7.057-10.486C21.08-.394 28.565-3.5 37.441-3.5zm.116 5.772c-7.314 0-13.467 2.553-18.458 7.657-2.515 2.553-4.448 5.419-5.8 8.6a25.204 25.204 0 0 0-2.029 9.972c0 3.429.675 6.734 2.029 9.913 1.353 3.183 3.285 6.021 5.8 8.516 2.514 2.496 5.351 4.399 8.515 5.715a25.652 25.652 0 0 0 9.943 1.971c3.428 0 6.75-.665 9.973-1.999 3.219-1.335 6.121-3.257 8.713-5.771 4.99-4.876 7.484-10.99 7.484-18.344 0-3.543-.648-6.895-1.943-10.057-1.293-3.162-3.18-5.98-5.654-8.458-5.146-5.143-11.335-7.715-18.573-7.715zm-.401 20.915-4.287 2.229c-.458-.951-1.019-1.619-1.685-2-.667-.38-1.286-.571-1.858-.571-2.856 0-4.286 1.885-4.286 5.657 0 1.714.362 3.084 1.085 4.113.724 1.029 1.791 1.544 3.201 1.544 1.867 0 3.181-.915 3.944-2.743l3.942 2c-.838 1.563-2 2.791-3.486 3.686-1.484.896-3.123 1.343-4.914 1.343-2.857 0-5.163-.875-6.915-2.629-1.752-1.752-2.628-4.19-2.628-7.313 0-3.048.886-5.466 2.657-7.257 1.771-1.79 4.009-2.686 6.715-2.686 3.963-.002 6.8 1.541 8.515 4.627zm18.457 0-4.229 2.229c-.457-.951-1.02-1.619-1.686-2-.668-.38-1.307-.571-1.914-.571-2.857 0-4.287 1.885-4.287 5.657 0 1.714.363 3.084 1.086 4.113.723 1.029 1.789 1.544 3.201 1.544 1.865 0 3.18-.915 3.941-2.743l4 2c-.875 1.563-2.057 2.791-3.541 3.686a9.233 9.233 0 0 1-4.857 1.343c-2.896 0-5.209-.875-6.941-2.629-1.736-1.752-2.602-4.19-2.602-7.313 0-3.048.885-5.466 2.658-7.257 1.77-1.79 4.008-2.686 6.713-2.686 3.962-.002 6.783 1.541 8.458 4.627z"
+  />
+</svg>
+</div><div class="flex-none cursor-help"><svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="5.5 -3.5 64 64"
+  xml:space="preserve"
+  class="w-5 h-5 block"
+>
+  <title>Credit must be given to the creator</title>
+  <circle fill="transparent" cx="37.637" cy="28.806" r="28.276" />
+  <path
+    d="M37.443-3.5c8.988 0 16.57 3.085 22.742 9.257C66.393 11.967 69.5 19.548 69.5 28.5c0 8.991-3.049 16.476-9.145 22.456-6.476 6.363-14.113 9.544-22.912 9.544-8.649 0-16.153-3.144-22.514-9.43C8.644 44.784 5.5 37.262 5.5 28.5c0-8.761 3.144-16.342 9.429-22.742C21.101-.415 28.604-3.5 37.443-3.5zm.114 5.772c-7.276 0-13.428 2.553-18.457 7.657-5.22 5.334-7.829 11.525-7.829 18.572 0 7.086 2.59 13.22 7.77 18.398 5.181 5.182 11.352 7.771 18.514 7.771 7.123 0 13.334-2.607 18.629-7.828 5.029-4.838 7.543-10.952 7.543-18.343 0-7.276-2.553-13.465-7.656-18.571-5.104-5.104-11.276-7.656-18.514-7.656zm8.572 18.285v13.085h-3.656v15.542h-9.944V33.643h-3.656V20.557c0-.572.2-1.057.599-1.457.401-.399.887-.6 1.457-.6h13.144c.533 0 1.01.2 1.428.6.417.4.628.886.628 1.457zm-13.087-8.228c0-3.008 1.485-4.514 4.458-4.514s4.457 1.504 4.457 4.514c0 2.971-1.486 4.457-4.457 4.457s-4.458-1.486-4.458-4.457z"
+  />
+</svg>
+</div><div class="flex-none cursor-help"><svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="5.5 -3.5 64 64"
+  xml:space="preserve"
+  class="w-5 h-5 block"
+>
+  <title>Adaptations must be shared under the same terms</title>
+  <circle fill="transparent" cx="36.944" cy="28.631" r="29.105" />
+  <path
+    d="M37.443-3.5c8.951 0 16.531 3.105 22.742 9.315C66.393 11.987 69.5 19.548 69.5 28.5c0 8.954-3.049 16.457-9.145 22.514-6.437 6.324-14.076 9.486-22.912 9.486-8.649 0-16.153-3.143-22.514-9.429C8.644 44.786 5.5 37.264 5.5 28.501c0-8.723 3.144-16.285 9.429-22.685C21.138-.395 28.643-3.5 37.443-3.5zm.114 5.772c-7.276 0-13.428 2.572-18.457 7.715-5.22 5.296-7.829 11.467-7.829 18.513 0 7.125 2.59 13.257 7.77 18.4 5.181 5.182 11.352 7.771 18.514 7.771 7.123 0 13.334-2.609 18.629-7.828 5.029-4.876 7.543-10.99 7.543-18.343 0-7.313-2.553-13.485-7.656-18.513-5.067-5.145-11.239-7.715-18.514-7.715zM23.271 23.985c.609-3.924 2.189-6.962 4.742-9.114 2.552-2.152 5.656-3.228 9.314-3.228 5.027 0 9.029 1.62 12 4.856 2.971 3.238 4.457 7.391 4.457 12.457 0 4.915-1.543 9-4.627 12.256-3.088 3.256-7.086 4.886-12.002 4.886-3.619 0-6.743-1.085-9.371-3.257-2.629-2.172-4.209-5.257-4.743-9.257H31.1c.19 3.886 2.533 5.829 7.029 5.829 2.246 0 4.057-.972 5.428-2.914 1.373-1.942 2.059-4.534 2.059-7.771 0-3.391-.629-5.971-1.885-7.743-1.258-1.771-3.066-2.657-5.43-2.657-4.268 0-6.667 1.885-7.2 5.656h2.343l-6.342 6.343-6.343-6.343 2.512.001z"
+  />
+</svg>
+</div>
+        </div>
+
+  </div>
+    <div>
+      <a
+        href="https://github.com/michenriksen/hugo-theme-til"
+        title="Today I Learned &#8212; A Hugo theme by Michael Henriksen"
+        data-theme-version="0.6.0"
+        >theme: til</a
+      >
+    </div>
+</section>
+
+      </footer>
+    </div>
+    
+  </body>
+</html>

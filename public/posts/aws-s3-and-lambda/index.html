@@ -3,7 +3,7 @@
   lang="en-us"
   dir="ltr"
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=51561&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
 <meta name="language" content="en" />
 <meta name="viewport" content="width=device-width" />
@@ -11,7 +11,7 @@
     Resize Images Stored in AWS S3 with AWS Lambda (feat. Docker) | jeffyang.io
 </title>
   <meta name="description" content="A blog post on how to resize images stored in AWS S3 with AWS Lambda" />
-<meta property="og:url" content="http://localhost:1313/posts/aws-s3-and-lambda/">
+<meta property="og:url" content="http://localhost:51561/posts/aws-s3-and-lambda/">
   <meta property="og:site_name" content="jeffyang.io">
   <meta property="og:title" content="Resize Images Stored in AWS S3 with AWS Lambda (feat. Docker)">
   <meta property="og:description" content="A blog post on how to resize images stored in AWS S3 with AWS Lambda">
@@ -27,14 +27,14 @@
   <meta itemprop="description" content="A blog post on how to resize images stored in AWS S3 with AWS Lambda">
   <meta itemprop="datePublished" content="2020-04-27T00:00:00+00:00">
   <meta itemprop="dateModified" content="2020-04-27T00:00:00+00:00">
-  <meta itemprop="wordCount" content="2020">
+  <meta itemprop="wordCount" content="2043">
   <meta itemprop="keywords" content="Web Development">
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Resize Images Stored in AWS S3 with AWS Lambda (feat. Docker)">
   <meta name="twitter:description" content="A blog post on how to resize images stored in AWS S3 with AWS Lambda">
 
-<link rel="canonical" href="http://localhost:1313/posts/aws-s3-and-lambda/" />
+<link rel="canonical" href="http://localhost:51561/posts/aws-s3-and-lambda/" />
 
     <link rel="stylesheet" href="/css/index.css" />
 
@@ -45,31 +45,31 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@id": "http://localhost:1313/posts/aws-s3-and-lambda/",
+  "@id": "http://localhost:51561/posts/aws-s3-and-lambda/",
   "@type": "BlogPosting",
   "author": {
     "@type": "Person",
     "email": "jho.yang96@gmail.com",
     "name": "Jeff Yang",
-    "url": "http://localhost:1313/about/"
+    "url": "http://localhost:51561/about/"
   },
   "copyrightNotice": "Jeff Yang",
   "datePublished": "2020-04-27",
   "description": "A blog post on how to resize images stored in AWS S3 with AWS Lambda",
   "headline": "Resize Images Stored in AWS S3 With AWS Lambda (Feat. Docker)",
   "isPartOf": {
-    "@id": "http://localhost:1313/posts/",
+    "@id": "http://localhost:51561/posts/",
     "@type": "Blog",
     "name": "Posts"
   },
   "keywords": [
     "Web Development"
   ],
-  "mainEntityOfPage": "http://localhost:1313/posts/aws-s3-and-lambda/",
+  "mainEntityOfPage": "http://localhost:51561/posts/aws-s3-and-lambda/",
   "name": "Resize Images Stored in AWS S3 With AWS Lambda (Feat. Docker)",
   "timeRequired": "PT10M",
-  "url": "http://localhost:1313/posts/aws-s3-and-lambda/",
-  "wordCount": 2020
+  "url": "http://localhost:51561/posts/aws-s3-and-lambda/",
+  "wordCount": 2043
 }
 </script>
 
@@ -112,7 +112,9 @@
         </div>
     </header>
 
-    <p><img src="/static/images/aws-s3-and-lambda/aws_lambda_s3.png" alt="Blog Post Thumbnail"></p>
+    <figure><img src="https://www.dropbox.com/scl/fi/qbtro69g2uuqrn5ijp4vy/aws_lambda_s3.png?rlkey=51nom6dbfiyt3rcz4x25mdhn9&amp;st=cn2a7w1m&amp;dl=0">
+</figure>
+
 <p><strong>Note: An AWS Account and a basic knowledge of their services are assumed throughout this blog post</strong></p>
 <p>I have been working on a <a href="https://www.sublets.nu">team project</a> for the past couple of months. The idea is to build a platform for off-campus room search, specifically geared towards students of Northwestern University. Django doing the heavy-lifting as the main engine to power the application, we were able to develop such a platform quite rapidly on our local development environment. We soon migrated our work to Heroku for production testing, and started serving media files from AWS S3 buckets. While user testing in preparation for a full launch of the application, a few non-trivial issues were found. As a room searching platform, our site needs to handle image requests adequately. However, our site suffered from a significant performance issue due to slow loading speed. Photos taken with the iPhones or the Samsung Galaxies these days typically are well over 2 MB in file size. Considering the fact that multiple photos are associated with a single room post and that multiple room posts need to be loaded on a single page, such an enormous file size quickly becomes prohibitive. We needed a solution to scale down large image files, without compromising image quality too much. Luckily, AWS already had advanced cloud computing services to help us achieve our goals: <em>AWS Lambda</em>.</p>
 <h3 id="1-what-is-aws-s3--aws-lambda" class="scroll-mt-8 group">
@@ -200,7 +202,12 @@
   
 </h3>
 <p>Creating a lambda function is relatively straightforward. All we need to do is to navigate to the AWS Lambda management console, click &ldquo;create function&rdquo; and give it the execution role that we already created above.</p>
-<p><img src="/static/images/aws-s3-and-lambda/create_lambda.png" alt="A screenshot of AWS lambda create function page."></p>
+<figure><img src="https://www.dropbox.com/scl/fi/b3ybogtjtbhh4u4ovxn3k/create_lambda.png?rlkey=y1bg0zsc01ey3zjpxkdrqkos2&amp;st=aiqgt1kb&amp;dl=0"
+    alt="A screenshot of AWS lambda create function page."><figcaption>
+      <p>A screenshot of AWS lambda create function page.</p>
+    </figcaption>
+</figure>
+
 <p>Once the function is created, you will be able to see the control panel for the lambda function that you have just created. Your lambda function doesn&rsquo;t do anything yet, because we didn&rsquo;t write any code. There&rsquo;s an option to write code directly in the inline editor that AWS provides for us, but that&rsquo;s only possible if your lambda function does not have any external dependencies. Unfortunately, for image resizing, an external library must be installed for pretty much any language you might be working in (in Python, our code needs <code>Pillow</code> to work properly). This is where it gets tricky. The lambda function executes in an amazonlinux environment, which most likely is not identical to your local environment. AWS provides a <a href="https://docs.aws.amazon.com/lambda/latest/dg/python-package.html">detailed guideline</a> on how to solve this problem - you have to upload your function as a deployment package. In other words, you need to package your function as a module (with all dependencies included) and ship it onto AWS Lambda so that it knows exactly what it&rsquo;s working with. The following is the lambda function that grabs an image from the source bucket, resizes it, then puts the resized image in the destination bucket.</p>
 <figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-01">
   <aside
@@ -381,7 +388,12 @@
   
 </figure>
 <p>It is difficult to say whether or not you will run into the same issue. For me, it happened, and it didn&rsquo;t go away. After <em>lots</em> of googling, I came to a logical conclusion that it has to do with the amazonlinux environment that my lambda function is running in. The reason why I say a <em>logical conclusion</em> is because I did not get any errors when trying to reproduce the same error in the Python virtual environment that I packaged my function in:</p>
-<p><img src="/static/images/aws-s3-and-lambda/pillow_screenshot.png" alt="A screenshot of the terminal showing import errors resulting from Python&rsquo;s Pillow module."></p>
+<figure><img src="https://www.dropbox.com/scl/fi/nssoivjyicz6d14z781j0/pillow_screenshot.png?rlkey=ko7a1wipmguzyoo9ftsssl3fo&amp;st=9q1zjk3u&amp;dl=0"
+    alt="A screenshot of the terminal showing import errors resulting from Python&rsquo;s Pillow module."><figcaption>
+      <p>A screenshot of the terminal showing import errors resulting from Python&rsquo;s Pillow module.</p>
+    </figcaption>
+</figure>
+
 <p>After gaining confidence in where the general problem lies in, I narrowed down the issue: the problem seemed to be that the module <code>PIL</code> is already installed in the Python version that amazonlinux runs. <code>PIL</code> is shipped with Python by default, which is also the case in my local environment, except I can do:</p>
 <figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-03">
   <aside
@@ -475,7 +487,12 @@
     </a>
   
 </h3>
-<p><img src="/static/images/aws-s3-and-lambda/docker.png" alt="Docker&rsquo;s logo."></p>
+<figure><img src="https://www.dropbox.com/scl/fi/hjktxgzdqdyz3n766vlyu/docker.png?rlkey=36xq89wl6eyb5wwsa7gi1y1uc&amp;st=rj7uqhip&amp;dl=0"
+    alt="Docker&rsquo;s logo."><figcaption>
+      <p>Docker&rsquo;s logo.</p>
+    </figcaption>
+</figure>
+
 <p><strong>Credits to <a href="https://www.freecodecamp.org/news/escaping-lambda-function-hell-using-docker-40b187ec1e48/">freecodecamp tutorial</a></strong></p>
 <p>Docker technology is simply life-saving. I have no intensive background in working with Docker, but I was able to take a sneak peek at what Docker can offer to software developers. A simple introduction to Docker from their very own website: <em>&ldquo;Containers are a standardized unit of software that allows developers to isolate their app from its environment, solving the “it works on my machine” headache. For millions of developers today, Docker is the de facto standard to build and share containerized apps - from desktop, to the cloud.&rdquo;</em></p>
 <p>Let&rsquo;s get started by spinning up a Docker container. This Docker container will be able to see the lambda function code that you have written.</p>

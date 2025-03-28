@@ -1,0 +1,1193 @@
+<!doctype html>
+<html
+  lang="en-us"
+  dir="ltr"
+>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=65128&amp;path=livereload" data-no-instant defer></script>
+    <meta charset="utf-8" />
+<meta name="language" content="en" />
+<meta name="viewport" content="width=device-width" />
+<title>
+    Setting up ESLint and Prettier with VS Code | jeffyang.io
+</title>
+  <meta name="description" content="Setting up ESLint and Prettier with VS Code" />
+<meta property="og:url" content="http://localhost:65128/blog/eslint-prettier-vscode/">
+  <meta property="og:site_name" content="jeffyang.io">
+  <meta property="og:title" content="Setting up ESLint and Prettier with VS Code">
+  <meta property="og:description" content="Setting up ESLint and Prettier with VS Code">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="blog">
+    <meta property="article:published_time" content="2020-08-08T00:00:00+00:00">
+    <meta property="article:modified_time" content="2020-08-08T00:00:00+00:00">
+    <meta property="article:tag" content="Developer Tools">
+
+
+  <meta itemprop="name" content="Setting up ESLint and Prettier with VS Code">
+  <meta itemprop="description" content="Setting up ESLint and Prettier with VS Code">
+  <meta itemprop="datePublished" content="2020-08-08T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2020-08-08T00:00:00+00:00">
+  <meta itemprop="wordCount" content="2028">
+  <meta itemprop="keywords" content="Developer Tools">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Setting up ESLint and Prettier with VS Code">
+  <meta name="twitter:description" content="Setting up ESLint and Prettier with VS Code">
+
+<link rel="canonical" href="http://localhost:65128/blog/eslint-prettier-vscode/" />
+
+    <link rel="stylesheet" href="/css/index.css" />
+
+
+      <script src="/js/main.js" defer></script>
+  
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "author": {
+    "@type": "Person",
+    "email": "jho.yang96@gmail.com",
+    "name": "Jeff Yang",
+    "url": "http://localhost:65128/about/"
+  },
+  "copyrightNotice": "Jeff Yang",
+  "description": "Setting up ESLint and Prettier with VS Code",
+  "headline": "Setting Up ESLint and Prettier With vs Code"
+}
+</script>
+
+
+  </head>
+  <body>
+    <div class="container mx-auto flex max-w-prose flex-col space-y-10 p-4 md:p-6">
+      <header class="flex flex-row items-center justify-between">
+        <div>
+  <a id="skip-nav" class="sr-only" href="#maincontent">Skip to main content</a>
+  <a class="font-semibold" href="/">jeffyang.io</a>
+</div>
+
+  <nav>
+    <ul class="flex flex-row items-center justify-end space-x-4">
+    <li>
+      <a href="/about/">About</a
+      >
+    </li>
+    <li>
+      <a>Posts</a
+      >
+    </li>
+    <li>
+      <a href="/graph/">Graph</a
+      >
+    </li>
+    </ul>
+  </nav>
+
+
+      </header>
+      <main class="prose prose-slate relative md:prose-lg prose-h1:text-[2em]" id="maincontent">
+        <article class="main">
+    <header>
+      <h1 class="!mb-1">Setting Up ESLint and Prettier With vs Code</h1><div class="flex flex-row items-center space-x-4">
+          <time class="text-sm italic opacity-80" datetime="2020-08-08T00:00:00&#43;00:00"
+            >August 8, 2020</time
+          >
+        </div>
+    </header>
+
+    <p><img src="/static/images/eslint-prettier-vscode/eslint_prettier_vscode.png" alt="Blog Post Thumbnail"></p>
+<p>An important part of software development/engineering (or whatever else you may want to call it) is
+writing code that works as intended, and is as bug-free as can be made. However, there&rsquo;s actually a
+lot more to writing code than just to &ldquo;make it work.&rdquo; This is primarily because almost any
+meaningful project/software that exists in the world is created through collaboration. In other
+words, it is important that you are able to easily read others&rsquo; code, and that others are also able
+to easily read and understand your code. There are lots of ways to achieve this, including manual
+methods. A team of engineers can manually check for code style issues during code reviews, and
+possibly even create a detailed documentation on the coding styles that every engineer on the team
+should adhere to. However, with what we are about to cover in this blog post, investing engineers'
+time should no longer be put into reviewing code style. Without any further ado, let&rsquo;s find out how
+to set up ESLint and Prettier with Visual Studio Code (VS Code).</p>
+<h3 id="linter-vs-code-formatter" class="scroll-mt-8 group">
+  Linter vs. Code Formatter
+  
+    <a href="#linter-vs-code-formatter"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h3>
+<p>Before we dive into the actual set up, let us briefly discuss what a linter and a code formatter is.</p>
+<h4 id="what-is-a-linter" class="scroll-mt-8 group">
+  What is a linter?
+  
+    <a href="#what-is-a-linter"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h4>
+<blockquote>
+<p>Lint, or a linter, is a tool that analyzes source code to flag programming errors, bugs, stylistic
+errors, and suspicious constructs. The term originates from a Unix utility that examined C
+language source code.</p></blockquote>
+<p>Linter is a developer tool that flags potential errors and bugs, which in turn lets the programmer
+easily spot potential bugs he/she may have accidentally introduced. For example, a linter can help
+catch some of the most commmon bugs such as import errors, undeclared variable errors, while also
+producing warnings where adequate; we all know about the tale of <code>const</code> vs <code>let</code> in JavaScript.
+While there are many linters to choose from, the most popular JavaScript/TypeScript linter in the
+market today is <a href="https://eslint.org">ESlint</a>, so that&rsquo;s what we will focus on in this blog post.</p>
+<h4 id="what-is-a-code-formatter" class="scroll-mt-8 group">
+  What is a code formatter?
+  
+    <a href="#what-is-a-code-formatter"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h4>
+<blockquote>
+<p>A code formatter, unlike a linter, is only concerned with code style.</p></blockquote>
+<p>A code formatter will not be able to catch errors or bug in your code; that is not what it was built
+for. It is soley interested in beautifying your code according to configurable standards. There are
+many different code formatters available, but we will focus on a code formatter called
+<a href="https://prettier.io/">Prettier</a>, which is a highly popular and opinionated formatter.</p>
+<h3 id="setting-up-eslint-and-prettier-with-vs-code" class="scroll-mt-8 group">
+  Setting up ESLint and Prettier with VS Code
+  
+    <a href="#setting-up-eslint-and-prettier-with-vs-code"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h3>
+<p>A linter and a code formatter are made to be used with a code editor. There are many code editors
+out there, the most popular ones being VS Code, Sublime Text, and Atom. VS Code, the most recent
+addition to the list, was made by Microsoft and has gained popularity over the last couple of years
+due to its rich collection of plugins that can all be configured directly within the application. In
+this blog post, we will specifically see how ESLint and Prettier can be configured for use with VS
+Code.</p>
+<h4 id="understanding-the-difficulty" class="scroll-mt-8 group">
+  Understanding the Difficulty
+  
+    <a href="#understanding-the-difficulty"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h4>
+<p>The main reason why people find it tricky to properly set up ESLint and Prettier together is because
+ESLint does not strictly restrict itself within the boundaries of a linter; it also supports
+formatting code. There are style-related rules that can be configured within ESLint that may
+conflict with Prettier, which also wants to format your code. Hence, we need to make sure that we
+get avoid any possible conflicts between the two. With this in mind, let&rsquo;s continue and embark on
+our journey of successfully configuring ESLint and Prettier to harmoniously work together.</p>
+<h4 id="install-eslint-and-prettier" class="scroll-mt-8 group">
+  Install ESLint and Prettier
+  
+    <a href="#install-eslint-and-prettier"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h4>
+<p><strong>Note</strong>: For official documentation and detailed guides, see official website for
+<a href="https://eslint.org/docs/user-guide/getting-started">ESLint</a> and
+<a href="https://prettier.io/docs/en/integrating-with-linters.html">Prettier</a>.</p>
+<p>We first need to install ESLint using <code>npm</code> or <code>yarn</code>, whichever one you prefer. You can either
+install ESLint globally, or locally. I personally use ESLint for all of my projects now, so I
+installed ESLint globally. Even if installed globally, we will still have to set up specific
+configuration files for each specific projects.</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-01">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-01 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-01"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># install eslint globally</span>
+</span></span><span class="line"><span class="cl">npm install -g eslint</span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<p>Now that we&rsquo;ve installed ESLint globally, we need to install Prettier. As with ESLint, Prettier can
+either be installed locally as a dependency, or can be installed globally. As I like to use Prettier
+with all my projects, I will install it globally.</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-02">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-02 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-02"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># install prettier globally</span>
+</span></span><span class="line"><span class="cl">npm install -g prettier</span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<p>That&rsquo;s it for basic installation! Now we have to configure ESLint and Prettier so that they can work
+together harmoniously within our editor.</p>
+<h4 id="install-eslint--prettier-plugin-for-vs-code" class="scroll-mt-8 group">
+  Install ESLint &amp; Prettier Plugin for VS Code
+  
+    <a href="#install-eslint--prettier-plugin-for-vs-code"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h4>
+<p>You will need to install the appropriate extension/plugin for your code editor. For VS Code, install
+<a href="https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint">ESLint</a> and
+<a href="https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode">Prettier</a>. These
+plugins have millions of downloads each, so it&rsquo;ll be difficult to miss them in the VS Code extension
+marketplace. Once you&rsquo;ve installed these, we are ready to move on to configuring each of them for
+proper usage.</p>
+<h4 id="configuring-eslint-and-prettier" class="scroll-mt-8 group">
+  Configuring ESLint and Prettier
+  
+    <a href="#configuring-eslint-and-prettier"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h4>
+<p>As I mentioned earlier, ESLint and Prettier will conflict with each other if not set up with care.
+Fortunately, because this is such a widely recognized problem, there are packages that are made to
+solve exactly this problem. We are going to install two different packages; <code>eslint-config-prettier</code>
+to exclude all ESLint rules that could conflict with Prettier, and <code>eslint-plugin-prettier</code> to
+integrate the Prettier rules into ESLint rules. This way, you won&rsquo;t have two different rules that
+conflict with each other.</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-03">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-03 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-03"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">npm install --save-dev eslint-config-prettier eslint-plugin-prettier</span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<p><strong>Note</strong>: Curious what the <code>--save-dev</code> flag does? By intalling with <code>--save-dev</code> flag, npm installs
+the packages <code>eslint-config-prettier</code> and <code>eslint-plugin-prettier</code> as <code>devDependencies</code>. This
+differs from the default behavior of <code>npm install</code> which installs it as a dependency to run the
+application, and places the downloaded files in <code>node_modules</code>.</p>
+<p>Now that we have that successfully installed those packages, we need to run some commands to
+initialize ESLint within our project.</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-04">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-04 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-04"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl">eslint --init
+</span></span><span class="line"><span class="cl">✔ How would you like to use ESLint? · style
+</span></span><span class="line"><span class="cl">✔ What <span class="nb">type</span> of modules does your project use? · esm
+</span></span><span class="line"><span class="cl">✔ Which framework does your project use? · none
+</span></span><span class="line"><span class="cl">✔ Does your project use TypeScript? · No / Yes
+</span></span><span class="line"><span class="cl">✔ Where does your code run? · browser
+</span></span><span class="line"><span class="cl">✔ How would you like to define a style <span class="k">for</span> your project? · guide
+</span></span><span class="line"><span class="cl">✔ Which style guide <span class="k">do</span> you want to follow? · airbnb
+</span></span><span class="line"><span class="cl">✔ What format <span class="k">do</span> you want your config file to be in? · JSON
+</span></span><span class="line"><span class="cl">Checking peerDependencies of eslint-config-airbnb-base@latest
+</span></span><span class="line"><span class="cl">Local ESLint installation not found.
+</span></span><span class="line"><span class="cl">The config that you<span class="err">&#39;</span>ve selected requires the following dependencies:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">eslint-config-airbnb-base@latest eslint@^5.16.0 <span class="o">||</span> ^6.8.0 <span class="o">||</span> ^7.2.0 eslint-plugin-import@^2.21.2
+</span></span><span class="line"><span class="cl">✔ Would you like to install them now with npm? · No / Yes
+</span></span><span class="line"><span class="cl">Installing eslint-config-airbnb-base@latest, eslint@^5.16.0 <span class="o">||</span> ^6.8.0 <span class="o">||</span> ^7.2.0, eslint-plugin-import@^2.21.2
+</span></span><span class="line"><span class="cl">npm WARN eslint-plugin-prettier@3.1.4 requires a peer of prettier@&gt;<span class="o">=</span>1.13.0 but none is installed. You must install peer dependencies yourself.
+</span></span><span class="line"><span class="cl">npm WARN eslint-prettier-blogpost@1.0.0 No repository field.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">+ eslint-plugin-import@2.22.0
+</span></span><span class="line"><span class="cl">+ eslint-config-airbnb-base@14.2.0
+</span></span><span class="line"><span class="cl">+ eslint@7.6.0
+</span></span><span class="line"><span class="cl">added <span class="m">171</span> packages from <span class="m">100</span> contributors and audited <span class="m">176</span> packages in 10.789s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="m">24</span> packages are looking <span class="k">for</span> funding
+</span></span><span class="line"><span class="cl">  run <span class="sb">`</span>npm fund<span class="sb">`</span> <span class="k">for</span> details
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">found <span class="m">0</span> vulnerabilities</span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<p>As illustrated above, when you run the command <code>eslint --init</code>, you will be asked questions to
+determine the configurations of the linter. You just need to answer those questions based on the
+project you are working on. One thing to note here is the question &ldquo;Which style guide do you want to
+follow?&rdquo; There are many different style guides out there, including the JavaScript standard style
+guide, Airbnb style guide, and Google style guide. These are some very popular guides that a lot of
+developers choose to use (I chose the Airbnb style guide, which seems to be the most popular style
+guide out there). If you or your team have your own set of style guides, you don&rsquo;t necessarily have
+to select an existing one.</p>
+<p>Once the setup is successful, you should see a file <code>eslintrc.{js/json/yaml}</code> based on the format
+you chose your configuration file to be in. For Prettier to run with ESLint, your configuration file
+should look something like this:</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-05">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">json</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-05 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-05"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">json code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;env&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;browser&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;es2020&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;extends&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;airbnb-base&#34;</span><span class="p">,</span> <span class="s2">&#34;prettier&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;plugins&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;prettier&#34;</span><span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;parserOptions&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;ecmaVersion&#34;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;sourceType&#34;</span><span class="p">:</span> <span class="s2">&#34;module&#34;</span>
+</span></span><span class="line"><span class="cl">  <span class="p">},</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;rules&#34;</span><span class="p">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;prettier/prettier&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;error&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">  <span class="p">}</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  <p class="sr-only">json code snippet end</p>
+
+  
+</figure>
+<p><strong>Note</strong>: You can include files/directories that you want your linter to ignore in a file called
+<code>.eslintignore</code> (very similar concept to a <code>.gitignore</code> file).</p>
+<p>Now, we just have to one final step. We need to set up Prettier locally, and tell Prettier how we
+want it to format our code.</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-06">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-06 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-06"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># install prettier as local devDependency</span>
+</span></span><span class="line"><span class="cl">npm install --save-dev prettier</span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<p>That should have installed Prettier as a local <code>devDependency</code>. Now, we need to create a
+configuration file for Prettier, and tell it how to format our code.</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-07">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">bash</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-07 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-07"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">bash code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="c1"># in your project root directory</span>
+</span></span><span class="line"><span class="cl">touch .prettierrc</span></span></code></pre></div>
+  <p class="sr-only">bash code snippet end</p>
+
+  
+</figure>
+<p>Open <code>.prettierrc</code> in your code editor, and set up a configuration for Prettier.</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-08">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">json</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-08 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-08"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">json code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;semi&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;trailingComma&#34;</span><span class="p">:</span> <span class="s2">&#34;all&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;singleQuote&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;printWidth&#34;</span><span class="p">:</span> <span class="mi">70</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  <p class="sr-only">json code snippet end</p>
+
+  
+</figure>
+<p>This is simply a possible configuration, but feel free to take a look at other options
+<a href="https://prettier.io/docs/en/configuration.html">here</a>.</p>
+<h4 id="vs-code-configurations" class="scroll-mt-8 group">
+  VS Code Configurations
+  
+    <a href="#vs-code-configurations"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h4>
+<p>So, you may still be asking yourself how we would actually use ESLint and Prettier. Will it work
+automagically? One thing we need to understand is that the way we set up Prettier to run as an
+ESLint rule. We have excluded all conflicting rules through <code>eslint-config-prettier</code>, and integrated
+Prettier as an ESLint rule through <code>eslint-plugin-prettier</code>. As a result, we only need to run ESLint
+to achieve the results we want for both linting and code formatting. ESLint can be run in mainly two
+different ways. We can use the
+<a href="https://eslint.org/docs/user-guide/command-line-interface">ESLint CLI</a> to manually run the linter
+(in the form of <code>eslint index.js</code>), or we could set up our VS Code configurations in such a way that
+will automatically format the code on save. To clarify, ESLint will check your code for possible
+bugs and errors even if you don&rsquo;t manually run it via the CLI, but will not format your code
+automatically if VS Code configurations aren&rsquo;t set up to do so. I like to have my code formatted
+automatically on save, so I will tweak my VS Code configurations to do exactly that.</p>
+<figure class="codeblock not-prose relative scroll-mt-8" id="codeblock-09">
+  <aside
+    class="absolute right-0 top-0 hidden rounded-bl-sm rounded-tr-sm bg-white/10 px-2 py-1 text-white/70 transition-opacity md:inline-block"
+  >
+    <div class="codeblock-meta flex max-w-xs flex-row items-center space-x-3">
+      <div class="small-caps shrink cursor-default truncate font-mono text-xs" aria-hidden="true">
+        <span class="relative">json</span>
+      </div>
+      <div>
+        <clipboard-copy
+          type="button"
+          aria-label="Copy code to clipboard"
+          title="Copy code to clipboard"
+          class="block cursor-pointer transition-colors hover:text-sky-400"
+          target="#codeblock-09 code"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="2"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class="lucide lucide-clipboard h-4 w-4"
+  viewBox="0 0 24 24"
+>
+  <rect width="8" height="4" x="8" y="2" rx="1" ry="1" />
+  <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2" />
+</svg>
+
+        </clipboard-copy>
+      </div>
+      <div>
+        <a
+          href="#codeblock-09"
+          class="block"
+          aria-label="Link to this code block"
+          title="Link to this code block"
+        >
+          <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+        </a>
+      </div>
+    </div>
+  </aside>
+  <p class="sr-only">json code snippet start</p>
+  <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="c1">// VS Code Settings JSON
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Set the default
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="s2">&#34;editor.formatOnSave&#34;</span><span class="err">:</span> <span class="kc">false</span><span class="err">,</span>
+</span></span><span class="line"><span class="cl"><span class="c1">// Enable per-language
+</span></span></span><span class="line"><span class="cl"><span class="c1"></span><span class="s2">&#34;[javascript]&#34;</span><span class="err">:</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nt">&#34;editor.formatOnSave&#34;</span><span class="p">:</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  <p class="sr-only">json code snippet end</p>
+
+  
+</figure>
+<p>With this set up, you should now be able to see that your code is formatted automatically when you
+save the file.</p>
+<h3 id="bonus" class="scroll-mt-8 group">
+  Bonus
+  
+    <a href="#bonus"
+        class="no-underline hidden opacity-50 hover:opacity-100 !text-inherit group-hover:inline-block"
+        aria-hidden="true" title="Link to this heading" tabindex="-1">
+        <svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="16"
+  height="16"
+  fill="none"
+  stroke="currentColor"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  stroke-width="2"
+  class="lucide lucide-link w-4 h-4 block"
+  viewBox="0 0 24 24"
+>
+  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+</svg>
+
+    </a>
+  
+</h3>
+<p><a href="https://marketplace.visualstudio.com/items?itemName=usernamehw.errorlens">Error Lens</a> is a very
+useful VS Code plugin that I love. By default, ESLint will underline error-prone code in red or
+orange, depending on how you&rsquo;ve set up certain rules for ESLint. However, you will need to hover
+your mouse over the underlined code to see the error message.</p>
+<p><img src="/static/images/eslint-prettier-vscode/eslint_prettier_without_errorlens.gif" alt="A GIF of ESLint and Prettier working in VS Code without Error Lens"></p>
+<p>You should be able to see that ESLint and Prettier are properly working! The red underline shows
+that a <code>const</code> variable should not be reassigned, and the code is automatically formatted when I
+save the file. However, notice that I had to hover over the red underline to actually see the error
+messages that ESLint has produced for us. With Error Lens, the error messages are printed on the
+screen, which in my opinion is very convenient. Let&rsquo;s see that in action!</p>
+<p><img src="/static/images/eslint-prettier-vscode/eslint_prettier_with_errorlens.gif" alt="A GIF of ESLint and Prettier working in VS Code with Error Lens"></p>
+<p>Voila! There we have it! ESLint and Prettier working beautifully with VS Code, and long gone are
+your worries of having to scratch your head over how to create a codebase with uniform code style.
+With Error Lens added to that combination, your day to day coding task should certainly be an
+experience! I hope this blog post helped you get started with using ESLint and Prettier for your
+JavaScript project, but please feel free to explore further by visiting their respective
+documentation.</p>
+
+  </article>
+
+      </main>
+      <footer class="mt-20 border-t border-neutral-100 pt-2 text-xs">
+        <section class="items-top flex flex-row justify-between opacity-70">
+  <div class="flex flex-col space-y-2">
+      <p>Copyright &copy; 2025, Jeff Yang.</p>
+      <div
+        xmlns:cc="https://creativecommons.org/ns#"
+        xmlns:dct="http://purl.org/dc/terms/"
+        about="https://creativecommons.org"
+      >
+        Content is available under
+        <a href="https://creativecommons.org/licenses/by-sa/4.0/" rel="license" class="inline-block" title="Creative Commons Attribution-ShareAlike 4.0 International"
+          >CC BY-SA 4.0</a
+        >
+        unless otherwise noted.
+      </div>
+        <div
+          class="mt-2 flex items-center space-x-2 fill-slate-400 hover:fill-slate-600 motion-safe:transition-colors"
+        >
+          <div class="flex-none cursor-help"><svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="5.5 -3.5 64 64"
+  xml:space="preserve"
+  class="w-5 h-5 block"
+  aria-hidden="true"
+>
+  <title>Creative Commons</title>
+  <circle fill="transparent" cx="37.785" cy="28.501" r="28.836" />
+  <path
+    d="M37.441-3.5c8.951 0 16.572 3.125 22.857 9.372 3.008 3.009 5.295 6.448 6.857 10.314 1.561 3.867 2.344 7.971 2.344 12.314 0 4.381-.773 8.486-2.314 12.313-1.543 3.828-3.82 7.21-6.828 10.143-3.123 3.085-6.666 5.448-10.629 7.086-3.961 1.638-8.057 2.457-12.285 2.457s-8.276-.808-12.143-2.429c-3.866-1.618-7.333-3.961-10.4-7.027-3.067-3.066-5.4-6.524-7-10.372S5.5 32.767 5.5 28.5c0-4.229.809-8.295 2.428-12.2 1.619-3.905 3.972-7.4 7.057-10.486C21.08-.394 28.565-3.5 37.441-3.5zm.116 5.772c-7.314 0-13.467 2.553-18.458 7.657-2.515 2.553-4.448 5.419-5.8 8.6a25.204 25.204 0 0 0-2.029 9.972c0 3.429.675 6.734 2.029 9.913 1.353 3.183 3.285 6.021 5.8 8.516 2.514 2.496 5.351 4.399 8.515 5.715a25.652 25.652 0 0 0 9.943 1.971c3.428 0 6.75-.665 9.973-1.999 3.219-1.335 6.121-3.257 8.713-5.771 4.99-4.876 7.484-10.99 7.484-18.344 0-3.543-.648-6.895-1.943-10.057-1.293-3.162-3.18-5.98-5.654-8.458-5.146-5.143-11.335-7.715-18.573-7.715zm-.401 20.915-4.287 2.229c-.458-.951-1.019-1.619-1.685-2-.667-.38-1.286-.571-1.858-.571-2.856 0-4.286 1.885-4.286 5.657 0 1.714.362 3.084 1.085 4.113.724 1.029 1.791 1.544 3.201 1.544 1.867 0 3.181-.915 3.944-2.743l3.942 2c-.838 1.563-2 2.791-3.486 3.686-1.484.896-3.123 1.343-4.914 1.343-2.857 0-5.163-.875-6.915-2.629-1.752-1.752-2.628-4.19-2.628-7.313 0-3.048.886-5.466 2.657-7.257 1.771-1.79 4.009-2.686 6.715-2.686 3.963-.002 6.8 1.541 8.515 4.627zm18.457 0-4.229 2.229c-.457-.951-1.02-1.619-1.686-2-.668-.38-1.307-.571-1.914-.571-2.857 0-4.287 1.885-4.287 5.657 0 1.714.363 3.084 1.086 4.113.723 1.029 1.789 1.544 3.201 1.544 1.865 0 3.18-.915 3.941-2.743l4 2c-.875 1.563-2.057 2.791-3.541 3.686a9.233 9.233 0 0 1-4.857 1.343c-2.896 0-5.209-.875-6.941-2.629-1.736-1.752-2.602-4.19-2.602-7.313 0-3.048.885-5.466 2.658-7.257 1.77-1.79 4.008-2.686 6.713-2.686 3.962-.002 6.783 1.541 8.458 4.627z"
+  />
+</svg>
+</div><div class="flex-none cursor-help"><svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="5.5 -3.5 64 64"
+  xml:space="preserve"
+  class="w-5 h-5 block"
+>
+  <title>Credit must be given to the creator</title>
+  <circle fill="transparent" cx="37.637" cy="28.806" r="28.276" />
+  <path
+    d="M37.443-3.5c8.988 0 16.57 3.085 22.742 9.257C66.393 11.967 69.5 19.548 69.5 28.5c0 8.991-3.049 16.476-9.145 22.456-6.476 6.363-14.113 9.544-22.912 9.544-8.649 0-16.153-3.144-22.514-9.43C8.644 44.784 5.5 37.262 5.5 28.5c0-8.761 3.144-16.342 9.429-22.742C21.101-.415 28.604-3.5 37.443-3.5zm.114 5.772c-7.276 0-13.428 2.553-18.457 7.657-5.22 5.334-7.829 11.525-7.829 18.572 0 7.086 2.59 13.22 7.77 18.398 5.181 5.182 11.352 7.771 18.514 7.771 7.123 0 13.334-2.607 18.629-7.828 5.029-4.838 7.543-10.952 7.543-18.343 0-7.276-2.553-13.465-7.656-18.571-5.104-5.104-11.276-7.656-18.514-7.656zm8.572 18.285v13.085h-3.656v15.542h-9.944V33.643h-3.656V20.557c0-.572.2-1.057.599-1.457.401-.399.887-.6 1.457-.6h13.144c.533 0 1.01.2 1.428.6.417.4.628.886.628 1.457zm-13.087-8.228c0-3.008 1.485-4.514 4.458-4.514s4.457 1.504 4.457 4.514c0 2.971-1.486 4.457-4.457 4.457s-4.458-1.486-4.458-4.457z"
+  />
+</svg>
+</div><div class="flex-none cursor-help"><svg
+  version="1.0"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="5.5 -3.5 64 64"
+  xml:space="preserve"
+  class="w-5 h-5 block"
+>
+  <title>Adaptations must be shared under the same terms</title>
+  <circle fill="transparent" cx="36.944" cy="28.631" r="29.105" />
+  <path
+    d="M37.443-3.5c8.951 0 16.531 3.105 22.742 9.315C66.393 11.987 69.5 19.548 69.5 28.5c0 8.954-3.049 16.457-9.145 22.514-6.437 6.324-14.076 9.486-22.912 9.486-8.649 0-16.153-3.143-22.514-9.429C8.644 44.786 5.5 37.264 5.5 28.501c0-8.723 3.144-16.285 9.429-22.685C21.138-.395 28.643-3.5 37.443-3.5zm.114 5.772c-7.276 0-13.428 2.572-18.457 7.715-5.22 5.296-7.829 11.467-7.829 18.513 0 7.125 2.59 13.257 7.77 18.4 5.181 5.182 11.352 7.771 18.514 7.771 7.123 0 13.334-2.609 18.629-7.828 5.029-4.876 7.543-10.99 7.543-18.343 0-7.313-2.553-13.485-7.656-18.513-5.067-5.145-11.239-7.715-18.514-7.715zM23.271 23.985c.609-3.924 2.189-6.962 4.742-9.114 2.552-2.152 5.656-3.228 9.314-3.228 5.027 0 9.029 1.62 12 4.856 2.971 3.238 4.457 7.391 4.457 12.457 0 4.915-1.543 9-4.627 12.256-3.088 3.256-7.086 4.886-12.002 4.886-3.619 0-6.743-1.085-9.371-3.257-2.629-2.172-4.209-5.257-4.743-9.257H31.1c.19 3.886 2.533 5.829 7.029 5.829 2.246 0 4.057-.972 5.428-2.914 1.373-1.942 2.059-4.534 2.059-7.771 0-3.391-.629-5.971-1.885-7.743-1.258-1.771-3.066-2.657-5.43-2.657-4.268 0-6.667 1.885-7.2 5.656h2.343l-6.342 6.343-6.343-6.343 2.512.001z"
+  />
+</svg>
+</div>
+        </div>
+
+  </div>
+    <div>
+      <a
+        href="https://github.com/michenriksen/hugo-theme-til"
+        title="Today I Learned &#8212; A Hugo theme by Michael Henriksen"
+        data-theme-version="0.6.0"
+        >theme: til</a
+      >
+    </div>
+</section>
+
+      </footer>
+    </div>
+    
+  </body>
+</html>

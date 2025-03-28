@@ -6,7 +6,8 @@ draft: false
 summary: 'A blog post on how to resize images stored in AWS S3 with AWS Lambda'
 ---
 
-![Blog Post Thumbnail](/static/images/aws-s3-and-lambda/aws_lambda_s3.png)
+{{< figure src="https://www.dropbox.com/scl/fi/qbtro69g2uuqrn5ijp4vy/aws_lambda_s3.png?rlkey=51nom6dbfiyt3rcz4x25mdhn9&st=cn2a7w1m&dl=0" >}}
+
 
 **Note: An AWS Account and a basic knowledge of their services are assumed throughout this blog post**  
 
@@ -29,7 +30,9 @@ Once you have an execution role set up following the guidelines above, we can he
 ## 3. Create the Lambda Function 
 Creating a lambda function is relatively straightforward. All we need to do is to navigate to the AWS Lambda management console, click "create function" and give it the execution role that we already created above.  
 
-![A screenshot of AWS lambda create function page.](/static/images/aws-s3-and-lambda/create_lambda.png)
+
+{{< figure src="https://www.dropbox.com/scl/fi/b3ybogtjtbhh4u4ovxn3k/create_lambda.png?rlkey=y1bg0zsc01ey3zjpxkdrqkos2&st=aiqgt1kb&dl=0" caption="A screenshot of AWS lambda create function page." >}}
+
 
 Once the function is created, you will be able to see the control panel for the lambda function that you have just created. Your lambda function doesn't do anything yet, because we didn't write any code. There's an option to write code directly in the inline editor that AWS provides for us, but that's only possible if your lambda function does not have any external dependencies. Unfortunately, for image resizing, an external library must be installed for pretty much any language you might be working in (in Python, our code needs `Pillow` to work properly). This is where it gets tricky. The lambda function executes in an amazonlinux environment, which most likely is not identical to your local environment. AWS provides a [detailed guideline](https://docs.aws.amazon.com/lambda/latest/dg/python-package.html) on how to solve this problem - you have to upload your function as a deployment package. In other words, you need to package your function as a module (with all dependencies included) and ship it onto AWS Lambda so that it knows exactly what it's working with. The following is the lambda function that grabs an image from the source bucket, resizes it, then puts the resized image in the destination bucket.    
 
@@ -92,7 +95,7 @@ ImportError: "Unable to import module 'lambda_function': cannot import name '_im
 
 It is difficult to say whether or not you will run into the same issue. For me, it happened, and it didn't go away. After *lots* of googling, I came to a logical conclusion that it has to do with the amazonlinux environment that my lambda function is running in. The reason why I say a *logical conclusion* is because I did not get any errors when trying to reproduce the same error in the Python virtual environment that I packaged my function in:  
 
-![A screenshot of the terminal showing import errors resulting from Python's Pillow module.](/static/images/aws-s3-and-lambda/pillow_screenshot.png)
+{{< figure src="https://www.dropbox.com/scl/fi/nssoivjyicz6d14z781j0/pillow_screenshot.png?rlkey=ko7a1wipmguzyoo9ftsssl3fo&st=9q1zjk3u&dl=0" caption="A screenshot of the terminal showing import errors resulting from Python's Pillow module." >}}
 
 After gaining confidence in where the general problem lies in, I narrowed down the issue: the problem seemed to be that the module `PIL` is already installed in the Python version that amazonlinux runs. `PIL` is shipped with Python by default, which is also the case in my local environment, except I can do:  
 
@@ -105,7 +108,7 @@ This is in fact the recommended installation procedure outlined in the [official
 
 ## 4. Docker to the Rescue
 
-![Docker's logo.](/static/images/aws-s3-and-lambda/docker.png)
+{{< figure src="https://www.dropbox.com/scl/fi/hjktxgzdqdyz3n766vlyu/docker.png?rlkey=36xq89wl6eyb5wwsa7gi1y1uc&st=rj7uqhip&dl=0" caption="Docker's logo." >}}
 
 **Credits to [freecodecamp tutorial](https://www.freecodecamp.org/news/escaping-lambda-function-hell-using-docker-40b187ec1e48/)**  
 
