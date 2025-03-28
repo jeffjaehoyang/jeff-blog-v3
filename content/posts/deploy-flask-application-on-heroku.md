@@ -6,7 +6,7 @@ draft: false
 summary: 'How to deploy a Flask web application on Heroku'
 ---
 
-{{< figure src="https://www.dropbox.com/scl/fi/0c7awb6o1548mxuj2wmuq/heroku_flask.png?rlkey=cx8blppmcykm8gleoc6m86h9w&st=mrp8hnbo&dl=1" >}}
+{{< figure src="https://www.dropbox.com/scl/fi/0c7awb6o1548mxuj2wmuq/heroku_flask.png?rlkey=cx8blppmcykm8gleoc6m86h9w&st=mrp8hnbo&raw=1" >}}
 
 You worked for hours on your project, maybe days, or maybe even weeks or months. Regardless of the magnitude of your project, you probably want to share your work somewhere online so others can see it, right? At least for me, the urge to share my work online is something natural. An application is as good as dead if no one else can see your project, and is just sitting there on your local machine. Many inexperienced programmers go through that disheartening moment of thinking "How in the world do I host this application up on the internet?" If this sounds like you, this post is meant for you (because I know so very well how hopeless that feels), so follow along!  
 

@@ -6,7 +6,7 @@ draft: false
 summary: 'A blog post on how to deploy a Django-ASGI application on heroku'
 ---
 
-{{< figure src="https://www.dropbox.com/scl/fi/gw50hu2ix7raiydd5618e/heroku_django.png?rlkey=gg4gupvuzqu81ar9p6uc400lw&st=azmvi3ra&dl=1" >}}
+{{< figure src="https://www.dropbox.com/scl/fi/gw50hu2ix7raiydd5618e/heroku_django.png?rlkey=gg4gupvuzqu81ar9p6uc400lw&st=azmvi3ra&raw=1" >}}
 
 **Disclaimer: This blog post is largely a quarantine coding production.** 
 

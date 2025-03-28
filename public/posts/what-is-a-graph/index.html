@@ -3,7 +3,7 @@
   lang="en-us"
   dir="ltr"
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=52851&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=54845&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
 <meta name="language" content="en" />
 <meta name="viewport" content="width=device-width" />
@@ -11,7 +11,7 @@
     What is a Graph? | jeffyang.io
 </title>
   <meta name="description" content="A blog post on the graph data structure in computer science" />
-<meta property="og:url" content="http://localhost:52851/posts/what-is-a-graph/">
+<meta property="og:url" content="http://localhost:54845/posts/what-is-a-graph/">
   <meta property="og:site_name" content="jeffyang.io">
   <meta property="og:title" content="What is a Graph?">
   <meta property="og:description" content="A blog post on the graph data structure in computer science">
@@ -34,7 +34,7 @@
   <meta name="twitter:title" content="What is a Graph?">
   <meta name="twitter:description" content="A blog post on the graph data structure in computer science">
 
-<link rel="canonical" href="http://localhost:52851/posts/what-is-a-graph/" />
+<link rel="canonical" href="http://localhost:54845/posts/what-is-a-graph/" />
 
     <link rel="stylesheet" href="/css/index.css" />
 
@@ -45,30 +45,30 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@id": "http://localhost:52851/posts/what-is-a-graph/",
+  "@id": "http://localhost:54845/posts/what-is-a-graph/",
   "@type": "BlogPosting",
   "author": {
     "@type": "Person",
     "email": "jho.yang96@gmail.com",
     "name": "Jeff Yang",
-    "url": "http://localhost:52851/about/"
+    "url": "http://localhost:54845/about/"
   },
   "copyrightNotice": "Jeff Yang",
   "datePublished": "2019-12-28",
   "description": "A blog post on the graph data structure in computer science",
   "headline": "What is a Graph?",
   "isPartOf": {
-    "@id": "http://localhost:52851/posts/",
+    "@id": "http://localhost:54845/posts/",
     "@type": "Blog",
     "name": "Posts"
   },
   "keywords": [
     "Algorithms"
   ],
-  "mainEntityOfPage": "http://localhost:52851/posts/what-is-a-graph/",
+  "mainEntityOfPage": "http://localhost:54845/posts/what-is-a-graph/",
   "name": "What is a Graph?",
   "timeRequired": "PT8M",
-  "url": "http://localhost:52851/posts/what-is-a-graph/",
+  "url": "http://localhost:54845/posts/what-is-a-graph/",
   "wordCount": 1529
 }
 </script>
@@ -139,7 +139,7 @@
   
 </h3>
 <p>Even if you are unfamiliar with graphs, you most likely have already seen one. If you have seen or worked with <em>trees</em> before, you have already encountered a <em>graph</em> before. Let me try to explain graphs in relation to trees, a data structure that you are more likely to be familiar with, or at least more so than graphs. <strong>All trees are graphs, but not all graphs are trees</strong>. Like trees, graphs also have <strong>nodes (or vertices)</strong> and <strong>edges</strong> that connect the nodes, but are not bound to the restrictions that trees have. A tree is an <em>acyclic</em> and <em>connected</em> graph. A graph, however, is not limited to such restrictions; a graph can have <em>cycles</em> and can be <em>disconnected</em> to form a forest consisting of multiple components that are disconnected with another. Take a look at the following to get a rough idea of what a <em>directed</em>, <em>acyclic</em> graph looks like.</p>
-<figure><img src="https://www.dropbox.com/scl/fi/qhwl2hr0nzutwa02h00n6/sample_graph.png?rlkey=wd46qwxhvabhewppl8pvxopxz&amp;st=sn6t77zy&amp;dl=1">
+<figure><img src="https://www.dropbox.com/scl/fi/qhwl2hr0nzutwa02h00n6/sample_graph.png?rlkey=wd46qwxhvabhewppl8pvxopxz&amp;st=sn6t77zy&amp;raw=1">
 </figure>
 
 <p>A more mathematically oriented definition of a graph would be the following: a <strong>graph</strong> is a data structure that represents a <strong>finite set of nodes (or vertices) and set of edges which connect a pair of vertices</strong>. Confused about the technical terms (<em>connected</em>, <em>directed</em>, <em>acyclic</em>, <em>cyclic</em>, and more&hellip;) that were just thrown at you? Don&rsquo;t worry, that&rsquo;s what we&rsquo;ll explore in the next section.</p>
@@ -169,7 +169,7 @@
   
 </h3>
 <p>For some of you, terms such as <em>acyclic</em>, <em>cyclic</em>, <em>directed</em>, <em>undirected</em>, <em>connected</em>, <em>disconnected</em> may sound unfamiliar. Such categorization of graphs, however, are essential in deepening your understanding of graphs, and are not too difficult to get a grasp of either. To help your understanding, take a look at the following:</p>
-<figure><img src="https://www.dropbox.com/scl/fi/vuytyftaan2n3nnj0otw6/graph_ds.png?rlkey=s5q4uc61xe2fnjvo5eyk28piv&amp;st=ybjf8bv5&amp;dl=1"
+<figure><img src="https://www.dropbox.com/scl/fi/vuytyftaan2n3nnj0otw6/graph_ds.png?rlkey=s5q4uc61xe2fnjvo5eyk28piv&amp;st=ybjf8bv5&amp;raw=1"
     alt="A diagram representing different kinds of graphs."><figcaption>
       <p>A diagram representing different kinds of graphs.</p>
     </figcaption>
@@ -218,7 +218,7 @@
 </h3>
 <p>To dive deeper into the discussion of graphs, we need to understand how graphs are represented without having to visually draw a graph out. There are largely two different ways to represent any graph: as an <em>adjacency list</em> or as an <em>adjacency matrix</em>.</p>
 <p>Let us first take a look at the <strong>adjacency list representation</strong> of a graph. A common way of representing a graph as an adjacency list is to directly map vertices to indices of an array, and at each index of an array, represent the neighboring vertices and weights in the form of linked lists. Take a look at the following example to help your understanding:</p>
-<figure><img src="https://www.dropbox.com/scl/fi/2tzpdey5zp2olhesccwql/adj_list.png?rlkey=7h3wu2nmtxyjk4w5a170smu2m&amp;st=xkgl5ks2&amp;dl=1"
+<figure><img src="https://www.dropbox.com/scl/fi/2tzpdey5zp2olhesccwql/adj_list.png?rlkey=7h3wu2nmtxyjk4w5a170smu2m&amp;st=xkgl5ks2&amp;raw=1"
     alt="A diagram that explains representing graphs through an adjacency list."><figcaption>
       <p>A diagram that explains representing graphs through an adjacency list.</p>
     </figcaption>
@@ -226,7 +226,7 @@
 
 <p>The diagram above shows how an undirected, weighted graph can be represented as an adjacency list. Note that using a linked list is not the only possible way to implement an adjacency list (we could use hash tables instead, and use vertices as keys and associated weights as values).</p>
 <p>Now let us examine the <strong>adjacency matrix representation</strong> of a graph. An adjacency matrix representation differs from an adjacency list in that an adjacency matrix requires a |V| × |V| matrix (where |V| denotes the number of vertices) to store information on the existence of an edge between two vertices (if the graph is unweighted) or the weight between two vertices (if the graph is weighted). A non-existant edge is usually represented by a 0 for an unweighted graph, and by &ldquo;inf&rdquo; (infinity) for a weighted graph. To visualize the explanation, take a look at the following adjacent matrix representation of an undirected, weighted graph:</p>
-<figure><img src="https://www.dropbox.com/scl/fi/p21o8tkp5dq3toflnrjnp/adj_mat.png?rlkey=8mm63g60lv4xh2ncootgi5z77&amp;st=9410t0rg&amp;dl=1"
+<figure><img src="https://www.dropbox.com/scl/fi/p21o8tkp5dq3toflnrjnp/adj_mat.png?rlkey=8mm63g60lv4xh2ncootgi5z77&amp;st=9410t0rg&amp;raw=1"
     alt="A diagram that explains representing graphs through an adjacency matrix."><figcaption>
       <p>A diagram that explains representing graphs through an adjacency matrix.</p>
     </figcaption>

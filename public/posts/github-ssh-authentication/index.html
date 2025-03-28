@@ -3,7 +3,7 @@
   lang="en-us"
   dir="ltr"
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=52851&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=54845&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
 <meta name="language" content="en" />
 <meta name="viewport" content="width=device-width" />
@@ -11,7 +11,7 @@
     Github Authentication with SSH | jeffyang.io
 </title>
   <meta name="description" content="How to setup local machine to properly authenticate Github with SSH" />
-<meta property="og:url" content="http://localhost:52851/posts/github-ssh-authentication/">
+<meta property="og:url" content="http://localhost:54845/posts/github-ssh-authentication/">
   <meta property="og:site_name" content="jeffyang.io">
   <meta property="og:title" content="Github Authentication with SSH">
   <meta property="og:description" content="How to setup local machine to properly authenticate Github with SSH">
@@ -34,7 +34,7 @@
   <meta name="twitter:title" content="Github Authentication with SSH">
   <meta name="twitter:description" content="How to setup local machine to properly authenticate Github with SSH">
 
-<link rel="canonical" href="http://localhost:52851/posts/github-ssh-authentication/" />
+<link rel="canonical" href="http://localhost:54845/posts/github-ssh-authentication/" />
 
     <link rel="stylesheet" href="/css/index.css" />
 
@@ -45,30 +45,30 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@id": "http://localhost:52851/posts/github-ssh-authentication/",
+  "@id": "http://localhost:54845/posts/github-ssh-authentication/",
   "@type": "BlogPosting",
   "author": {
     "@type": "Person",
     "email": "jho.yang96@gmail.com",
     "name": "Jeff Yang",
-    "url": "http://localhost:52851/about/"
+    "url": "http://localhost:54845/about/"
   },
   "copyrightNotice": "Jeff Yang",
   "datePublished": "2020-12-31",
   "description": "How to setup local machine to properly authenticate Github with SSH",
   "headline": "Github Authentication with SSH",
   "isPartOf": {
-    "@id": "http://localhost:52851/posts/",
+    "@id": "http://localhost:54845/posts/",
     "@type": "Blog",
     "name": "Posts"
   },
   "keywords": [
     "Developer Tools"
   ],
-  "mainEntityOfPage": "http://localhost:52851/posts/github-ssh-authentication/",
+  "mainEntityOfPage": "http://localhost:54845/posts/github-ssh-authentication/",
   "name": "Github Authentication with SSH",
   "timeRequired": "PT5M",
-  "url": "http://localhost:52851/posts/github-ssh-authentication/",
+  "url": "http://localhost:54845/posts/github-ssh-authentication/",
   "wordCount": 1049
 }
 </script>
@@ -112,7 +112,7 @@
         </div>
     </header>
 
-    <figure><img src="https://www.dropbox.com/scl/fi/wsw1xoimxv037mqczocti/github_ssh_auth.png?rlkey=s1eyxoal3nvrvmmbh4ikl06mg&amp;st=l4nkklu2&amp;dl=1">
+    <figure><img src="https://www.dropbox.com/scl/fi/wsw1xoimxv037mqczocti/github_ssh_auth.png?rlkey=s1eyxoal3nvrvmmbh4ikl06mg&amp;st=l4nkklu2&amp;raw=1">
 </figure>
 
 <p>This blog post is meant to serve as a kind note for my future self, inevitably struggling to properly setup Github SSH authentication.
@@ -149,7 +149,7 @@ SSH Authentication is generally implemented via a classic client-server model, w
 The server, upon receiving a connection request from a client, sends a public key over to the SSH client, starting a process well known as <strong>public key cryptography</strong>
 (if you are not familiar with it, and would like to learn more about it in depth, feel free to check <a href="https://ssd.eff.org/en/module/deep-dive-end-end-encryption-how-do-public-key-encryption-systems-work">this</a> link out).
 Once the SSH client and SSH server agree that each other can be trusted, the two establish a communication channel in which data is <strong>encrypted</strong>, making it <strong>secure</strong>.</p>
-<figure><img src="https://www.dropbox.com/scl/fi/kzpm5oqcgqa5t3qc4bp51/client_server_model.png?rlkey=ewib1wplx29s07at0w3nh75oy&amp;st=9ryx4qho&amp;dl=1"
+<figure><img src="https://www.dropbox.com/scl/fi/kzpm5oqcgqa5t3qc4bp51/client_server_model.png?rlkey=ewib1wplx29s07at0w3nh75oy&amp;st=9ryx4qho&amp;raw=1"
     alt="Client-Server Model."><figcaption>
       <p>Client-Server Model.</p>
     </figcaption>
@@ -181,7 +181,7 @@ Once the SSH client and SSH server agree that each other can be trusted, the two
   
 </h3>
 <p>There are two different ways to interact with remote github repositories (clone, pull, push, etc): <strong>HTTPS and SSH</strong>.</p>
-<figure><img src="https://www.dropbox.com/scl/fi/rccmjs0na2mcyy4h5t3lo/github_ssh_https_screenshot.png?rlkey=yy2jdzltc5wj1fa0c2ahdeprz&amp;st=yf2wdf2e&amp;dl=1"
+<figure><img src="https://www.dropbox.com/scl/fi/rccmjs0na2mcyy4h5t3lo/github_ssh_https_screenshot.png?rlkey=yy2jdzltc5wj1fa0c2ahdeprz&amp;st=yf2wdf2e&amp;raw=1"
     alt="Github SSH Screenshot."><figcaption>
       <p>Github SSH Screenshot.</p>
     </figcaption>
@@ -653,7 +653,7 @@ Run the following command to copy the content of your public key file on your cl
 </figure>
 <p>Now, head over to your <code>Github account &gt; Settings &gt; SSH and GPG keys</code>. Click on &ldquo;New SSH Key&rdquo;.
 Enter the title of your SSH key (try to be descriptive, just in case you add more SSH keys later on), and copy the public key content from your clipboard.</p>
-<figure><img src="https://www.dropbox.com/scl/fi/blbbbuporapwc2i6fju7f/github_add_ssh_key.png?rlkey=guoh1zo7guyjpmjkbthe0m7eq&amp;st=m9kkkox3&amp;dl=1"
+<figure><img src="https://www.dropbox.com/scl/fi/blbbbuporapwc2i6fju7f/github_add_ssh_key.png?rlkey=guoh1zo7guyjpmjkbthe0m7eq&amp;st=m9kkkox3&amp;raw=1"
     alt="Screenshot of Github Add SSH."><figcaption>
       <p>Screenshot of Github Add SSH.</p>
     </figcaption>

@@ -3,7 +3,7 @@
   lang="en-us"
   dir="ltr"
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=52851&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=54845&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
 <meta name="language" content="en" />
 <meta name="viewport" content="width=device-width" />
@@ -11,7 +11,7 @@
     Resize Images Stored in AWS S3 with AWS Lambda (feat. Docker) | jeffyang.io
 </title>
   <meta name="description" content="A blog post on how to resize images stored in AWS S3 with AWS Lambda" />
-<meta property="og:url" content="http://localhost:52851/posts/aws-s3-and-lambda/">
+<meta property="og:url" content="http://localhost:54845/posts/aws-s3-and-lambda/">
   <meta property="og:site_name" content="jeffyang.io">
   <meta property="og:title" content="Resize Images Stored in AWS S3 with AWS Lambda (feat. Docker)">
   <meta property="og:description" content="A blog post on how to resize images stored in AWS S3 with AWS Lambda">
@@ -34,7 +34,7 @@
   <meta name="twitter:title" content="Resize Images Stored in AWS S3 with AWS Lambda (feat. Docker)">
   <meta name="twitter:description" content="A blog post on how to resize images stored in AWS S3 with AWS Lambda">
 
-<link rel="canonical" href="http://localhost:52851/posts/aws-s3-and-lambda/" />
+<link rel="canonical" href="http://localhost:54845/posts/aws-s3-and-lambda/" />
 
     <link rel="stylesheet" href="/css/index.css" />
 
@@ -45,30 +45,30 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@id": "http://localhost:52851/posts/aws-s3-and-lambda/",
+  "@id": "http://localhost:54845/posts/aws-s3-and-lambda/",
   "@type": "BlogPosting",
   "author": {
     "@type": "Person",
     "email": "jho.yang96@gmail.com",
     "name": "Jeff Yang",
-    "url": "http://localhost:52851/about/"
+    "url": "http://localhost:54845/about/"
   },
   "copyrightNotice": "Jeff Yang",
   "datePublished": "2020-04-27",
   "description": "A blog post on how to resize images stored in AWS S3 with AWS Lambda",
   "headline": "Resize Images Stored in AWS S3 with AWS Lambda (feat. Docker)",
   "isPartOf": {
-    "@id": "http://localhost:52851/posts/",
+    "@id": "http://localhost:54845/posts/",
     "@type": "Blog",
     "name": "Posts"
   },
   "keywords": [
     "Web Development"
   ],
-  "mainEntityOfPage": "http://localhost:52851/posts/aws-s3-and-lambda/",
+  "mainEntityOfPage": "http://localhost:54845/posts/aws-s3-and-lambda/",
   "name": "Resize Images Stored in AWS S3 with AWS Lambda (feat. Docker)",
   "timeRequired": "PT10M",
-  "url": "http://localhost:52851/posts/aws-s3-and-lambda/",
+  "url": "http://localhost:54845/posts/aws-s3-and-lambda/",
   "wordCount": 2043
 }
 </script>
@@ -112,7 +112,7 @@
         </div>
     </header>
 
-    <figure><img src="https://www.dropbox.com/scl/fi/qbtro69g2uuqrn5ijp4vy/aws_lambda_s3.png?rlkey=51nom6dbfiyt3rcz4x25mdhn9&amp;st=cn2a7w1m&amp;dl=1">
+    <figure><img src="https://www.dropbox.com/scl/fi/qbtro69g2uuqrn5ijp4vy/aws_lambda_s3.png?rlkey=51nom6dbfiyt3rcz4x25mdhn9&amp;st=cn2a7w1m&amp;raw=1">
 </figure>
 
 <p><strong>Note: An AWS Account and a basic knowledge of their services are assumed throughout this blog post</strong></p>
@@ -202,7 +202,7 @@
   
 </h3>
 <p>Creating a lambda function is relatively straightforward. All we need to do is to navigate to the AWS Lambda management console, click &ldquo;create function&rdquo; and give it the execution role that we already created above.</p>
-<figure><img src="https://www.dropbox.com/scl/fi/b3ybogtjtbhh4u4ovxn3k/create_lambda.png?rlkey=y1bg0zsc01ey3zjpxkdrqkos2&amp;st=aiqgt1kb&amp;dl=1"
+<figure><img src="https://www.dropbox.com/scl/fi/b3ybogtjtbhh4u4ovxn3k/create_lambda.png?rlkey=y1bg0zsc01ey3zjpxkdrqkos2&amp;st=aiqgt1kb&amp;raw=1"
     alt="A screenshot of AWS lambda create function page."><figcaption>
       <p>A screenshot of AWS lambda create function page.</p>
     </figcaption>
@@ -388,7 +388,7 @@
   
 </figure>
 <p>It is difficult to say whether or not you will run into the same issue. For me, it happened, and it didn&rsquo;t go away. After <em>lots</em> of googling, I came to a logical conclusion that it has to do with the amazonlinux environment that my lambda function is running in. The reason why I say a <em>logical conclusion</em> is because I did not get any errors when trying to reproduce the same error in the Python virtual environment that I packaged my function in:</p>
-<figure><img src="https://www.dropbox.com/scl/fi/nssoivjyicz6d14z781j0/pillow_screenshot.png?rlkey=ko7a1wipmguzyoo9ftsssl3fo&amp;st=9q1zjk3u&amp;dl=1"
+<figure><img src="https://www.dropbox.com/scl/fi/nssoivjyicz6d14z781j0/pillow_screenshot.png?rlkey=ko7a1wipmguzyoo9ftsssl3fo&amp;st=9q1zjk3u&amp;raw=1"
     alt="A screenshot of the terminal showing import errors resulting from Python&rsquo;s Pillow module."><figcaption>
       <p>A screenshot of the terminal showing import errors resulting from Python&rsquo;s Pillow module.</p>
     </figcaption>
@@ -487,7 +487,7 @@
     </a>
   
 </h3>
-<figure><img src="https://www.dropbox.com/scl/fi/hjktxgzdqdyz3n766vlyu/docker.png?rlkey=36xq89wl6eyb5wwsa7gi1y1uc&amp;st=rj7uqhip&amp;dl=1"
+<figure><img src="https://www.dropbox.com/scl/fi/hjktxgzdqdyz3n766vlyu/docker.png?rlkey=36xq89wl6eyb5wwsa7gi1y1uc&amp;st=rj7uqhip&amp;raw=1"
     alt="Docker&rsquo;s logo."><figcaption>
       <p>Docker&rsquo;s logo.</p>
     </figcaption>

@@ -3,7 +3,7 @@
   lang="en-us"
   dir="ltr"
 >
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=52851&amp;path=livereload" data-no-instant defer></script>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=54845&amp;path=livereload" data-no-instant defer></script>
     <meta charset="utf-8" />
 <meta name="language" content="en" />
 <meta name="viewport" content="width=device-width" />
@@ -11,7 +11,7 @@
     A Practical Application of Redis Cache | jeffyang.io
 </title>
   <meta name="description" content="How a Redis cache can help solve problems when fetching data" />
-<meta property="og:url" content="http://localhost:52851/posts/practical-application-of-redis-cache/">
+<meta property="og:url" content="http://localhost:54845/posts/practical-application-of-redis-cache/">
   <meta property="og:site_name" content="jeffyang.io">
   <meta property="og:title" content="A Practical Application of Redis Cache">
   <meta property="og:description" content="How a Redis cache can help solve problems when fetching data">
@@ -34,7 +34,7 @@
   <meta name="twitter:title" content="A Practical Application of Redis Cache">
   <meta name="twitter:description" content="How a Redis cache can help solve problems when fetching data">
 
-<link rel="canonical" href="http://localhost:52851/posts/practical-application-of-redis-cache/" />
+<link rel="canonical" href="http://localhost:54845/posts/practical-application-of-redis-cache/" />
 
     <link rel="stylesheet" href="/css/index.css" />
 
@@ -45,30 +45,30 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org/",
-  "@id": "http://localhost:52851/posts/practical-application-of-redis-cache/",
+  "@id": "http://localhost:54845/posts/practical-application-of-redis-cache/",
   "@type": "BlogPosting",
   "author": {
     "@type": "Person",
     "email": "jho.yang96@gmail.com",
     "name": "Jeff Yang",
-    "url": "http://localhost:52851/about/"
+    "url": "http://localhost:54845/about/"
   },
   "copyrightNotice": "Jeff Yang",
   "datePublished": "2021-12-18",
   "description": "How a Redis cache can help solve problems when fetching data",
   "headline": "A Practical Application of Redis Cache",
   "isPartOf": {
-    "@id": "http://localhost:52851/posts/",
+    "@id": "http://localhost:54845/posts/",
     "@type": "Blog",
     "name": "Posts"
   },
   "keywords": [
     "Web Development"
   ],
-  "mainEntityOfPage": "http://localhost:52851/posts/practical-application-of-redis-cache/",
+  "mainEntityOfPage": "http://localhost:54845/posts/practical-application-of-redis-cache/",
   "name": "A Practical Application of Redis Cache",
   "timeRequired": "PT9M",
-  "url": "http://localhost:52851/posts/practical-application-of-redis-cache/",
+  "url": "http://localhost:54845/posts/practical-application-of-redis-cache/",
   "wordCount": 1866
 }
 </script>
@@ -112,7 +112,7 @@
         </div>
     </header>
 
-    <figure><img src="https://www.dropbox.com/scl/fi/qsjqvjzqqbs14eenm259a/thumbnail.png?rlkey=s5u6ao93lajafrka9snbii45v&amp;st=do23ngs6&amp;dl=1">
+    <figure><img src="https://www.dropbox.com/scl/fi/qsjqvjzqqbs14eenm259a/thumbnail.png?rlkey=s5u6ao93lajafrka9snbii45v&amp;st=do23ngs6&amp;raw=1">
 </figure>
 
 <p>Recently, I&rsquo;ve been working on a side project - a web application (<a href="https://www.inretrospect.finance">inretrospect.finance</a>) that lets users record their investments with notes for future reference. The whole project is built on top of a fantastic API from <a href="https://www.alphavantage.co/documentation/">Alphavantage</a> that provides detailed financial data on public companies. While it would have been great if it were possible to make unlimited API requests - their free tier plan only allows for 5 requests per minute and 500 requests per day. This obviously is a significant bottleneck, so I needed to find a solution. After putting some thought into this, I decided to <em>cache</em> API requests so that whenver there&rsquo;s a <em>cache hit</em>, a request to the actual API endpoint is not made, therefore cutting down the number of requests to the API service. With that context in mind, let&rsquo;s dive in.</p>
@@ -330,7 +330,7 @@
   
 </h3>
 <p>Before we proceed, I&rsquo;d like to explain a little more about the problem I faced, and why Redis turned out to be a great option to address the problem at hand. In the web application <a href="https://www.inretrospect.finance">inretrospect.finance</a>, I needed historical stock market data for stocks of user&rsquo;s choice (US stocks). For the purposes of this application, I did not need real-time market data, but I did need the data to be updated once a day after market close. For example, if a user registered Facebook and Google as stocks of interest, I needed historical market data on both of these stocks in order to render a line chart. To help your understanding, below is a screenshot of the UI that needs such historical market data to render properly.</p>
-<figure><img src="https://www.dropbox.com/scl/fi/hkoxu32rskr8c718e4n8o/stock_chart.png?rlkey=bdk65rmc59xfmzn9jvsh51ch4&amp;st=mfkv5xhu&amp;dl=1">
+<figure><img src="https://www.dropbox.com/scl/fi/hkoxu32rskr8c718e4n8o/stock_chart.png?rlkey=bdk65rmc59xfmzn9jvsh51ch4&amp;st=mfkv5xhu&amp;raw=1">
 </figure>
 
 <p>I obviously cannot magically pull stock market data out of nowhere - I needed to use an API that provides such market data. Now, let us think about how one might go about achieving this relatively simple task. The most naive and simple solution would be to send a request to the API endpoint whenever the UI is rendered. I used React to build the client side of the application - let us see what such an implementation would look like in code.</p>
@@ -650,7 +650,7 @@
 </figure>
 <p>Note that I am initializing a Redis client in two different ways - one with a specified URL and one with a specified port number. I conscioulsy made this choice because I needed to configure Redis in Heroku. In practice, these two different ways of creating a Redis client bear no difference.</p>
 <p>Now, let us see the code that actually handles the core logic. The flow is as follows:</p>
-<figure><img src="https://www.dropbox.com/scl/fi/gzfde1cq7xpspa8fp58er/cache_explain.png?rlkey=vc9o55qzdme1bbl7keyhzlus9&amp;st=psbho8xi&amp;dl=1">
+<figure><img src="https://www.dropbox.com/scl/fi/gzfde1cq7xpspa8fp58er/cache_explain.png?rlkey=vc9o55qzdme1bbl7keyhzlus9&amp;st=psbho8xi&amp;raw=1">
 </figure>
 
 <p>With that in mind, let&rsquo;s take a look at the code.</p>
@@ -955,7 +955,7 @@
   
 </figure>
 <p>Using Chrome Developer Tools, we can inspect the intricate details of networking operations. The screenshot below shows how long it took for the API request to process. &ldquo;Waiting (TTFB)&rdquo;  indicates total time for the sent request to get to the destination (in this case the Express backend), then for the destination to process the request, and finally for the response to traverse the networks back to the client. It took <strong>7.5 seconds</strong> for an API call asking for historical market data on Netflix stocks.</p>
-<figure><img src="https://www.dropbox.com/scl/fi/k76fwrnaxvyum44q7wtfm/without_cache.png?rlkey=b3mp4g0ukz2op0h57flriy1tz&amp;st=6b6r98xv&amp;dl=1"
+<figure><img src="https://www.dropbox.com/scl/fi/k76fwrnaxvyum44q7wtfm/without_cache.png?rlkey=b3mp4g0ukz2op0h57flriy1tz&amp;st=6b6r98xv&amp;raw=1"
     alt="API call without cache."><figcaption>
       <p>API call without cache.</p>
     </figcaption>
@@ -1030,7 +1030,7 @@
   
 </figure>
 <p>Then, let&rsquo;s refresh the page to initiate another call to our backend, and inspect with Chrome Developer Tools.</p>
-<figure><img src="https://www.dropbox.com/scl/fi/99oj2xzgjmmp1767di6zz/with_cache.png?rlkey=r5wr3vdityyc6x5vy9usu7pps&amp;st=8ia84fw3&amp;dl=1"
+<figure><img src="https://www.dropbox.com/scl/fi/99oj2xzgjmmp1767di6zz/with_cache.png?rlkey=r5wr3vdityyc6x5vy9usu7pps&amp;st=8ia84fw3&amp;raw=1"
     alt="API call with cache."><figcaption>
       <p>API call with cache.</p>
     </figcaption>

@@ -6,7 +6,7 @@ draft: false
 summary: 'Reflecting back at my first 3 months at Meta'
 ---
 
-{{< figure src="https://www.dropbox.com/scl/fi/29b1509j81yitz2jpbdy4/meta.png?rlkey=sw5l54mujur4a387o26lelgil&st=t73yg490&dl=1" >}}
+{{< figure src="https://www.dropbox.com/scl/fi/29b1509j81yitz2jpbdy4/meta.png?rlkey=sw5l54mujur4a387o26lelgil&st=t73yg490&raw=1" >}}
 
 It's been over 3 months since I started my first job out of college - and I wanted to leave a blog
 post about it. A few things I'll cover in this blog post: my bootcamp experience at Meta, and the
@@ -18,7 +18,7 @@ Most of you are probably wondering what I mean by _bootcamp_. Isn't that a milit
 recruits go through weeks of basic military training? Well yes, but that's not what I'm going to
 write about here (thankfully).
 
-{{< figure src="https://www.dropbox.com/scl/fi/apekvbtovkpafltua7zr3/bootcamp.png?rlkey=vndyioktpcjyaulh7e35s4id5&st=efssvo17&dl=1" >}}
+{{< figure src="https://www.dropbox.com/scl/fi/apekvbtovkpafltua7zr3/bootcamp.png?rlkey=vndyioktpcjyaulh7e35s4id5&st=efssvo17&raw=1" >}}
 
 Meta has a long-standing tradition of having all the new hires go through weeks of training
 (different training depending on roles), regardless of seniority. My understanding is that new hires

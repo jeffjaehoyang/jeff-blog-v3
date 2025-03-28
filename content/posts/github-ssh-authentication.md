@@ -6,7 +6,7 @@ draft: false
 summary: 'How to setup local machine to properly authenticate Github with SSH'
 ---
 
-{{< figure src="https://www.dropbox.com/scl/fi/wsw1xoimxv037mqczocti/github_ssh_auth.png?rlkey=s1eyxoal3nvrvmmbh4ikl06mg&st=l4nkklu2&dl=1" >}}
+{{< figure src="https://www.dropbox.com/scl/fi/wsw1xoimxv037mqczocti/github_ssh_auth.png?rlkey=s1eyxoal3nvrvmmbh4ikl06mg&st=l4nkklu2&raw=1" >}}
 
 This blog post is meant to serve as a kind note for my future self, inevitably struggling to properly setup Github SSH authentication.
 If there's anyone else out there who happens to stumble upon this post while struggling with the same issue, hopefully this post will help you out.
@@ -20,12 +20,12 @@ The server, upon receiving a connection request from a client, sends a public ke
 (if you are not familiar with it, and would like to learn more about it in depth, feel free to check [this](https://ssd.eff.org/en/module/deep-dive-end-end-encryption-how-do-public-key-encryption-systems-work) link out).
 Once the SSH client and SSH server agree that each other can be trusted, the two establish a communication channel in which data is **encrypted**, making it **secure**.
 
-{{< figure src="https://www.dropbox.com/scl/fi/kzpm5oqcgqa5t3qc4bp51/client_server_model.png?rlkey=ewib1wplx29s07at0w3nh75oy&st=9ryx4qho&dl=1" caption="Client-Server Model." >}}
+{{< figure src="https://www.dropbox.com/scl/fi/kzpm5oqcgqa5t3qc4bp51/client_server_model.png?rlkey=ewib1wplx29s07at0w3nh75oy&st=9ryx4qho&raw=1" caption="Client-Server Model." >}}
 
 ## Why Use SSH for Github ?
 There are two different ways to interact with remote github repositories (clone, pull, push, etc): **HTTPS and SSH**.
 
-{{< figure src="https://www.dropbox.com/scl/fi/rccmjs0na2mcyy4h5t3lo/github_ssh_https_screenshot.png?rlkey=yy2jdzltc5wj1fa0c2ahdeprz&st=yf2wdf2e&dl=1" caption="Github SSH Screenshot." >}}
+{{< figure src="https://www.dropbox.com/scl/fi/rccmjs0na2mcyy4h5t3lo/github_ssh_https_screenshot.png?rlkey=yy2jdzltc5wj1fa0c2ahdeprz&st=yf2wdf2e&raw=1" caption="Github SSH Screenshot." >}}
 
 HTTPS is a very popular option for a lot of Github users, because it is extremely simple. In fact, *Github also recommends* HTTPS over SSH due to its port (443) being globally accessible, 
 even behind firewalls. If you opt for HTTPS, all you need is your Github account information (id / password). However, when interacting with remote repositories, **you will be prompted to enter your Github credentials every time**
@@ -90,7 +90,7 @@ $ pbcopy < ~/.ssh/id_rsa.pub
 Now, head over to your `Github account > Settings > SSH and GPG keys`. Click on "New SSH Key".
 Enter the title of your SSH key (try to be descriptive, just in case you add more SSH keys later on), and copy the public key content from your clipboard.
 
-{{< figure src="https://www.dropbox.com/scl/fi/blbbbuporapwc2i6fju7f/github_add_ssh_key.png?rlkey=guoh1zo7guyjpmjkbthe0m7eq&st=m9kkkox3&dl=1" caption="Screenshot of Github Add SSH." >}}
+{{< figure src="https://www.dropbox.com/scl/fi/blbbbuporapwc2i6fju7f/github_add_ssh_key.png?rlkey=guoh1zo7guyjpmjkbthe0m7eq&st=m9kkkox3&raw=1" caption="Screenshot of Github Add SSH." >}}
 
 You should see that your public key is now added to your Github account. You are all set now!
 

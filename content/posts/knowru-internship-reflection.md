@@ -6,7 +6,7 @@ draft: false
 summary: 'Reflecting on the 2019 summer internship at Knowru'
 ---
 
-{{< figure src="https://www.dropbox.com/scl/fi/pwi095uutpacvs18z8p7y/knowru_internship_cover.png?rlkey=9yqg5m1p7v8xszytdn2k8vr81&st=gjvveinv&dl=1" >}}
+{{< figure src="https://www.dropbox.com/scl/fi/pwi095uutpacvs18z8p7y/knowru_internship_cover.png?rlkey=9yqg5m1p7v8xszytdn2k8vr81&st=gjvveinv&raw=1" >}}
 
 ### Reflecting on 2019 Summer Internship @Knowru 
 

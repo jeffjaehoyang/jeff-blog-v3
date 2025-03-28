@@ -6,7 +6,7 @@ draft: false
 summary: 'How a Redis cache can help solve problems when fetching data'
 ---
 
-{{< figure src="https://www.dropbox.com/scl/fi/qsjqvjzqqbs14eenm259a/thumbnail.png?rlkey=s5u6ao93lajafrka9snbii45v&st=do23ngs6&dl=1" >}}
+{{< figure src="https://www.dropbox.com/scl/fi/qsjqvjzqqbs14eenm259a/thumbnail.png?rlkey=s5u6ao93lajafrka9snbii45v&st=do23ngs6&raw=1" >}}
 
 Recently, I've been working on a side project - a web application ([inretrospect.finance](https://www.inretrospect.finance)) that lets users record their investments with notes for future reference. The whole project is built on top of a fantastic API from [Alphavantage](https://www.alphavantage.co/documentation/) that provides detailed financial data on public companies. While it would have been great if it were possible to make unlimited API requests - their free tier plan only allows for 5 requests per minute and 500 requests per day. This obviously is a significant bottleneck, so I needed to find a solution. After putting some thought into this, I decided to *cache* API requests so that whenver there's a *cache hit*, a request to the actual API endpoint is not made, therefore cutting down the number of requests to the API service. With that context in mind, let's dive in.
 
@@ -35,7 +35,7 @@ That's about it - you should be able to run Redis on your machine now. For insta
 
 Before we proceed, I'd like to explain a little more about the problem I faced, and why Redis turned out to be a great option to address the problem at hand. In the web application [inretrospect.finance](https://www.inretrospect.finance), I needed historical stock market data for stocks of user's choice (US stocks). For the purposes of this application, I did not need real-time market data, but I did need the data to be updated once a day after market close. For example, if a user registered Facebook and Google as stocks of interest, I needed historical market data on both of these stocks in order to render a line chart. To help your understanding, below is a screenshot of the UI that needs such historical market data to render properly.
 
-{{< figure src="https://www.dropbox.com/scl/fi/hkoxu32rskr8c718e4n8o/stock_chart.png?rlkey=bdk65rmc59xfmzn9jvsh51ch4&st=mfkv5xhu&dl=1" >}}
+{{< figure src="https://www.dropbox.com/scl/fi/hkoxu32rskr8c718e4n8o/stock_chart.png?rlkey=bdk65rmc59xfmzn9jvsh51ch4&st=mfkv5xhu&raw=1" >}}
 
 I obviously cannot magically pull stock market data out of nowhere - I needed to use an API that provides such market data. Now, let us think about how one might go about achieving this relatively simple task. The most naive and simple solution would be to send a request to the API endpoint whenever the UI is rendered. I used React to build the client side of the application - let us see what such an implementation would look like in code.
 
@@ -104,7 +104,7 @@ Note that I am initializing a Redis client in two different ways - one with a sp
 
 Now, let us see the code that actually handles the core logic. The flow is as follows: 
 
-{{< figure src="https://www.dropbox.com/scl/fi/gzfde1cq7xpspa8fp58er/cache_explain.png?rlkey=vc9o55qzdme1bbl7keyhzlus9&st=psbho8xi&dl=1" >}}
+{{< figure src="https://www.dropbox.com/scl/fi/gzfde1cq7xpspa8fp58er/cache_explain.png?rlkey=vc9o55qzdme1bbl7keyhzlus9&st=psbho8xi&raw=1" >}}
 
 With that in mind, let's take a look at the code.
 
@@ -169,7 +169,7 @@ It'd be interesting to see how much of a difference Redis can make - how much fa
 
 Using Chrome Developer Tools, we can inspect the intricate details of networking operations. The screenshot below shows how long it took for the API request to process. "Waiting (TTFB)"  indicates total time for the sent request to get to the destination (in this case the Express backend), then for the destination to process the request, and finally for the response to traverse the networks back to the client. It took **7.5 seconds** for an API call asking for historical market data on Netflix stocks. 
 
-{{< figure src="https://www.dropbox.com/scl/fi/k76fwrnaxvyum44q7wtfm/without_cache.png?rlkey=b3mp4g0ukz2op0h57flriy1tz&st=6b6r98xv&dl=1" caption="API call without cache." >}}
+{{< figure src="https://www.dropbox.com/scl/fi/k76fwrnaxvyum44q7wtfm/without_cache.png?rlkey=b3mp4g0ukz2op0h57flriy1tz&st=6b6r98xv&raw=1" caption="API call without cache." >}}
 
 Now, let us verify that data on Netflix is actually stored in our Redis cache. 
 
@@ -181,7 +181,7 @@ Now, let us verify that data on Netflix is actually stored in our Redis cache.
 
 Then, let's refresh the page to initiate another call to our backend, and inspect with Chrome Developer Tools.
 
-{{< figure src="https://www.dropbox.com/scl/fi/99oj2xzgjmmp1767di6zz/with_cache.png?rlkey=r5wr3vdityyc6x5vy9usu7pps&st=8ia84fw3&dl=1" caption="API call with cache." >}}
+{{< figure src="https://www.dropbox.com/scl/fi/99oj2xzgjmmp1767di6zz/with_cache.png?rlkey=r5wr3vdityyc6x5vy9usu7pps&st=8ia84fw3&raw=1" caption="API call with cache." >}}
 
 *Wow*. The cached response only took **60 milliseconds**. We just shaved off **99.3%** of the total response time with the Redis cache implementation. It's not only that - by caching API responses in Redis cache, I was also able to work with the Alphavantage free tier API during development (maximum of 5 requests per minute and 500 requests per day). If [inretrospective.finance](https://www.inretrospect.finance) scales up in the future, there will definitely be a need to start using the paid plans, but for now, this will do.
 

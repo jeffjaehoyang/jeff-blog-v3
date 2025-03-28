@@ -6,7 +6,7 @@ draft: false
 summary: 'What I learned working at an early stage startup - the business side'
 ---
 
-{{< figure src="https://www.dropbox.com/scl/fi/4fftk0kyr0bk4gu8vatiq/fumi_startup.png?rlkey=xe5fkwydae5o8zvy9y4l1wj5f&st=5vu2zamp&dl=1" >}}
+{{< figure src="https://www.dropbox.com/scl/fi/4fftk0kyr0bk4gu8vatiq/fumi_startup.png?rlkey=xe5fkwydae5o8zvy9y4l1wj5f&st=5vu2zamp&raw=1" >}}
 
 ***Disclaimer***  *This post does not in any way represent the views of Fumi as a company, but is solely my individual opinion and reflection on my experience as a software engineer at an early-stage startup*
 

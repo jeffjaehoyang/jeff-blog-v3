@@ -6,7 +6,7 @@ draft: false
 summary: 'Setting up ESLint and Prettier with VS Code'
 ---
 
-{{< figure src="https://www.dropbox.com/scl/fi/mw8pvsrn9tl6nxj3ek9a5/eslint_prettier_vscode.png?rlkey=gulsevtz9iht01msjh9notuyl&st=mocgol5y&dl=1" >}}
+{{< figure src="https://www.dropbox.com/scl/fi/mw8pvsrn9tl6nxj3ek9a5/eslint_prettier_vscode.png?rlkey=gulsevtz9iht01msjh9notuyl&st=mocgol5y&raw=1" >}}
 
 An important part of software development/engineering (or whatever else you may want to call it) is
 writing code that works as intended, and is as bug-free as can be made. However, there's actually a
@@ -252,7 +252,7 @@ useful VS Code plugin that I love. By default, ESLint will underline error-prone
 orange, depending on how you've set up certain rules for ESLint. However, you will need to hover
 your mouse over the underlined code to see the error message.
 
-{{< figure src="https://www.dropbox.com/scl/fi/q6umjxsn26j2iy75bjzd1/eslint_prettier_without_errorlens.gif?rlkey=i3c8kycilztdgneva96ufyn6x&st=t82hoaob&dl=1" caption="A GIF of ESLint and Prettier working in VS Code without Error Lens." >}}
+{{< figure src="https://www.dropbox.com/scl/fi/q6umjxsn26j2iy75bjzd1/eslint_prettier_without_errorlens.gif?rlkey=i3c8kycilztdgneva96ufyn6x&st=t82hoaob&raw=1" caption="A GIF of ESLint and Prettier working in VS Code without Error Lens." >}}
 
 You should be able to see that ESLint and Prettier are properly working! The red underline shows
 that a `const` variable should not be reassigned, and the code is automatically formatted when I
@@ -260,7 +260,7 @@ save the file. However, notice that I had to hover over the red underline to act
 messages that ESLint has produced for us. With Error Lens, the error messages are printed on the
 screen, which in my opinion is very convenient. Let's see that in action!
 
-{{< figure src="https://www.dropbox.com/scl/fi/k8e9xx0zusixqi4uq2dfr/eslint_prettier_with_errorlens.gif?rlkey=y0zcgfqs07ac3qmbirntf7uku&st=koyo5c46&dl=1" caption="A GIF of ESLint and Prettier working in VS Code with Error Lens." >}}
+{{< figure src="https://www.dropbox.com/scl/fi/k8e9xx0zusixqi4uq2dfr/eslint_prettier_with_errorlens.gif?rlkey=y0zcgfqs07ac3qmbirntf7uku&st=koyo5c46&raw=1" caption="A GIF of ESLint and Prettier working in VS Code with Error Lens." >}}
 
 Voila! There we have it! ESLint and Prettier working beautifully with VS Code, and long gone are
 your worries of having to scratch your head over how to create a codebase with uniform code style.
