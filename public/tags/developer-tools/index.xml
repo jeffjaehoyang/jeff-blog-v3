@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Developer Tools on jeffyang.io</title>
-    <link>http://localhost:54845/tags/developer-tools/</link>
+    <link>https://www.jeffyang.io/tags/developer-tools/</link>
     <description>Recent content in Developer Tools on jeffyang.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,26 +10,26 @@
     <webMaster>jho.yang96@gmail.com (Jeff Yang)</webMaster>
     <copyright>Jeff Yang</copyright>
     <lastBuildDate>Sat, 30 Jul 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:54845/tags/developer-tools/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.jeffyang.io/tags/developer-tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configuring Portable Dotfiles</title>
-      <link>http://localhost:54845/posts/configuring-portable-dotfiles/</link>
+      <link>https://www.jeffyang.io/posts/configuring-portable-dotfiles/</link>
       <pubDate>Sat, 30 Jul 2022 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>http://localhost:54845/posts/configuring-portable-dotfiles/</guid>
+      <guid>https://www.jeffyang.io/posts/configuring-portable-dotfiles/</guid>
       <description>A blog post on how to manage dotfiles with GNU Stow</description>
     </item>
     <item>
       <title>Github Authentication with SSH</title>
-      <link>http://localhost:54845/posts/github-ssh-authentication/</link>
+      <link>https://www.jeffyang.io/posts/github-ssh-authentication/</link>
       <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>http://localhost:54845/posts/github-ssh-authentication/</guid>
+      <guid>https://www.jeffyang.io/posts/github-ssh-authentication/</guid>
       <description>How to setup local machine to properly authenticate Github with SSH</description>
     </item>
     <item>
       <title>Setting up ESLint and Prettier with VS Code</title>
-      <link>http://localhost:54845/posts/eslint-prettier-vscode/</link>
+      <link>https://www.jeffyang.io/posts/eslint-prettier-vscode/</link>
       <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>http://localhost:54845/posts/eslint-prettier-vscode/</guid>
+      <guid>https://www.jeffyang.io/posts/eslint-prettier-vscode/</guid>
       <description>Setting up ESLint and Prettier with VS Code</description>
     </item>
   </channel>

@@ -2,5 +2,5 @@
 title: "Read Only Memory"
 ---
 
-A software engineer's musings on learnings & life.
+Thoughts from a life in progress.
 {.lead}

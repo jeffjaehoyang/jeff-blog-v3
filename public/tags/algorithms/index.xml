@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Algorithms on jeffyang.io</title>
-    <link>http://localhost:54845/tags/algorithms/</link>
+    <link>https://www.jeffyang.io/tags/algorithms/</link>
     <description>Recent content in Algorithms on jeffyang.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
@@ -10,19 +10,19 @@
     <webMaster>jho.yang96@gmail.com (Jeff Yang)</webMaster>
     <copyright>Jeff Yang</copyright>
     <lastBuildDate>Sat, 28 Dec 2019 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:54845/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://www.jeffyang.io/tags/algorithms/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What is a Graph?</title>
-      <link>http://localhost:54845/posts/what-is-a-graph/</link>
+      <link>https://www.jeffyang.io/posts/what-is-a-graph/</link>
       <pubDate>Sat, 28 Dec 2019 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>http://localhost:54845/posts/what-is-a-graph/</guid>
+      <guid>https://www.jeffyang.io/posts/what-is-a-graph/</guid>
       <description>A blog post on the graph data structure in computer science</description>
     </item>
     <item>
       <title>Finding the Shortest Path from A to Anywhere</title>
-      <link>http://localhost:54845/posts/dijkstras-algorithm/</link>
+      <link>https://www.jeffyang.io/posts/dijkstras-algorithm/</link>
       <pubDate>Sun, 15 Dec 2019 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>http://localhost:54845/posts/dijkstras-algorithm/</guid>
+      <guid>https://www.jeffyang.io/posts/dijkstras-algorithm/</guid>
       <description>A deep dive into Dijkstra&amp;rsquo;s Algorithm</description>
     </item>
   </channel>
