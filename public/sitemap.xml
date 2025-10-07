@@ -2,85 +2,85 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:64777/posts/career-growth-as-an-engineer/</loc>
+    <loc>https://www.jeffyang.io/posts/career-growth-as-an-engineer/</loc>
     <lastmod>2025-10-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/tags/personal-reflection/</loc>
+    <loc>https://www.jeffyang.io/tags/personal-reflection/</loc>
     <lastmod>2025-10-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/</loc>
+    <loc>https://www.jeffyang.io/posts/</loc>
     <lastmod>2025-10-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/</loc>
+    <loc>https://www.jeffyang.io/</loc>
     <lastmod>2025-10-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/tags/</loc>
+    <loc>https://www.jeffyang.io/tags/</loc>
     <lastmod>2025-10-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/first-three-months-at-meta/</loc>
+    <loc>https://www.jeffyang.io/posts/first-three-months-at-meta/</loc>
     <lastmod>2022-10-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/configuring-portable-dotfiles/</loc>
+    <loc>https://www.jeffyang.io/posts/configuring-portable-dotfiles/</loc>
     <lastmod>2022-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/tags/developer-tools/</loc>
+    <loc>https://www.jeffyang.io/tags/developer-tools/</loc>
     <lastmod>2022-07-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/navigating-a-computer-science-degree/</loc>
+    <loc>https://www.jeffyang.io/posts/navigating-a-computer-science-degree/</loc>
     <lastmod>2022-03-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/practical-application-of-redis-cache/</loc>
+    <loc>https://www.jeffyang.io/posts/practical-application-of-redis-cache/</loc>
     <lastmod>2021-12-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/tags/web-development/</loc>
+    <loc>https://www.jeffyang.io/tags/web-development/</loc>
     <lastmod>2021-12-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/my-facebook-internship/</loc>
+    <loc>https://www.jeffyang.io/posts/my-facebook-internship/</loc>
     <lastmod>2021-09-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/fumi-internship-2/</loc>
+    <loc>https://www.jeffyang.io/posts/fumi-internship-2/</loc>
     <lastmod>2021-03-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/fumi-internship-1/</loc>
+    <loc>https://www.jeffyang.io/posts/fumi-internship-1/</loc>
     <lastmod>2021-02-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/github-ssh-authentication/</loc>
+    <loc>https://www.jeffyang.io/posts/github-ssh-authentication/</loc>
     <lastmod>2020-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/eslint-prettier-vscode/</loc>
+    <loc>https://www.jeffyang.io/posts/eslint-prettier-vscode/</loc>
     <lastmod>2020-08-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/aws-s3-and-lambda/</loc>
+    <loc>https://www.jeffyang.io/posts/aws-s3-and-lambda/</loc>
     <lastmod>2020-04-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/deploy-django-on-heroku/</loc>
+    <loc>https://www.jeffyang.io/posts/deploy-django-on-heroku/</loc>
     <lastmod>2020-04-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/tags/algorithms/</loc>
+    <loc>https://www.jeffyang.io/tags/algorithms/</loc>
     <lastmod>2019-12-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/what-is-a-graph/</loc>
+    <loc>https://www.jeffyang.io/posts/what-is-a-graph/</loc>
     <lastmod>2019-12-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/dijkstras-algorithm/</loc>
+    <loc>https://www.jeffyang.io/posts/dijkstras-algorithm/</loc>
     <lastmod>2019-12-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/tweet-bot/</loc>
+    <loc>https://www.jeffyang.io/posts/tweet-bot/</loc>
     <lastmod>2019-11-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/deploy-flask-application-on-heroku/</loc>
+    <loc>https://www.jeffyang.io/posts/deploy-flask-application-on-heroku/</loc>
     <lastmod>2019-11-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/build-a-flask-website/</loc>
+    <loc>https://www.jeffyang.io/posts/build-a-flask-website/</loc>
     <lastmod>2019-10-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/posts/knowru-internship-reflection/</loc>
+    <loc>https://www.jeffyang.io/posts/knowru-internship-reflection/</loc>
     <lastmod>2019-09-09T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:64777/about/</loc>
+    <loc>https://www.jeffyang.io/about/</loc>
   </url><url>
-    <loc>http://localhost:64777/categories/</loc>
+    <loc>https://www.jeffyang.io/categories/</loc>
   </url><url>
-    <loc>http://localhost:64777/graph/</loc>
+    <loc>https://www.jeffyang.io/graph/</loc>
   </url>
 </urlset>
