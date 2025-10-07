@@ -9,8 +9,15 @@
     <managingEditor>jho.yang96@gmail.com (Jeff Yang)</managingEditor>
     <webMaster>jho.yang96@gmail.com (Jeff Yang)</webMaster>
     <copyright>Jeff Yang</copyright>
-    <lastBuildDate>Sun, 23 Oct 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 06 Oct 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://www.jeffyang.io/tags/personal-reflection/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My Story - Growth from IC3 to IC5</title>
+      <link>https://www.jeffyang.io/posts/career-growth-as-an-engineer/</link>
+      <pubDate>Mon, 06 Oct 2025 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
+      <guid>https://www.jeffyang.io/posts/career-growth-as-an-engineer/</guid>
+      <description>My first 3 years at Meta &amp;amp; career growth</description>
+    </item>
     <item>
       <title>First 3 Months at Meta</title>
       <link>https://www.jeffyang.io/posts/first-three-months-at-meta/</link>

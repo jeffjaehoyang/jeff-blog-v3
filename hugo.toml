@@ -8,6 +8,8 @@ titleCaseStyle = "firstupper"
 [module]
   [[module.imports]]
     path = "github.com/michenriksen/hugo-theme-til"
+  [[module.imports]]
+    path = "github.com/divinerites/plausible-hugo"
 
 [outputs]
   home = ['html']
@@ -109,3 +111,7 @@ titleCaseStyle = "firstupper"
     # Crawler list from https://github.com/ai-robots-txt/ai.robots.txt
     # Default: false
     blockAI = true
+  
+  [params.plausible]
+    enable = true  # Whether to enable plausible tracking
+    domain = "jeffyang.io"  # Plausible "domain" name/id in your dashboard

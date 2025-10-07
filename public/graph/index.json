@@ -8,6 +8,10 @@
       "in": [],
       "out": []
     },
+    "/posts/career-growth-as-an-engineer/": {
+      "in": [],
+      "out": []
+    },
     "/posts/configuring-portable-dotfiles/": {
       "in": [],
       "out": []
@@ -79,6 +83,11 @@
       "permalink": "/posts/build-a-flask-website/",
       "section": "posts",
       "title": "Build Your Own Website with Flask"
+    },
+    "/posts/career-growth-as-an-engineer/": {
+      "permalink": "/posts/career-growth-as-an-engineer/",
+      "section": "posts",
+      "title": "My Story - Growth from IC3 to IC5"
     },
     "/posts/configuring-portable-dotfiles/": {
       "permalink": "/posts/configuring-portable-dotfiles/",
