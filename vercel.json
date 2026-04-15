@@ -1,5 +1,3 @@
 {
-  "build": {
-    "command": "git submodule update --init --recursive && hugo --gc"
-  }
+  "buildCommand": "git submodule update --init --recursive && hugo --gc"
 }
