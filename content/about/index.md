@@ -1,22 +1,15 @@
-**A Little About Myself 🍉**
+---
+title: "A Little About Myself"
+---
 
-**Welcome to my personal corner of the internet!**
+Hey, I'm Jeff — welcome to my personal corner of the internet.
 
-I created this blog for myself to freely share & document my thoughts.
+I'm a software engineer at Meta, building data & infra for personal superintelligence at [Meta Superintelligence Labs](https://ai.meta.com/). Before that, I worked on checkout and commerce systems at Meta. I started programming in my freshman year of college and haven't stopped since.
 
-### Where am I from?
+Born and raised in Seoul, South Korea. Currently based in NYC.
 
-Born and raised in Seoul, South Korea.  
-Working in NYC.
+I created this blog as a space to think out loud — about engineering, career, and whatever else is on my mind. Some posts are technical deep dives, others are just honest reflections on what it's like to grow as an engineer.
 
-### What's my job?
-
-I'm a software engineer at Meta, currently working on data & infra for LLMs.
-
-### When did I start programming?
-
-My first ever programming experience was in freshman year of college.
-
-### Words I live by
+When I'm not writing code, you'll probably find me on the golf course, on the tennis court, planning the next trip, or rearranging furniture for the hundredth time.
 
 > Life is 10% what happens to you, and 90% how you react to it.

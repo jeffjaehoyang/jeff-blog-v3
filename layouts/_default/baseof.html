@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="en-us">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+<html lang="{{ .Site.LanguageCode }}">
+  <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Categories | jeffyang.io</title>
-    <meta name="description" content="Thoughts from a life in progress." />
+    <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    <meta name="description" content="{{ .Site.Params.description }}" />
 
-    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;500;600&display=swap" rel="stylesheet">
 
-    
+    <!-- Plausible Analytics -->
     <script defer data-domain="jeffyang.io" src="https://plausible.io/js/script.js"></script>
 
     <style>
@@ -44,7 +44,7 @@
         flex: 1;
       }
 
-       
+      /* Navbar */
       .site-nav {
         display: flex;
         justify-content: space-between;
@@ -75,21 +75,28 @@
       }
 
       .site-nav-links a:hover {
-        color: #4a4b4f;
+        color: #8f6a60;
       }
 
-       
+      /* Main content */
       .site-main {
         flex: 1;
         padding: 40px 0;
       }
 
-       
+      /* Footer */
       .site-footer {
         border-top: 1px solid #e5e5e5;
-        padding: 20px 0 40px;
+        padding: 24px 0 40px;
         color: #9d9d9d;
         font-size: 13px;
+      }
+
+      .footer-tagline {
+        margin-top: 4px;
+        font-style: italic;
+        font-size: 12px;
+        color: #bbb;
       }
 
       h1 {
@@ -117,7 +124,19 @@
       }
 
       a:hover {
-        color: #6b5046;
+        color: #8f6a60;
+      }
+
+      /* Post list items */
+      .post-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .post-link:hover .post-link-title,
+      .post-link:hover {
+        color: #8f6a60 !important;
       }
 
       blockquote {
@@ -146,7 +165,7 @@
         }
       }
 
-       
+      /* Code blocks */
       pre {
         background-color: #f5f5f5;
         padding: 16px;
@@ -178,7 +197,7 @@
         word-wrap: break-word;
       }
 
-       
+      /* MathJax */
       .post-content mjx-container[display="true"] {
         display: block;
         text-align: center;
@@ -196,7 +215,7 @@
         overflow-y: visible;
       }
 
-       
+      /* Images in posts */
       .post-content figure {
         margin: 1.5em 0;
         padding: 0;
@@ -229,32 +248,13 @@
         </div>
       </nav>
       <main class="site-main">
-        
-<h1>Categories</h1>
-
-
-
-
+        {{ block "main" . }}{{ end }}
       </main>
       <footer class="site-footer">
-        &copy; 2026 Jeff Yang
+        <div>&copy; {{ now.Year }} {{ .Site.Params.author }}</div>
+        <div class="footer-tagline">Made with curiosity and late nights 🍉</div>
       </footer>
     </div>
-    
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-</script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
+    {{ partial "math.html" . }}
   </body>
 </html>

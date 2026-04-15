@@ -3,7 +3,7 @@ title: 'First 3 Months at Meta'
 date: 2022-10-23
 tags: ['Personal Reflection']
 draft: false
-summary: 'Reflecting back at my first 3 months at Meta'
+description: 'Reflecting back at my first 3 months at Meta'
 ---
 
 {{< figure src="https://www.dropbox.com/scl/fi/29b1509j81yitz2jpbdy4/meta.png?rlkey=sw5l54mujur4a387o26lelgil&st=t73yg490&raw=1" >}}

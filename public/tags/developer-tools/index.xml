@@ -2,35 +2,33 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Developer Tools on jeffyang.io</title>
-    <link>https://www.jeffyang.io/tags/developer-tools/</link>
+    <link>http://localhost:1313/tags/developer-tools/</link>
     <description>Recent content in Developer Tools on jeffyang.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <managingEditor>jho.yang96@gmail.com (Jeff Yang)</managingEditor>
-    <webMaster>jho.yang96@gmail.com (Jeff Yang)</webMaster>
     <copyright>Jeff Yang</copyright>
     <lastBuildDate>Sat, 30 Jul 2022 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://www.jeffyang.io/tags/developer-tools/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/developer-tools/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Configuring Portable Dotfiles</title>
-      <link>https://www.jeffyang.io/posts/configuring-portable-dotfiles/</link>
-      <pubDate>Sat, 30 Jul 2022 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>https://www.jeffyang.io/posts/configuring-portable-dotfiles/</guid>
-      <description>A blog post on how to manage dotfiles with GNU Stow</description>
+      <link>http://localhost:1313/posts/configuring-portable-dotfiles/</link>
+      <pubDate>Sat, 30 Jul 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/configuring-portable-dotfiles/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://www.dropbox.com/scl/fi/9qpxekwcgf43abyrvkfx5/thumbnail.png?rlkey=zgwnrsdtm0l183zu8rd4wq2hs&amp;amp;st=lhnoksyp&amp;amp;raw=1&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;I recently stumbled across a problem that I never really had to solve before. As I started my first full-time job, I received a new laptop for work-related use. I also set up my development server, which is a remote computer sitting somewhere in a data center that I can SSH into for development purposes. As my preferred choice of text editor is Neovim, I have a lot of configuration files that go along with it. I also have some custom tmux configurations. What about ZSH configurations? The list goes on. One way of doing it would be to manually copy-and-paste all the configuration files. But there had to be a better way - one that doesn&amp;rsquo;t require so much error-prone manual reptition. If I start a new job at a different company, or if I get a new personal computer for myself, I don&amp;rsquo;t want to have to continue to copy-and-paste all these &amp;ldquo;dotfiles&amp;rdquo;. So I searched for a way to make my dotfiles &amp;ldquo;portable&amp;rdquo;. The solution that I decided to go with was &lt;a href=&#34;https://www.gnu.org/software/stow/&#34;&gt;GNU Stow&lt;/a&gt; - in this post I&amp;rsquo;ll explain a little bit about how Stow works.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Github Authentication with SSH</title>
-      <link>https://www.jeffyang.io/posts/github-ssh-authentication/</link>
-      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>https://www.jeffyang.io/posts/github-ssh-authentication/</guid>
-      <description>How to setup local machine to properly authenticate Github with SSH</description>
+      <link>http://localhost:1313/posts/github-ssh-authentication/</link>
+      <pubDate>Thu, 31 Dec 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/github-ssh-authentication/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://www.dropbox.com/scl/fi/wsw1xoimxv037mqczocti/github_ssh_auth.png?rlkey=s1eyxoal3nvrvmmbh4ikl06mg&amp;amp;st=l4nkklu2&amp;amp;raw=1&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;This blog post is meant to serve as a kind note for my future self, inevitably struggling to properly setup Github SSH authentication.&#xA;If there&amp;rsquo;s anyone else out there who happens to stumble upon this post while struggling with the same issue, hopefully this post will help you out.&#xA;I will go over &lt;strong&gt;what&lt;/strong&gt; SSH authentication is, &lt;strong&gt;why&lt;/strong&gt; you might be interested in setting one up yourself (in the context of Github), and finally, &lt;strong&gt;how&lt;/strong&gt; to set it up properly.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Setting up ESLint and Prettier with VS Code</title>
-      <link>https://www.jeffyang.io/posts/eslint-prettier-vscode/</link>
-      <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>https://www.jeffyang.io/posts/eslint-prettier-vscode/</guid>
-      <description>Setting up ESLint and Prettier with VS Code</description>
+      <link>http://localhost:1313/posts/eslint-prettier-vscode/</link>
+      <pubDate>Sat, 08 Aug 2020 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/eslint-prettier-vscode/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://www.dropbox.com/scl/fi/mw8pvsrn9tl6nxj3ek9a5/eslint_prettier_vscode.png?rlkey=gulsevtz9iht01msjh9notuyl&amp;amp;st=mocgol5y&amp;amp;raw=1&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;An important part of software development/engineering (or whatever else you may want to call it) is&#xA;writing code that works as intended, and is as bug-free as can be made. However, there&amp;rsquo;s actually a&#xA;lot more to writing code than just to &amp;ldquo;make it work.&amp;rdquo; This is primarily because almost any&#xA;meaningful project/software that exists in the world is created through collaboration. In other&#xA;words, it is important that you are able to easily read others&amp;rsquo; code, and that others are also able&#xA;to easily read and understand your code. There are lots of ways to achieve this, including manual&#xA;methods. A team of engineers can manually check for code style issues during code reviews, and&#xA;possibly even create a detailed documentation on the coding styles that every engineer on the team&#xA;should adhere to. However, with what we are about to cover in this blog post, investing engineers&#39;&#xA;time should no longer be put into reviewing code style. Without any further ado, let&amp;rsquo;s find out how&#xA;to set up ESLint and Prettier with Visual Studio Code (VS Code).&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

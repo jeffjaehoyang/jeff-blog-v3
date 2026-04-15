@@ -3,20 +3,23 @@ title: 'Django Channels 2.0, Postgres, Daphne, and Heroku'
 date: 2020-04-20
 tags: ['Web Development']
 draft: false
-summary: 'A blog post on how to deploy a Django-ASGI application on heroku'
+description: 'A blog post on how to deploy a Django-ASGI application on heroku'
 ---
 
 {{< figure src="https://www.dropbox.com/scl/fi/gw50hu2ix7raiydd5618e/heroku_django.png?rlkey=gg4gupvuzqu81ar9p6uc400lw&st=azmvi3ra&raw=1" >}}
 
 **Disclaimer: This blog post is largely a quarantine coding production.** 
 
-I already have a blog post on how to deploy a very simple Flask application on Heroku. In this blog post, I will explore more details of Heroku deployment, but this time with Django. I have been working on a Django & Channels side project, a web platform to enhance off-campus room searching experience for Northwestern students. As the application development was almost over and user testing seemed like the logical next step to take, I turned my eyes to Heroku (largely for their known simplicity compared to other services such as AWS or Linode). It turned out that there were a few curveballs thrown at me, largely due to Channels using an ASGI server rather than a traditional Python WSGI server. I hope this blog post serves as a future reference for myself, and for a few other friends out there that may be facing similar problems that I did.  
+I already have a blog post on how to deploy a very simple Flask application on Heroku. In this blog post, I will explore more details of Heroku deployment, but this time with Django. I have been working on a Django & Channels side project, a web platform to enhance off-campus room searching experience for Northwestern students. As the application development was almost over and user testing seemed like the logical next step to take, I turned my eyes to Heroku (largely for their known simplicity compared to other services such as AWS or Linode). It turned out that there were a few curveballs thrown at me, largely due to Channels using an ASGI server rather than a traditional Python WSGI server. I hope this blog post serves as a future reference for myself, and for a few other friends out there that may be facing similar problems that I did.
+
 
 ## 1. What is Heroku?
-Heroku is an extremely popular Platform as a Service (PaaS). Heroku is very attractive for developers who need to deploy something quickly, without having to worry about the complications of building server-side infrastructure. Heroku has a free-tier, but only provides very limited resources. For small personal projects, the free-tier should get the job done, but for bigger projects, you may want to consider upgrading your plan to handle more traffic.  
+Heroku is an extremely popular Platform as a Service (PaaS). Heroku is very attractive for developers who need to deploy something quickly, without having to worry about the complications of building server-side infrastructure. Heroku has a free-tier, but only provides very limited resources. For small personal projects, the free-tier should get the job done, but for bigger projects, you may want to consider upgrading your plan to handle more traffic.
+
 
 ## 2. Background
-In this post, I will be writing specifically about how to deploy a Django Channels application on Heroku. For those of you who are unfamiliar with Django Channels, here's a brief introduction: simply put, Channels gracefully extends Django's boundaries beyond HTTP - to handle WebSockets, chat protocols, IoT protocols, and more. It’s built on a Python specification called ASGI (Asynchronous Server Gateway Interface), which makes the deployment process slightly different from a Python WSGI application. This post will not be a Channels tutorial. If you are interested in learning more about Channels, take a look at their official [documentation](https://channels.readthedocs.io/en/latest/index.html). In moving forward, I will assume that you have a basic understanding of Python and Git version control, that you already have a working Django Channels application, and that you already have files such as `routing.py` and `consumers.py` already setup. This blog post will deal with deployment related content only.  
+In this post, I will be writing specifically about how to deploy a Django Channels application on Heroku. For those of you who are unfamiliar with Django Channels, here's a brief introduction: simply put, Channels gracefully extends Django's boundaries beyond HTTP - to handle WebSockets, chat protocols, IoT protocols, and more. It’s built on a Python specification called ASGI (Asynchronous Server Gateway Interface), which makes the deployment process slightly different from a Python WSGI application. This post will not be a Channels tutorial. If you are interested in learning more about Channels, take a look at their official [documentation](https://channels.readthedocs.io/en/latest/index.html). In moving forward, I will assume that you have a basic understanding of Python and Git version control, that you already have a working Django Channels application, and that you already have files such as `routing.py` and `consumers.py` already setup. This blog post will deal with deployment related content only.
+
 
 ## 3. Configuring Django Settings
 Environment variables play a big role in the separation of development and production environments. Rather than hard-coding environment variables (which is bad practice in general), setting separate environment variables in the local machine and Heroku deployment server makes life a lot easier for us developers. For macOS users, environment variables can be set in `.zshenv` or `.bash_profile` depending on your macOS version. The way I achieved a separation of settings for development and production environment was by conditionally setting production environment variables in a conditional where `DEBUG` is `False`. For this to work, the `DEBUG` value must be set to `True` in local settings, and to `False` in production. I used an environment variable named `DEBUG_VALUE` to dynamically assign the appropriate `DEBUG` value. You will also have to add an environment variable `SECRET_KEY`, which should not be hard-coded for production. We will deal with setting Heroku environment variables later. I also used `django_heroku`, which is an awesome package that automatically configures your Django application to work on Heroku. The use of `django_heroku` is in fact endorsed by Heroku, as it provides many niceties, including the reading of `DATABASE_URL`, logging configuration, a Heroku CI–compatible TestRunner, and an automatic configuration of ‘staticfiles’ to “just work” (according to Heroku).
@@ -25,7 +28,8 @@ Environment variables play a big role in the separation of development and produ
 $ pip install django_heroku
 ```
 
-Because a Django Channels application requires an ASGI server, we are going to need something different than a standard WSGI server such as Gunicorn. The Channels project maintains an official ASGI HTTP/WebSocket server, Daphne, which I will be using in my project. However, there are alternatives such as [uvicorn](https://www.uvicorn.org/), which is also known to be stable. Because of this extra layer of complication, there are a few different ways one can go about configuring appropriate web servers depending on needs. For example, you may choose to keep running standard HTTP requests through a WSGI server and use Daphne only for things WSGI cannot do, like HTTP long-polling and WebSockets. You may also opt to utilize Daphne for all HTTP and WebSocket traffic, in which case Daphne auto-negotiates between HTTP and Websocket. For my own project, I decided to use Daphne as the only server to handle all requests.  
+Because a Django Channels application requires an ASGI server, we are going to need something different than a standard WSGI server such as Gunicorn. The Channels project maintains an official ASGI HTTP/WebSocket server, Daphne, which I will be using in my project. However, there are alternatives such as [uvicorn](https://www.uvicorn.org/), which is also known to be stable. Because of this extra layer of complication, there are a few different ways one can go about configuring appropriate web servers depending on needs. For example, you may choose to keep running standard HTTP requests through a WSGI server and use Daphne only for things WSGI cannot do, like HTTP long-polling and WebSockets. You may also opt to utilize Daphne for all HTTP and WebSocket traffic, in which case Daphne auto-negotiates between HTTP and Websocket. For my own project, I decided to use Daphne as the only server to handle all requests.
+
 
 ```bash
 $ pip install daphne
@@ -63,7 +67,8 @@ if not DEBUG:
     AWS_S3_FILE_OVERWRITE = False
     DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
     S3_URL = f"http://{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com/"
-    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')    
+    STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
+
     django_heroku.settings(locals())
 ```
 
@@ -90,10 +95,12 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "yourappname.settings")
 django.setup()
 application = get_default_application()
 ```
-We are ready to move on to configuring Heroku now!  
+We are ready to move on to configuring Heroku now!
+
 
 ## 4. Configuring Heroku
-First, you will need to download the Heroku CLI. For more information, please take a look [here](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). During this process, you should have been prompted to create a Heroku account (please make sure you do, you'll need that!) This first step should have been relatively simple and straightforward. Once you download the Heroku CLI, you will have to login.  
+First, you will need to download the Heroku CLI. For more information, please take a look [here](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). During this process, you should have been prompted to create a Heroku account (please make sure you do, you'll need that!) This first step should have been relatively simple and straightforward. Once you download the Heroku CLI, you will have to login.
+
 
 ```bash
 $ brew tap heroku/brew && brew install heroku # install Heroku CLI for macOS
@@ -125,7 +132,8 @@ remote: -----> Installing requirements with pip
 ... push failed
 ```
 
-It seems like our push to `heroku master` just failed. We just need to configure a couple more files to get our application up and running on Heroku. Now let's take a look at what other files we need to successfully deploy our Django application.  
+It seems like our push to `heroku master` just failed. We just need to configure a couple more files to get our application up and running on Heroku. Now let's take a look at what other files we need to successfully deploy our Django application.
+
 
 ### Procfile
 To deploy any application on Heroku, you will need to add a `Procfile` (without '.txt', '.py' or any extensions) specifying a web server and your application name. Without the `Procfile`, Heroku will not be able to run a web server, which is needed to serve your application.<br></br>
@@ -136,14 +144,16 @@ $ vim Procfile
 ```
 
 ### Runtime.txt
-`runtime.txt` is not absolutely necessary, but is highly recommended if you are looking to specify the Python version you want your application to run on Heroku's servers.  
+`runtime.txt` is not absolutely necessary, but is highly recommended if you are looking to specify the Python version you want your application to run on Heroku's servers.
+
 ```bash
 $ # this file should be in your project's root directory 
 $ vim runtime.txt
 > python-3.8.2
 ```
 
-*I would highly recommend that you configure your `runtime.txt` with a Python version of 3.8.1 or higher. I initially deployed my application with Python version 3.7.4, which had a strange problem with opening a new database connection for each request, which crashed my server (my plan only allows for a maximum of 20 database connections). I spent hours searching through Google, which did not get me anywhere. Upgrading the Python version fixed the issue for me.*  
+*I would highly recommend that you configure your `runtime.txt` with a Python version of 3.8.1 or higher. I initially deployed my application with Python version 3.7.4, which had a strange problem with opening a new database connection for each request, which crashed my server (my plan only allows for a maximum of 20 database connections). I spent hours searching through Google, which did not get me anywhere. Upgrading the Python version fixed the issue for me.*
+
 
 ### Requirements.txt
 Having a `requirements.txt` is necessary for Heroku to automatically setup their dynos (their Linux machines) for you. Your `requirements.txt` must have any and all dependencies that your application needs to run properly. It is important that you remember to update your `requirements.txt` file everytime you add an external dependency to your project. 
@@ -188,7 +198,8 @@ $ heroku ps:scale web=1:<tier_name> # scale web dyno
 ```
 
 ## 5. Deploy Your Application
-Let's try it again now!  
+Let's try it again now!
+
 
 ```bash
 $ git add -A
@@ -222,7 +233,8 @@ remote:
 remote: Verifying deploy... done.
 ```
 
-**Note:** Your logs may look different from mine. As long as it doesn't error, there shouldn't be a problem.  
+**Note:** Your logs may look different from mine. As long as it doesn't error, there shouldn't be a problem.
+
 
 Seems like our application was successfully deployed! We just have one final step left; we need to initialize our database.
 

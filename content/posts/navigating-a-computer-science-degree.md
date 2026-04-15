@@ -3,7 +3,7 @@ title: 'Navigating a Computer Science Degree'
 date: 2022-03-19
 tags: ['Personal Reflection']
 draft: false
-summary: 'Relection on my life as an undergraduate CS student and takeaways'
+description: 'Relection on my life as an undergraduate CS student and takeaways'
 ---
 
 {{< figure src="https://www.dropbox.com/scl/fi/o6to4kwq64biqwxgg5vso/northwestern.png?rlkey=vz1tzxhkznnh3cg37k3wuuvbm&st=b4xvzjvp&raw=1" >}}

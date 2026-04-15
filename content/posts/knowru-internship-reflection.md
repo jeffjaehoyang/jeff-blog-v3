@@ -3,7 +3,7 @@ title: 'Shipping Code for a Business – Is Your Application Scalable?'
 date: 2019-09-09
 tags: ['Personal Reflection']
 draft: false
-summary: 'Reflecting on the 2019 summer internship at Knowru'
+description: 'Reflecting on the 2019 summer internship at Knowru'
 ---
 
 {{< figure src="https://www.dropbox.com/scl/fi/pwi095uutpacvs18z8p7y/knowru_internship_cover.png?rlkey=9yqg5m1p7v8xszytdn2k8vr81&st=gjvveinv&raw=1" >}}

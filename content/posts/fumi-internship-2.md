@@ -3,7 +3,7 @@ title: 'Working at an Early Stage Startup (Pt. 2)'
 date: 2021-03-13
 tags: ['Personal Reflection']
 draft: false
-summary: 'What I learned working at an early stage startup - the engineering side'
+description: 'What I learned working at an early stage startup - the engineering side'
 ---
 
 {{< figure src="https://www.dropbox.com/scl/fi/55vitanff83c9qn689idz/fumi_startup_two.png?rlkey=n1lcy7wqrw3z8l6lx3pjttyho&st=l8xkpi8d&raw=1" >}}

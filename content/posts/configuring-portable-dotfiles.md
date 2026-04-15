@@ -3,7 +3,7 @@ title: 'Configuring Portable Dotfiles'
 date: 2022-07-30
 tags: ['Developer Tools']
 draft: false
-summary: 'A blog post on how to manage dotfiles with GNU Stow'
+description: 'A blog post on how to manage dotfiles with GNU Stow'
 ---
 
 {{< figure src="https://www.dropbox.com/scl/fi/9qpxekwcgf43abyrvkfx5/thumbnail.png?rlkey=zgwnrsdtm0l183zu8rd4wq2hs&st=lhnoksyp&raw=1" >}}
@@ -11,7 +11,8 @@ summary: 'A blog post on how to manage dotfiles with GNU Stow'
 I recently stumbled across a problem that I never really had to solve before. As I started my first full-time job, I received a new laptop for work-related use. I also set up my development server, which is a remote computer sitting somewhere in a data center that I can SSH into for development purposes. As my preferred choice of text editor is Neovim, I have a lot of configuration files that go along with it. I also have some custom tmux configurations. What about ZSH configurations? The list goes on. One way of doing it would be to manually copy-and-paste all the configuration files. But there had to be a better way - one that doesn't require so much error-prone manual reptition. If I start a new job at a different company, or if I get a new personal computer for myself, I don't want to have to continue to copy-and-paste all these "dotfiles". So I searched for a way to make my dotfiles "portable". The solution that I decided to go with was [GNU Stow](https://www.gnu.org/software/stow/) - in this post I'll explain a little bit about how Stow works.
 
 ## What is GNU Stow ?
-*Following is taken from the GNU Stow official website.*  
+*Following is taken from the GNU Stow official website.*
+
 GNU Stow is a symlink farm manager which takes distinct packages of software and/or data located in separate directories on the filesystem, and makes them appear to be installed in the same place. For example, `/usr/local/bin` could contain symlinks to files within `/usr/local/stow/emacs/bin`, `/usr/local/stow/perl/bin` etc.
 
 ## How it works

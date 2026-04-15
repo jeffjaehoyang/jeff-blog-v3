@@ -3,14 +3,15 @@ title: "My Story - Growth from IC3 to IC5"
 date: 2025-10-06
 tags: ["Personal Reflection"]
 draft: false
-summary: "My first 3 years at Meta & career growth"
+description: "My first 3 years at Meta & career growth"
 ---
 
 {{< figure src="https://www.dropbox.com/scl/fi/j56v5aaj3zh8bmod4zjdd/meta-career-growth.png?rlkey=ummk5n9bugo8misb5yd1kqwu8&st=3b4o8a32&raw=1" >}}
 
 It’s been a while since I last wrote here — work and life have been full, and writing fell off my routine. A lot has changed since then. Over the past three years, I’ve gone from an **IC3 engineer to IC5** at Meta.
 
-It’s been fast, chaotic at times, and full of learning curves.  
+It’s been fast, chaotic at times, and full of learning curves.
+
 This post isn’t advice — just a few honest notes on what that journey looked like for me.
 
 ## IC3 — Starting Out
@@ -19,7 +20,8 @@ When I joined full-time, I had some context already from a previous internship. 
 
 I joined the **Checkout** team as a backend engineer. About ten of us worked on backend, with another ten on the sister frontend team and a few PMs across the space. It was a big, fast-moving surface with a lot of cross-team dependencies.
 
-The first few months were intense. I had to learn not just the product logic, but how the whole production system fit together — everything from loggers to metrics pipelines to how code made it into prod.  
+The first few months were intense. I had to learn not just the product logic, but how the whole production system fit together — everything from loggers to metrics pipelines to how code made it into prod.
+
 The “war room” atmosphere built a strange kind of camaraderie; everyone was in it together.
 
 **Projects**
@@ -31,7 +33,8 @@ IC3 was about **execution**. Shipping quickly, asking the right questions, and b
 
 ## IC3 → IC4 — Building Independence
 
-It took about a year to go from IC3 to IC4.  
+It took about a year to go from IC3 to IC4.
+
 The biggest shift wasn’t technical — it was how I approached work. At IC4, no one tells you what to do. You’re expected to find things that matter and push them forward yourself.
 
 The moment that made a difference was when I took initiative to **refactor a large part of our codebase**. It wasn’t assigned — it was just something that had to be done if the team wanted to move faster. That project forced me to understand the system end to end and coordinate across engineers to avoid breaking things.
@@ -64,15 +67,18 @@ But I was one of the **first engineers** on the team, which meant more ownership
 - **GitHub PR Dataset** – a research-oriented project to ingest and analyze open-source pull request data.
 - **Code Data Sourcing** – infrastructure for extracting and structuring code data for training models.
 
-The ambiguity was high, but so was the sense of impact. I was no longer just building product features — I was helping build the data backbone for AI research.  
+The ambiguity was high, but so was the sense of impact. I was no longer just building product features — I was helping build the data backbone for AI research.
+
 It was easily the steepest learning curve of my career.
 
 ## IC4 → IC5 — From Execution to Ownership
 
-After about two years at IC4, I was promoted to IC5.  
+After about two years at IC4, I was promoted to IC5.
+
 The expectations at this level are different. You’re not just delivering tasks — you’re creating direction.
 
-I started **mentoring other engineers**, leading designs, and architecting new pipelines from scratch.  
+I started **mentoring other engineers**, leading designs, and architecting new pipelines from scratch.
+
 The GitHub PR dataset was especially tricky: open-ended, research-driven, and full of uncertainty. Progress depended on aligning people who didn’t technically report to me, finding clarity in fuzzy goals, and building something useful out of it.
 
 At this stage, what mattered most was:
@@ -87,7 +93,8 @@ It wasn’t about one big launch. It was about building credibility, judgment, a
 
 ## Looking Back
 
-When I joined as an IC3, I thought growth meant learning new technologies.  
+When I joined as an IC3, I thought growth meant learning new technologies.
+
 Now I think it’s more about learning how to operate in uncertainty — how to keep moving when direction isn’t clear.
 
 If I had to summarize:
@@ -98,5 +105,6 @@ If I had to summarize:
 
 Each step forced me to relearn what “being good at my job” means.
 
-I’m grateful for the people and teams I’ve worked with — and for the luck of being in places where I could keep learning.  
+I’m grateful for the people and teams I’ve worked with — and for the luck of being in places where I could keep learning.
+
 More reflections (and hopefully more regular writing) to come.

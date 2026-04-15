@@ -3,7 +3,7 @@ title: 'Tweet Bot with Tweepy and Flask'
 date: 2019-11-14
 tags: ['Web Development']
 draft: false
-summary: 'How to build a Twitter bot with Python'
+description: 'How to build a Twitter bot with Python'
 ---
 
 {{< figure src="https://www.dropbox.com/scl/fi/povejfo6ngw42evk2x736/tweetbot.png?rlkey=lgs3b2wkaq97qza0pkebqaohp&st=tsjeb7gf&raw=1" >}}

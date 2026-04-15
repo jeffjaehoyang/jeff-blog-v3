@@ -3,7 +3,7 @@ title: 'Github Authentication with SSH'
 date: 2020-12-31
 tags: ['Developer Tools']
 draft: false
-summary: 'How to setup local machine to properly authenticate Github with SSH'
+description: 'How to setup local machine to properly authenticate Github with SSH'
 ---
 
 {{< figure src="https://www.dropbox.com/scl/fi/wsw1xoimxv037mqczocti/github_ssh_auth.png?rlkey=s1eyxoal3nvrvmmbh4ikl06mg&st=l4nkklu2&raw=1" >}}

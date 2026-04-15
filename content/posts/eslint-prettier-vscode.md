@@ -3,7 +3,7 @@ title: 'Setting up ESLint and Prettier with VS Code'
 date: 2020-08-08
 tags: ['Developer Tools']
 draft: false
-summary: 'Setting up ESLint and Prettier with VS Code'
+description: 'Setting up ESLint and Prettier with VS Code'
 ---
 
 {{< figure src="https://www.dropbox.com/scl/fi/mw8pvsrn9tl6nxj3ek9a5/eslint_prettier_vscode.png?rlkey=gulsevtz9iht01msjh9notuyl&st=mocgol5y&raw=1" >}}

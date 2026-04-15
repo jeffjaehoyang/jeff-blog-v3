@@ -1,6 +1,3 @@
 ---
-title: "Read Only Memory"
+title: "jeffyang.io"
 ---
-
-Thoughts from a life in progress.
-{.lead}

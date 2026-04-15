@@ -2,63 +2,61 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Personal Reflection on jeffyang.io</title>
-    <link>https://www.jeffyang.io/tags/personal-reflection/</link>
+    <link>http://localhost:1313/tags/personal-reflection/</link>
     <description>Recent content in Personal Reflection on jeffyang.io</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <managingEditor>jho.yang96@gmail.com (Jeff Yang)</managingEditor>
-    <webMaster>jho.yang96@gmail.com (Jeff Yang)</webMaster>
     <copyright>Jeff Yang</copyright>
     <lastBuildDate>Mon, 06 Oct 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://www.jeffyang.io/tags/personal-reflection/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/personal-reflection/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My Story - Growth from IC3 to IC5</title>
-      <link>https://www.jeffyang.io/posts/career-growth-as-an-engineer/</link>
-      <pubDate>Mon, 06 Oct 2025 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>https://www.jeffyang.io/posts/career-growth-as-an-engineer/</guid>
-      <description>My first 3 years at Meta &amp;amp; career growth</description>
+      <link>http://localhost:1313/posts/career-growth-as-an-engineer/</link>
+      <pubDate>Mon, 06 Oct 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/career-growth-as-an-engineer/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://www.dropbox.com/scl/fi/j56v5aaj3zh8bmod4zjdd/meta-career-growth.png?rlkey=ummk5n9bugo8misb5yd1kqwu8&amp;amp;st=3b4o8a32&amp;amp;raw=1&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;It’s been a while since I last wrote here — work and life have been full, and writing fell off my routine. A lot has changed since then. Over the past three years, I’ve gone from an &lt;strong&gt;IC3 engineer to IC5&lt;/strong&gt; at Meta.&lt;/p&gt;&#xA;&lt;p&gt;It’s been fast, chaotic at times, and full of learning curves.&lt;/p&gt;&#xA;&lt;p&gt;This post isn’t advice — just a few honest notes on what that journey looked like for me.&lt;/p&gt;</description>
     </item>
     <item>
       <title>First 3 Months at Meta</title>
-      <link>https://www.jeffyang.io/posts/first-three-months-at-meta/</link>
-      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>https://www.jeffyang.io/posts/first-three-months-at-meta/</guid>
-      <description>Reflecting back at my first 3 months at Meta</description>
+      <link>http://localhost:1313/posts/first-three-months-at-meta/</link>
+      <pubDate>Sun, 23 Oct 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/first-three-months-at-meta/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://www.dropbox.com/scl/fi/29b1509j81yitz2jpbdy4/meta.png?rlkey=sw5l54mujur4a387o26lelgil&amp;amp;st=t73yg490&amp;amp;raw=1&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;It&amp;rsquo;s been over 3 months since I started my first job out of college - and I wanted to leave a blog&#xA;post about it. A few things I&amp;rsquo;ll cover in this blog post: my bootcamp experience at Meta, and the&#xA;onboarding process after team selection.&lt;/p&gt;&#xA;&lt;h3 id=&#34;bootcamp-experience&#34;&gt;Bootcamp Experience&lt;/h3&gt;&#xA;&lt;p&gt;Most of you are probably wondering what I mean by &lt;em&gt;bootcamp&lt;/em&gt;. Isn&amp;rsquo;t that a military thing where new&#xA;recruits go through weeks of basic military training? Well yes, but that&amp;rsquo;s not what I&amp;rsquo;m going to&#xA;write about here (thankfully).&lt;/p&gt;</description>
     </item>
     <item>
       <title>Navigating a Computer Science Degree</title>
-      <link>https://www.jeffyang.io/posts/navigating-a-computer-science-degree/</link>
-      <pubDate>Sat, 19 Mar 2022 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>https://www.jeffyang.io/posts/navigating-a-computer-science-degree/</guid>
-      <description>Relection on my life as an undergraduate CS student and takeaways</description>
+      <link>http://localhost:1313/posts/navigating-a-computer-science-degree/</link>
+      <pubDate>Sat, 19 Mar 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/navigating-a-computer-science-degree/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://www.dropbox.com/scl/fi/o6to4kwq64biqwxgg5vso/northwestern.png?rlkey=vz1tzxhkznnh3cg37k3wuuvbm&amp;amp;st=b4xvzjvp&amp;amp;raw=1&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;I just completed my degree in computer science at&#xA;&lt;a href=&#34;https://www.northwestern.edu&#34;&gt;Northwestern University&lt;/a&gt;. Coming into college, I hadn&amp;rsquo;t written a&#xA;single line of code. Not even a line of &amp;ldquo;hello world&amp;rdquo;. I never saw myself majoring in a&#xA;science/engineering field. Throughout my middle school and high school life, I always considered&#xA;myself more gifted in things like public speech and debate - so naturally, I considered going into&#xA;law, although it was more just a mere stream of thought than a decisive opinion. I came to&#xA;Northwestern thinking that I&amp;rsquo;d study economics (because it seemed like the &lt;em&gt;safe&lt;/em&gt; major to go with,&#xA;for some reason) and international relations. 6 years and a half later (I took 2 years off due to&#xA;mandatory military service in Korea and another half a year off due to COVID-19), here I am, with a&#xA;degree in computer science and a full-time job at Meta (Facebook) secured. It wasn&amp;rsquo;t easy, but I&#xA;truly had an amazing experience at Northwestern. In this blog post, I want to jot down a few notes&#xA;on how I navigated my transformative adventure into the world of computer science and technology.&lt;/p&gt;</description>
     </item>
     <item>
       <title>My Facebook Internship</title>
-      <link>https://www.jeffyang.io/posts/my-facebook-internship/</link>
-      <pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>https://www.jeffyang.io/posts/my-facebook-internship/</guid>
-      <description>Working at Facebook as a remote software engineering intern</description>
+      <link>http://localhost:1313/posts/my-facebook-internship/</link>
+      <pubDate>Wed, 08 Sep 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/my-facebook-internship/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://www.dropbox.com/scl/fi/lmrdumjc9d5swvlxx3vwr/facebook-logo.jpeg?rlkey=myya3wlewdgbhwz71tvwe9y14&amp;amp;st=eu6ehtn5&amp;amp;raw=1&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;I started my journey in computer science as a freshman in college. Little did I know, this journey would take me to the heart of Silicon Valley.&lt;/p&gt;&#xA;&lt;p&gt;In this blog post, I share my experience as a software engineer intern at Facebook. For those who are trying to gauge if Facebook is the right fit - I hope this post will provide valuable insight. For those who are on the grind for an internship - I hope this will serve as a source of inspiration to keep going. Facebook seemed like a pipe dream, but through grit and little bit of luck, I&amp;rsquo;m really happy to have made the impossible possible.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Working at an Early Stage Startup (Pt. 2)</title>
-      <link>https://www.jeffyang.io/posts/fumi-internship-2/</link>
-      <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>https://www.jeffyang.io/posts/fumi-internship-2/</guid>
-      <description>What I learned working at an early stage startup - the engineering side</description>
+      <link>http://localhost:1313/posts/fumi-internship-2/</link>
+      <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/fumi-internship-2/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://www.dropbox.com/scl/fi/55vitanff83c9qn689idz/fumi_startup_two.png?rlkey=n1lcy7wqrw3z8l6lx3pjttyho&amp;amp;st=l8xkpi8d&amp;amp;raw=1&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;&lt;em&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;&lt;/em&gt;  &lt;em&gt;This post does not in any way represent the views of Fumi as a company, but is solely my individual opinion and reflection on my experience as a software engineer at an early-stage startup&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;I was a software engineering intern, after all - so let&amp;rsquo;s talk about things from an engineer&amp;rsquo;s perspective. To give you context, I was part of a small engineering team of 3, and did not have a direct report (i.e. no &amp;ldquo;manager&amp;rdquo;). Although my title was a &amp;ldquo;software engineering intern&amp;rdquo; I was more like a full-time contractor. I was (for the most part) expected to do things on my own, as the other 2 engineers did not have enough time to be taking care of an intern.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Working at an Early Stage Startup (Pt. 1)</title>
-      <link>https://www.jeffyang.io/posts/fumi-internship-1/</link>
-      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>https://www.jeffyang.io/posts/fumi-internship-1/</guid>
-      <description>What I learned working at an early stage startup - the business side</description>
+      <link>http://localhost:1313/posts/fumi-internship-1/</link>
+      <pubDate>Sun, 28 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/fumi-internship-1/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://www.dropbox.com/scl/fi/4fftk0kyr0bk4gu8vatiq/fumi_startup.png?rlkey=xe5fkwydae5o8zvy9y4l1wj5f&amp;amp;st=5vu2zamp&amp;amp;raw=1&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;p&gt;&lt;em&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;&lt;/em&gt;  &lt;em&gt;This post does not in any way represent the views of Fumi as a company, but is solely my individual opinion and reflection on my experience as a software engineer at an early-stage startup&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;COVID-19 brought an abrupt stop to my studies in the United States, leading me back to Seoul. As I was always interested in the startup scene, I could not turn down the opportunity to intern at an early stage startup when it presented itself. Following rounds of interviews, I landed an internship at &lt;a href=&#34;https://fumi.co.kr/main/home/home&#34;&gt;Fumi&lt;/a&gt;, a Korean e-commerce startup catered to the senior fashion market. Fumi had recently raised $3M in Series A funding and was rapidly growing its team. Over the past 4 months as a software engineering intern at Fumi, I was able to grow not only as a software engineer, but also as a future entrepreneur. In this blog post I would like to share my takeaways from working at an early stage startup as a software engineer.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Shipping Code for a Business – Is Your Application Scalable?</title>
-      <link>https://www.jeffyang.io/posts/knowru-internship-reflection/</link>
-      <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate><author>jho.yang96@gmail.com (Jeff Yang)</author>
-      <guid>https://www.jeffyang.io/posts/knowru-internship-reflection/</guid>
-      <description>Reflecting on the 2019 summer internship at Knowru</description>
+      <link>http://localhost:1313/posts/knowru-internship-reflection/</link>
+      <pubDate>Mon, 09 Sep 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/knowru-internship-reflection/</guid>
+      <description>&lt;figure&gt;&lt;img src=&#34;https://www.dropbox.com/scl/fi/pwi095uutpacvs18z8p7y/knowru_internship_cover.png?rlkey=9yqg5m1p7v8xszytdn2k8vr81&amp;amp;st=gjvveinv&amp;amp;raw=1&#34;&gt;&#xA;&lt;/figure&gt;&#xA;&#xA;&lt;h3 id=&#34;reflecting-on-2019-summer-internship-knowru&#34;&gt;Reflecting on 2019 Summer Internship @Knowru&lt;/h3&gt;&#xA;&lt;p&gt;This summer, I had the privilege of returning to and working at Knowru, a startup that primarily focuses on helping loan processing companies through a suite of innovative software. I had worked at Knowru in the summer of 2017 before enlisting in the Korean Army, and over the next 2 years of my military service, the company saw remarkable growth (most notably, the backing of a multimillion-dollar investment from Hong Kong). Back at Knowru as a software engineering intern, I had to navigate through problems that came from the company’s rapidly growing customer-base: writing code with scalability in mind.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

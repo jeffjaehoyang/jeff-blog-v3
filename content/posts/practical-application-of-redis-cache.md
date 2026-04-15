@@ -3,7 +3,7 @@ title: 'A Practical Application of Redis Cache'
 date: 2021-12-18
 tags: ['Web Development']
 draft: false
-summary: 'How a Redis cache can help solve problems when fetching data'
+description: 'How a Redis cache can help solve problems when fetching data'
 ---
 
 {{< figure src="https://www.dropbox.com/scl/fi/qsjqvjzqqbs14eenm259a/thumbnail.png?rlkey=s5u6ao93lajafrka9snbii45v&st=do23ngs6&raw=1" >}}

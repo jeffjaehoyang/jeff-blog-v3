@@ -3,7 +3,7 @@ title: 'My Facebook Internship'
 date: 2021-09-08
 tags: ['Personal Reflection']
 draft: false
-summary: 'Working at Facebook as a remote software engineering intern'
+description: 'Working at Facebook as a remote software engineering intern'
 aliases:
   - /blog/my-facebook-internship/
 ---
