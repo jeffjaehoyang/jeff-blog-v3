@@ -8,12 +8,32 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
-    <meta name="description" content="{{ .Site.Params.description }}" />
+
+    {{- $description := or .Description .Summary site.Params.description | plainify | htmlUnescape | truncate 160 -}}
+    <meta name="description" content="{{ $description }}" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}" />
+    <meta property="og:description" content="{{ $description }}" />
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:site_name" content="{{ .Site.Title }}" />
+    {{ if .IsPage }}<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}" />{{ end }}
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}" />
+    <meta name="twitter:description" content="{{ $description }}" />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- RSS -->
+    {{ with .OutputFormats.Get "rss" -}}
+      <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .Permalink }}" />
+    {{- end }}
 
     <!-- Plausible Analytics -->
     <script defer data-domain="jeffyang.io" src="https://plausible.io/js/script.js"></script>
@@ -30,7 +50,7 @@
         font-size: 16px;
         line-height: 1.6;
         color: #4a4b4f;
-        background-color: #fbfbfb;
+        background-color: #faf8f5;
         min-height: 100vh;
         display: flex;
         flex-direction: column;
@@ -53,6 +73,8 @@
         justify-content: space-between;
         align-items: baseline;
         padding: 40px 0 0;
+        border-bottom: 1px solid #e5e5e5;
+        padding-bottom: 20px;
       }
 
       .site-title {
@@ -93,13 +115,31 @@
         padding: 24px 0 40px;
         color: #9d9d9d;
         font-size: 13px;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+      }
+
+      .footer-left {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
       }
 
       .footer-tagline {
-        margin-top: 4px;
         font-style: italic;
         font-size: 12px;
         color: #bbb;
+      }
+
+      .footer-rss a {
+        color: #bbb;
+        text-decoration: none;
+        font-size: 12px;
+      }
+
+      .footer-rss a:hover {
+        color: #8f6a60;
       }
 
       h1 {
@@ -142,6 +182,69 @@
         color: #8f6a60 !important;
       }
 
+      /* Tags */
+      .tag {
+        display: inline-block;
+        font-size: 11px;
+        color: #9d9d9d;
+        border: 1px solid #e0e0e0;
+        border-radius: 3px;
+        padding: 1px 6px;
+        margin-left: 6px;
+        vertical-align: middle;
+      }
+
+      /* Section labels */
+      .section-label {
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #4a4b4f;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      /* Featured post band */
+      .featured-band {
+        margin-bottom: 40px;
+        padding: 24px;
+        background-color: #f4f0eb;
+        border-radius: 6px;
+      }
+
+      .featured-label {
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #8f6a60;
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+
+      .featured-title {
+        font-size: 22px;
+        font-weight: 600;
+        color: #4a4b4f;
+        margin-bottom: 8px;
+        line-height: 1.3;
+      }
+
+      .featured-band .post-link:hover .featured-title {
+        color: #8f6a60 !important;
+      }
+
+      .featured-meta {
+        color: #9d9d9d;
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+
+      .featured-desc {
+        color: #666;
+        font-size: 15px;
+        line-height: 1.6;
+      }
+
       blockquote {
         border-left: 3px solid #e5e5e5;
         margin: 20px 0;
@@ -152,11 +255,16 @@
 
       @media (max-width: 768px) {
         .site-nav {
-          padding: 24px 0 0;
+          padding: 24px 0 16px;
         }
 
         .site-main {
           padding: 30px 0;
+        }
+
+        .site-footer {
+          flex-direction: column;
+          gap: 8px;
         }
 
         h1 {
@@ -254,8 +362,13 @@
         {{ block "main" . }}{{ end }}
       </main>
       <footer class="site-footer">
-        <div>&copy; {{ now.Year }} {{ .Site.Params.author }}</div>
-        <div class="footer-tagline">Made with curiosity and late nights 🍉</div>
+        <div class="footer-left">
+          <div>&copy; {{ now.Year }} {{ .Site.Params.author }}</div>
+          <div class="footer-tagline">Made with curiosity and late nights 🍉</div>
+        </div>
+        <div class="footer-rss">
+          <a href="/posts/index.xml">RSS</a>
+        </div>
       </footer>
     </div>
   </body>

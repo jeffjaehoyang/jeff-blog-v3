@@ -8,7 +8,10 @@
 <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0;">
   <a href="{{ .Permalink }}" class="post-link">
     <div class="post-link-title" style="font-weight: 600; font-size: 17px; color: #4a4b4f; margin-bottom: 4px;">{{ .Title }}</div>
-    <div style="color: #9d9d9d; font-size: 13px; margin-bottom: 6px;">{{ .Date.Format "January 2, 2006" }}</div>
+    <div style="color: #9d9d9d; font-size: 13px; margin-bottom: 6px;">
+      {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
+      {{ range .Params.tags }}<span class="tag">{{ . }}</span>{{ end }}
+    </div>
     {{ with .Description }}<div style="color: #777; font-size: 14px; line-height: 1.5;">{{ . }}</div>{{ end }}
   </a>
 </div>

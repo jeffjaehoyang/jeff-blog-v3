@@ -5,6 +5,11 @@ copyright = 'Jeff Yang'
 theme = 'ritzy'
 enableRobotsTXT = true
 
+[outputs]
+  home = ['html']
+  section = ['html', 'rss']
+  page = ['html']
+
 [params]
   author = 'Jeff Yang'
   description = 'Thoughts from a life in progress.'

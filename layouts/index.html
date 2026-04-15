@@ -1,16 +1,44 @@
 {{ define "main" }}
 <div>
   <h1 style="margin-bottom: 8px;">Jeff Yang</h1>
-  <p style="color: #9d9d9d; font-style: italic; margin-bottom: 50px;">Thoughts from a life in progress.</p>
+  <p style="color: #666; margin-bottom: 10px;">Software engineer at Meta. Writing about code, career, and life.</p>
+  <p style="color: #9d9d9d; font-style: italic; font-size: 14px; margin-bottom: 40px;">Thoughts from a life in progress.</p>
 
+  <!-- Latest thought -->
+  {{ with .Site.GetPage "/thought" }}
+  <div style="margin-bottom: 40px; font-size: 14px;">
+    <div style="color: #8f6a60; font-style: italic; margin-bottom: 6px;">Currently thinking about</div>
+    <div style="color: #666;">{{ .RawContent | markdownify }}</div>
+  </div>
+  {{ end }}
+
+  <!-- Featured post -->
+  {{ with .Site.GetPage "/posts/career-growth-as-an-engineer" }}
+  <div class="featured-band">
+    <a href="{{ .RelPermalink }}" class="post-link featured-link">
+      <div class="featured-label">Featured</div>
+      <div class="featured-title">{{ .Title }}</div>
+      <div class="featured-meta">
+        {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
+        {{ range .Params.tags }}<span class="tag">{{ . }}</span>{{ end }}
+      </div>
+      {{ with .Description }}<div class="featured-desc">{{ . }}</div>{{ end }}
+    </a>
+  </div>
+  {{ end }}
+
+  <!-- Recent posts -->
   <div style="margin-bottom: 40px;">
-    <div style="font-weight: 600; margin-bottom: 20px; color: #4a4b4f; font-size: 15px; text-transform: uppercase; letter-spacing: 0.05em;">Recent Writing</div>
+    <div class="section-label">Recent Writing</div>
 
     {{ range first 5 (where .Site.RegularPages "Section" "posts").ByDate.Reverse }}
     <div style="margin-bottom: 24px; padding-bottom: 24px; border-bottom: 1px solid #f0f0f0;">
       <a href="{{ .RelPermalink }}" class="post-link">
         <div class="post-link-title" style="font-weight: 600; font-size: 17px; color: #4a4b4f; margin-bottom: 4px;">{{ .Title }}</div>
-        <div style="color: #9d9d9d; font-size: 13px; margin-bottom: 6px;">{{ .Date.Format "January 2, 2006" }}</div>
+        <div style="color: #9d9d9d; font-size: 13px; margin-bottom: 6px;">
+          {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
+          {{ range .Params.tags }}<span class="tag">{{ . }}</span>{{ end }}
+        </div>
         {{ with .Description }}<div style="color: #777; font-size: 14px; line-height: 1.5;">{{ . }}</div>{{ end }}
       </a>
     </div>

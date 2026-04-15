@@ -1,7 +1,12 @@
 {{ define "main" }}
 <div class="post-header">
   <h1>{{ .Title }}</h1>
-  {{ if not .Date.IsZero }}<div style="color: #9d9d9d; font-style: italic; margin-top: -20px; margin-bottom: 30px;">{{ .Date.Format "January 2, 2006" }}</div>{{ end }}
+  {{ if not .Date.IsZero }}
+  <div style="color: #9d9d9d; font-style: italic; margin-top: -20px; margin-bottom: 30px; font-size: 14px;">
+    {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read
+    {{ range .Params.tags }}<span class="tag">{{ . }}</span>{{ end }}
+  </div>
+  {{ end }}
 </div>
 
 <div class="post-content" style="line-height: 1.8;">
