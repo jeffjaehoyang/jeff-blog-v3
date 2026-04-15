@@ -1,6 +1,6 @@
 {{ define "main" }}
 <div class="post-header">
-  <h1>{{ .Title }}</h1>
+  <h1>{{ with .Params.heading }}{{ . }}{{ else }}{{ .Title }}{{ end }}</h1>
   {{ if not .Date.IsZero }}
   <div style="color: #9d9d9d; font-style: italic; margin-top: -20px; margin-bottom: 30px; font-size: 14px;">
     {{ .Date.Format "January 2, 2006" }} · {{ .ReadingTime }} min read

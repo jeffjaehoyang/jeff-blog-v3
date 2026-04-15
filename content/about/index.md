@@ -1,5 +1,6 @@
 ---
-title: "A Little About Myself"
+title: "About"
+heading: "A Little About Myself"
 ---
 
 Hey, I'm Jeff — welcome to my personal corner of the internet.
