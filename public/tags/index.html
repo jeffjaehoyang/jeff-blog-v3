@@ -75,7 +75,7 @@
       }
 
       .site-nav-links a:hover {
-        color: #4a4b4f;
+        color: #8f6a60;
       }
 
        
@@ -87,9 +87,16 @@
        
       .site-footer {
         border-top: 1px solid #e5e5e5;
-        padding: 20px 0 40px;
+        padding: 24px 0 40px;
         color: #9d9d9d;
         font-size: 13px;
+      }
+
+      .footer-tagline {
+        margin-top: 4px;
+        font-style: italic;
+        font-size: 12px;
+        color: #bbb;
       }
 
       h1 {
@@ -117,7 +124,19 @@
       }
 
       a:hover {
-        color: #6b5046;
+        color: #8f6a60;
+      }
+
+       
+      .post-link {
+        text-decoration: none;
+        color: inherit;
+        display: block;
+      }
+
+      .post-link:hover .post-link-title,
+      .post-link:hover {
+        color: #8f6a60 !important;
       }
 
       blockquote {
@@ -235,32 +254,32 @@
 
 
 <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0;">
-  <a href="http://localhost:1313/tags/personal-reflection/" style="text-decoration: none; color: inherit; display: block;">
-    <div style="font-weight: 600; font-size: 17px; color: #4a4b4f; margin-bottom: 4px;">Personal Reflection</div>
+  <a href="http://localhost:1313/tags/personal-reflection/" class="post-link">
+    <div class="post-link-title" style="font-weight: 600; font-size: 17px; color: #4a4b4f; margin-bottom: 4px;">Personal Reflection</div>
     <div style="color: #9d9d9d; font-size: 13px; margin-bottom: 6px;">October 6, 2025</div>
     
   </a>
 </div>
 
 <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0;">
-  <a href="http://localhost:1313/tags/developer-tools/" style="text-decoration: none; color: inherit; display: block;">
-    <div style="font-weight: 600; font-size: 17px; color: #4a4b4f; margin-bottom: 4px;">Developer Tools</div>
+  <a href="http://localhost:1313/tags/developer-tools/" class="post-link">
+    <div class="post-link-title" style="font-weight: 600; font-size: 17px; color: #4a4b4f; margin-bottom: 4px;">Developer Tools</div>
     <div style="color: #9d9d9d; font-size: 13px; margin-bottom: 6px;">July 30, 2022</div>
     
   </a>
 </div>
 
 <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0;">
-  <a href="http://localhost:1313/tags/web-development/" style="text-decoration: none; color: inherit; display: block;">
-    <div style="font-weight: 600; font-size: 17px; color: #4a4b4f; margin-bottom: 4px;">Web Development</div>
+  <a href="http://localhost:1313/tags/web-development/" class="post-link">
+    <div class="post-link-title" style="font-weight: 600; font-size: 17px; color: #4a4b4f; margin-bottom: 4px;">Web Development</div>
     <div style="color: #9d9d9d; font-size: 13px; margin-bottom: 6px;">December 18, 2021</div>
     
   </a>
 </div>
 
 <div style="margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid #f0f0f0;">
-  <a href="http://localhost:1313/tags/algorithms/" style="text-decoration: none; color: inherit; display: block;">
-    <div style="font-weight: 600; font-size: 17px; color: #4a4b4f; margin-bottom: 4px;">Algorithms</div>
+  <a href="http://localhost:1313/tags/algorithms/" class="post-link">
+    <div class="post-link-title" style="font-weight: 600; font-size: 17px; color: #4a4b4f; margin-bottom: 4px;">Algorithms</div>
     <div style="color: #9d9d9d; font-size: 13px; margin-bottom: 6px;">December 28, 2019</div>
     
   </a>
@@ -269,24 +288,9 @@
 
       </main>
       <footer class="site-footer">
-        &copy; 2026 Jeff Yang
+        <div>&copy; 2026 Jeff Yang</div>
+        <div class="footer-tagline">Made with curiosity and late nights 🍉</div>
       </footer>
     </div>
-    
-<script>
-  MathJax = {
-    tex: {
-      inlineMath: [['$', '$'], ['\\(', '\\)']],
-      displayMath: [['$$', '$$'], ['\\[', '\\]']],
-      processEscapes: true,
-      processEnvironments: true
-    },
-    options: {
-      skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
-    }
-  };
-</script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
-
   </body>
 </html>
