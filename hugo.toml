@@ -5,6 +5,9 @@ copyright = 'Jeff Yang'
 theme = 'ritzy'
 enableRobotsTXT = true
 
+[services.rss]
+  limit = 20
+
 [outputs]
   home = ['html']
   section = ['html', 'rss']
