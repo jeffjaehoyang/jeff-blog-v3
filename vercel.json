@@ -4,5 +4,5 @@
       "HUGO_VERSION": "0.160.1"
     }
   },
-  "buildCommand": "hugo --gc"
+  "buildCommand": "if [ \"$VERCEL_ENV\" = \"preview\" ]; then hugo --gc --environment preview --buildDrafts --buildFuture --baseURL \"https://$VERCEL_URL/\"; else hugo --gc; fi"
 }

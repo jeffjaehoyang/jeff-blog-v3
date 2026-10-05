@@ -53,8 +53,12 @@
       <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .Permalink }}" />
     {{- end }}
 
-    <!-- Plausible Analytics -->
+    {{- if hugo.IsProduction }}
+    <!-- Plausible Analytics (production builds only; not on localhost or Vercel previews) -->
     <script defer data-domain="jeffyang.io" src="https://plausible.io/js/script.js"></script>
+    {{- else }}
+    <meta name="robots" content="noindex, nofollow" />
+    {{- end }}
 
     <style>
       @font-face {
