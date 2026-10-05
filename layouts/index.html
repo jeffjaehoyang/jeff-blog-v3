@@ -13,7 +13,8 @@
   {{ end }}
 
   <!-- Featured post -->
-  {{ with .Site.GetPage "/posts/career-growth-as-an-engineer" }}
+  {{- /* Featured post: the newest post with `featured: true` in its front matter. */}}
+  {{ with first 1 (where (where .Site.RegularPages "Section" "posts") "Params.featured" true).ByDate.Reverse }}{{ with index . 0 }}
   <div class="featured-band">
     <a href="{{ .RelPermalink }}" class="post-link featured-link">
       <div class="featured-label">Featured</div>
@@ -25,7 +26,7 @@
       {{ with .Description }}<div class="featured-desc">{{ . }}</div>{{ end }}
     </a>
   </div>
-  {{ end }}
+  {{ end }}{{ end }}
 
   <!-- Recent posts -->
   <div style="margin-bottom: 40px;">

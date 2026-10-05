@@ -1,0 +1,13 @@
+{{- /*
+  Overrides Hugo's built-in figure shortcode with responsive, resized images.
+  Usage: {{< figure src="cover.png" alt="..." caption="..." link="https://..." >}}
+  `alt` defaults to `caption` when omitted (same as the built-in).
+*/ -}}
+{{- $caption := .Get "caption" -}}
+{{- $alt := .Get "alt" | default ($caption | plainify) -}}
+<figure{{ with .Get "class" }} class="{{ . }}"{{ end }}>
+  {{- with .Get "link" }}<a href="{{ . }}">{{ end -}}
+  {{- partial "image.html" (dict "page" .Page "src" (.Get "src") "alt" $alt) -}}
+  {{- with .Get "link" }}</a>{{ end -}}
+  {{- with $caption }}<figcaption><p>{{ . | markdownify }}</p></figcaption>{{ end -}}
+</figure>

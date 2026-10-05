@@ -1,0 +1,39 @@
+{{- /*
+  Full-text RSS feed (Hugo's built-in feed only includes summaries).
+  Used for /posts/index.xml and tag feeds. Root-relative links are made absolute for feed readers.
+*/ -}}
+{{- $pages := where .RegularPages "Section" "posts" -}}
+{{- if .IsHome }}{{ $pages = where site.RegularPages "Section" "posts" }}{{ end -}}
+{{- $limit := site.Config.Services.RSS.Limit -}}
+{{- if ge $limit 1 }}{{ $pages = $pages | first $limit }}{{ end -}}
+{{- $base := strings.TrimSuffix "/" site.BaseURL -}}
+{{- printf "<?xml version=\"1.0\" encoding=\"utf-8\" standalone=\"yes\"?>" | safeHTML }}
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>{{ if eq .Title site.Title }}{{ site.Title }}{{ else }}{{ with .Title }}{{ . }} on {{ end }}{{ site.Title }}{{ end }}</title>
+    <link>{{ .Permalink }}</link>
+    <description>{{ site.Params.description }}</description>
+    <language>{{ site.LanguageCode }}</language>
+    <managingEditor>{{ site.Params.author }}</managingEditor>
+    <copyright>{{ site.Copyright }}</copyright>
+    {{- with $pages }}{{ with index . 0 }}
+    <lastBuildDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</lastBuildDate>
+    {{- end }}{{ end }}
+    {{- with .OutputFormats.Get "RSS" }}
+    {{ printf "<atom:link href=%q rel=\"self\" type=%q />" .Permalink .MediaType | safeHTML }}
+    {{- end }}
+    {{- range $pages }}
+    <item>
+      <title>{{ .Title }}</title>
+      <link>{{ .Permalink }}</link>
+      <pubDate>{{ .Date.Format "Mon, 02 Jan 2006 15:04:05 -0700" | safeHTML }}</pubDate>
+      <guid>{{ .Permalink }}</guid>
+      {{- range .Params.tags }}
+      <category>{{ . }}</category>
+      {{- end }}
+      {{- $content := .Content | replaceRE `(href|src)="/` (printf `$1="%s/` $base) }}
+      <description>{{ with .Description }}{{ printf "<p><em>%s</em></p>" . | transform.XMLEscape | safeHTML }}{{ end }}{{ $content | transform.XMLEscape | safeHTML }}</description>
+    </item>
+    {{- end }}
+  </channel>
+</rss>

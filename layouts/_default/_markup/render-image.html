@@ -1,0 +1,2 @@
+{{- /* Markdown images ![alt](file.png) get the same responsive treatment as the figure shortcode. */ -}}
+{{- partial "image.html" (dict "page" .Page "src" .Destination "alt" (.PlainText | default .Text)) -}}

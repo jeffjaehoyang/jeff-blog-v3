@@ -1,9 +1,11 @@
 baseURL = 'https://www.jeffyang.io/'
 languageCode = 'en-us'
-title = "jeffyang.io"
+title = "Read Only Memory"
 copyright = 'Jeff Yang'
-theme = 'ritzy'
 enableRobotsTXT = true
+
+[services.rss]
+  limit = 20
 
 [outputs]
   home = ['html']
@@ -25,3 +27,23 @@ enableRobotsTXT = true
     [markup.goldmark.parser]
       [markup.goldmark.parser.attribute]
         block = true
+
+# Only publish bundle files (e.g. original images) that templates actually reference.
+# Originals stay in git; the site serves the resized WebP versions.
+[[cascade]]
+  [cascade.build]
+    publishResources = false
+  [cascade.target]
+    path = '/posts/**'
+
+# "Related writing" at the end of posts: shared tags matter most, recency breaks ties.
+[related]
+  includeNewer = true
+  threshold = 80
+  toLower = false
+  [[related.indices]]
+    name = 'tags'
+    weight = 100
+  [[related.indices]]
+    name = 'date'
+    weight = 10
