@@ -1,6 +1,6 @@
 baseURL = 'https://www.jeffyang.io/'
 languageCode = 'en-us'
-title = "jeffyang.io"
+title = "Read Only Memory"
 copyright = 'Jeff Yang'
 theme = 'ritzy'
 enableRobotsTXT = true

@@ -7,13 +7,14 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ if .IsHome }}Read Only Memory | {{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Title }}{{ end }}</title>
+    {{- $pageTitle := cond .IsHome (printf "%s | %s" site.Title site.Params.author) .Title }}
+    <title>{{ $pageTitle }}{{ if not .IsHome }} | {{ site.Title }}{{ end }}</title>
 
     {{- $description := or .Description .Summary site.Params.description | plainify | htmlUnescape | truncate 160 -}}
     <meta name="description" content="{{ $description }}" />
 
     <!-- Open Graph -->
-    <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}" />
+    <meta property="og:title" content="{{ $pageTitle }}" />
     <meta property="og:description" content="{{ $description }}" />
     <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
     <meta property="og:url" content="{{ .Permalink }}" />
@@ -22,7 +23,7 @@
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}" />
+    <meta name="twitter:title" content="{{ $pageTitle }}" />
     <meta name="twitter:description" content="{{ $description }}" />
 
     <!-- Google Fonts -->
@@ -352,7 +353,7 @@
   <body>
     <div class="site-wrapper">
       <nav class="site-nav">
-        <a href="/" class="site-title">Read Only Memory</a>
+        <a href="/" class="site-title">{{ site.Title }}</a>
         <div class="site-nav-links">
           <a href="/posts/">Posts</a>
           <a href="/about/">About</a>
