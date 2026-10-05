@@ -32,5 +32,20 @@ for f in content/posts/*.md content/posts/*/index.md; do
   fi
 done
 
+# 4. Images: no third-party hosting, and every bundle image reference resolves.
+if grep -rnE 'dropbox\.com|imgur\.com|googleusercontent\.com' content >&2; then
+  err "third-party-hosted images found above; store images in the post's bundle folder"
+fi
+while IFS= read -r ref; do
+  file=${ref%%:*}
+  src=$(sed -nE 's/.*src="([^"]+)".*/\1/p' <<<"${ref#*:}")
+  [[ "$src" == *://* || "$src" == /* ]] && continue
+  [[ -e "$(dirname "$file")/$src" ]] || err "$file: figure src \"$src\" not found next to the post"
+done < <(grep -rnoE '\{\{< *figure [^>]*src="[^"]+"' content --include=index.md | sed -E 's/^([^:]+):[0-9]+:/\1:/')
+while IFS= read -r line; do
+  file=${line%%:*}; cover=$(sed -E 's/^[^:]+:cover: *//; s/["'"'"']//g' <<<"$line")
+  [[ -e "$(dirname "$file")/$cover" ]] || err "$file: cover \"$cover\" not found next to the post"
+done < <(grep -rH '^cover:' content/posts --include=index.md)
+
 [[ $fail -eq 0 ]] && echo "OK: build and content checks passed"
 exit $fail

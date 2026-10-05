@@ -25,3 +25,11 @@ enableRobotsTXT = true
     [markup.goldmark.parser]
       [markup.goldmark.parser.attribute]
         block = true
+
+# Only publish bundle files (e.g. original images) that templates actually reference.
+# Originals stay in git; the site serves the resized WebP versions.
+[[cascade]]
+  [cascade.build]
+    publishResources = false
+  [cascade.target]
+    path = '/posts/**'

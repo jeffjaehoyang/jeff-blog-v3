@@ -1,0 +1,43 @@
+{{- /*
+  Responsive image for a post. Used by the `figure` shortcode and the Markdown image render hook.
+  Params (dict):
+    page  - the current page (required)
+    src   - filename of an image in the page bundle, or any URL/path (required)
+    alt   - alt text
+    class - optional CSS class
+  Bundle images (jpg/png/webp) are resized to 640w + 1280w WebP with srcset and explicit width/height.
+  GIFs and SVGs are served untouched (animation/vector). Anything not in the bundle is passed through as-is.
+*/ -}}
+{{- $page := .page -}}
+{{- $src := .src -}}
+{{- $alt := .alt | default "" -}}
+{{- $isCover := eq $src ($page.Params.cover | default "") -}}
+{{- $loading := cond $isCover "eager" "lazy" -}}
+{{- $img := "" -}}
+{{- if not (strings.Contains $src "://") -}}
+  {{- $img = $page.Resources.Get $src -}}
+{{- end -}}
+{{- if and $img (in (slice "jpeg" "png" "webp") $img.MediaType.SubType) -}}
+  {{- $hint := cond (eq $img.MediaType.SubType "png") "drawing" "photo" -}}
+  {{- $opts := printf "webp q85 %s" $hint -}}
+  {{- $sizes := slice -}}
+  {{- /* Small variant only when it's meaningfully smaller than the original. */ -}}
+  {{- if gt $img.Width 800 -}}
+    {{- $sizes = $sizes | append ($img.Resize (printf "640x %s" $opts)) -}}
+  {{- end -}}
+  {{- if gt $img.Width 1280 -}}
+    {{- $sizes = $sizes | append ($img.Resize (printf "1280x %s" $opts)) -}}
+  {{- else -}}
+    {{- $sizes = $sizes | append ($img.Process $opts) -}}
+  {{- end -}}
+  {{- $largest := index $sizes (sub (len $sizes) 1) -}}
+  {{- $srcset := slice -}}
+  {{- range $sizes -}}
+    {{- $srcset = $srcset | append (printf "%s %dw" .Permalink .Width) -}}
+  {{- end -}}
+  <img src="{{ $largest.Permalink }}" srcset="{{ delimit $srcset ", " }}" sizes="(max-width: 660px) 100vw, 620px" width="{{ $largest.Width }}" height="{{ $largest.Height }}" alt="{{ $alt }}" loading="{{ $loading }}" decoding="async"{{ with .class }} class="{{ . }}"{{ end }}>
+{{- else if $img -}}
+  <img src="{{ $img.Permalink }}"{{ with $img.Width }} width="{{ . }}" height="{{ $img.Height }}"{{ end }} alt="{{ $alt }}" loading="{{ $loading }}" decoding="async"{{ with .class }} class="{{ . }}"{{ end }}>
+{{- else -}}
+  <img src="{{ $src }}" alt="{{ $alt }}" loading="{{ $loading }}" decoding="async"{{ with .class }} class="{{ . }}"{{ end }}>
+{{- end -}}
