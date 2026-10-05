@@ -3,6 +3,7 @@ title: "My Story - Growth from IC3 to IC5"
 date: 2025-10-06
 tags: ["Personal Reflection"]
 draft: false
+featured: true
 description: "My first 3 years at Meta & career growth"
 ---
 
