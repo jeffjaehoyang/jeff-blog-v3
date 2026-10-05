@@ -7,9 +7,7 @@ symlink to it, for tools that look for that filename. Put new instructions here,
 ## Stack at a glance
 
 - **Hugo extended v0.160.1**, plain static site. No Node, no npm, no CSS framework, no Hugo modules.
-- **All templates live in `layouts/`**. They are fully custom and self-contained.
-  If you see a `theme = 'ritzy'` line in `hugo.toml`, or anything under `themes/`, `node_modules/`, `package*.json`,
-  or `assets/`, it is a legacy leftover that contributes nothing to the build. Do not edit or rely on it.
+- **All templates live in `layouts/`**. They are fully custom; there is no theme.
 - **Hosting: Vercel.** Every push to `main` deploys to production. Other branches get preview deployments
   that include drafts (see "Publishing workflow").
 - **Analytics:** Plausible, loaded only in production builds.
